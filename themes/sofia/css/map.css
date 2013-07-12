@@ -1,0 +1,132 @@
+.baloon_content_wrap {
+    margin: 0 10px 20px 0;
+    padding-bottom: 40px;
+}
+
+.baloon_content {
+    margin: 20px 0 0;
+}
+
+.baloon_title {
+    font-family: Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+.baloon_subtitle {
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+.baloon_photo {
+    width: 61px;
+    height: 61px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    margin-right: 20px;
+    box-shadow: 2px 2px 1px 0 #FFFFFF, 5px 5px 2px 0 #D4D4D4;
+    -moz-box-shadow: 2px 2px 1px 0 #FFFFFF, 5px 5px 2px 0 #D4D4D4;
+    -webkit-box-shadow: 2px 2px 1px 0 #FFFFFF, 5px 5px 2px 0 #D4D4D4;
+}
+
+.hotel_info {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: #505050;
+}
+
+
+.order_button {
+    background: url("/img/button_sprite_1.png") no-repeat;
+    width: 125px;
+	height: 38px;
+    display: block;
+    bottom: 10px;
+	right: 168px;
+	position: absolute;
+}
+
+.order_button:hover {
+    background-position: 0 -38px;
+}
+
+.ymaps-b-balloon__content-foot {
+    background: #fff !important;
+}
+
+.ymaps-b-clusters-content__sidelist-item {
+    padding: 8px 10px 8px 5px !important;
+    margin: 0 !important;
+}
+.ymaps-b-clusters-content__sidelist-item_state_current {
+    border-radius: 0 !important;
+    background: #b8d52a !important;
+    color: #fff !important;
+}
+.ymaps-b-clusters-content__sidelist-text {
+    font-family: Arial, serif;
+    font-size: 12px;
+}
+
+.baloon_buttons {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9;
+}
+.baloon_buttons.cluster {
+    margin-left: 130px;
+}
+.baloon_buttton {
+    float: left;
+    margin-left: 10px;
+    font-family: ubuntubold, sans-serif;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 30px;
+    box-shadow: none;
+}
+.gray-button.baloon_buttton {
+    color: #7b7b7b;
+}
+.blue-button.baloon_buttton {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+.cart_button.baloon_buttton {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.cart_button.baloon_buttton .icon {
+    display: inline-block;
+    vertical-align: middle;
+    background: url('/img/cart.png') no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+.price_tag.in_baloon {
+    position: relative;
+    float: left;
+}
+
+.in_baloon .room-price {
+    width: 150px;
+    height: 32px;
+    padding-top: 0px;
+    font-size: 12px;
+    line-height: 10px;
+    margin-left: 8px;
+}
+.in_baloon .room-price span {
+    display: block;
+}
+.in_baloon .room-price .col3-left {
+    margin-left: 0px;
+    width: 50px;
+}
