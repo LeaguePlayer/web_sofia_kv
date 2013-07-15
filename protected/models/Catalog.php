@@ -17,6 +17,20 @@
  */
 class Catalog extends CActiveRecord
 {
+	public static $classesFeatures = array(
+		1 => 'wifi',
+		2 => 'tele',
+		3 => 'wash',
+		4 => 'iron'
+	);
+
+	public static $allowFeatures = array(
+		1 => 'В квартире есть Wi-Fi',
+		2 => 'В квартире есть Кабельное TV',
+		3 => 'В квартире есть Стиральная машинка',
+		4 => 'В квартире есть Утюг'
+	);
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -34,12 +48,12 @@ class Catalog extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('address, number', 'required'),
-			array('number, price_24, price_night, price_hour, active, area, gallery_id, human_count', 'numerical', 'integerOnly'=>true),
+			array('number, price_24, price_night, price_hour, active, area, gallery_id, human_count, action_id', 'numerical', 'integerOnly'=>true),
 			array('address, features, rooms_count', 'length', 'max'=>255),
 			array('desc', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, address, number, desc, features, price_24, price_night, price_hour, active, area, rooms_count, human_count', 'safe', 'on'=>'search'),
+			array('id, address, number, desc, features, price_24, price_night, price_hour, active, area, rooms_count, human_count, action_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -106,7 +120,8 @@ class Catalog extends CActiveRecord
 			'active' => 'Активна',
 			'area' => 'Район',
 			'rooms_count' => 'Количество комнат',
-			'human_count' => 'Количество спальных мест'
+			'human_count' => 'Количество спальных мест',
+			'action_id' => 'Акция'
 		);
 	}
 
@@ -140,6 +155,7 @@ class Catalog extends CActiveRecord
 		$criteria->compare('area',$this->area);
 		$criteria->compare('rooms_count',$this->rooms_count);
 		$criteria->compare('human_count',$this->human_count);
+		$criteria->compare('action_id',$this->action_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

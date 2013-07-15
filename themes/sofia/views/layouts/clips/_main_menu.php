@@ -1,11 +1,13 @@
 <?php $this->beginClip('main_menu'); ?>
 <nav id="main-menu">
-	<ul>
-		<li><a href="#">Каталог квартир</a></li>
-		<li><a href="#">Просмотр на карте</a></li>
-		<li class="active"><a href="#">Спец.предложения</a></li>
-		<li><a href="#">Дополнительные услуги</a></li>
-		<li><a href="#">Контакты</a></li>
-	</ul>
+<?php $this->widget('zii.widgets.CMenu',array(
+	'items'=>array(
+		array('label'=>'Каталог квартир', 'url'=>array('/catalog/index')),
+		array('label'=>'Просмотр на карте', 'url'=>array('/site/page')),
+		array('label'=>'Спец.предложения', 'url'=>array('/site/contact')),
+		array('label'=>'Дополнительные услуги', 'url'=>array('/site/login')),
+		array('label'=>'Контакты', 'url'=>array('/site/logout'))
+	),
+)); ?>
 </nav>
 <?php $this->endClip(); ?>

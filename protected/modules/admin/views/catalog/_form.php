@@ -15,7 +15,12 @@
 
 	<?php echo $form->dropDownListRow($model, 'human_count', Catalog::getHumanCount(), array('class'=>'span1')); ?>
 
-	<?php echo $form->textAreaRow($model,'desc',array('rows'=>6, 'cols'=>50, 'class'=>'span5')); ?>
+	<?php echo CHtml::activelabel($model,'desc'); ?>
+	<?php $this->widget('admin_ext.redactorjs.Redactor', array( 'model' => $model, 'attribute' => 'desc', 
+		'htmlOptions' => array('style'=>'height: 220px;')
+	)); ?>
+	
+	<?php //echo $form->textAreaRow($model,'desc',array('rows'=>6, 'cols'=>50, 'class'=>'span5')); ?>
 
 	<?php echo $form->checkBoxListInlineRow($model, 'features', Catalog::getFeatures()); ?>
 

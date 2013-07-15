@@ -96,9 +96,23 @@ class ActionController extends AdminController
 			}
 		}
 
+		if($model->date_finish == '0000-00-00') $model->date_finish = "";
+		if(!empty($model->date_finish)) $model->date_finish = MyHelper::getFormatedDate('d.m.Y', $model->date_finish);
+
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+
+	//get Rooms related on Action
+	public function getRoomsAction($id){
+		$items = Yii::app()->db->createCommand()
+		    ->select('id, address as text')
+		    ->from('catalog')
+		    ->where('action_id = :id', array(':id' => $id))
+		    ->queryAll();
+
+		return CJSON::encode($items);
 	}
 
 	private function addCatItems($ids, $action_id){
@@ -134,6 +148,9 @@ class ActionController extends AdminController
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
+
+		if($model->date_finish == '0000-00-00') $model->date_finish = "";
+		if(!empty($model->date_finish)) $model->date_finish = MyHelper::getFormatedDate('d.m.Y', $model->date_finish);
 
 		$this->render('update',array(
 			'model'=>$model,

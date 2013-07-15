@@ -43,13 +43,13 @@
 
     <div class="container-fluid">
 		<div class="row-fluid">
-	    	<!-- <div class="span2">
-	      	<?php /*$this->widget('bootstrap.widgets.TbMenu', array(
+	    	<div class="span1">
+	      	<?php $this->widget('bootstrap.widgets.TbMenu', array(
 			    'type'=>'list',
 			    'items'=> $this->menu
-			    )); */?>
-	    	</div> -->
-	    	<div class="span12">
+			    )); ?>
+	    	</div>
+	    	<div class="span11">
 	      		<?php echo $content;?>
 	    	</div>
 	  	</div>

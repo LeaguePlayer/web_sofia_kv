@@ -23,9 +23,13 @@ class Controller extends CController
 
 	public $themeUrl;
 
+	public $cs;
+
 	public function init(){
 		parent::init();
 		
+		$cs = Yii::app()->clientScript;
+		$cs->registerCoreScript('jquery');
 	}
 
 	//Get Clip

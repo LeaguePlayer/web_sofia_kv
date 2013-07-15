@@ -37,7 +37,7 @@ class Action extends CActiveRecord
 			array('name', 'length', 'max'=>255),
 			array('short_desc', 'length', 'max'=>150),
 			array('long_desc, date_create, date_finish', 'safe'),
-			array('date_create, date_finish', 'date', 'format' => 'yyyy-dd-MM'),
+			array('date_create, date_finish', 'date', 'format' => 'yyyy-MM-dd'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, active, short_desc, long_desc, date_create, date_finish, gallery_id, sort', 'safe', 'on'=>'search'),
@@ -143,8 +143,16 @@ class Action extends CActiveRecord
 
 	protected function beforeValidate(){
 
-		$this->date_create = date('Y-d-m');
+		$this->date_create = date('Y-m-d');
 		if(empty($this->date_finish)) $this->date_finish = "";
+		else{
+			$this->date_finish = MyHelper::getFormatedDate('Y-m-d', $this->date_finish);
+/*			$date = date_create_from_format('d.m.Y', $this->date_finish);
+			$this->date_finish = date_format($date, 'Y-m-d');*/
+/*			print_r($date);
+			print_r($this->date_finish);
+			die();*/
+		}
 
 		return parent::beforeValidate();
 	}

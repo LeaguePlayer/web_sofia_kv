@@ -1,3 +1,4 @@
+
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'action-form',
 	'enableAjaxValidation'=>false,
@@ -11,7 +12,12 @@
 
 	<?php echo $form->textAreaRow($model,'short_desc',array('class'=>'span5','maxlength'=>150)); ?>
 
-	<?php echo $form->textAreaRow($model,'long_desc',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
+	<?php echo CHtml::activelabel($model,'long_desc'); ?>
+	<?php $this->widget('admin_ext.redactorjs.Redactor', array( 'model' => $model, 'attribute' => 'long_desc', 
+		'htmlOptions' => array('style'=>'height: 220px;')
+	)); ?>
+
+	<?php //echo $form->textAreaRow($model,'long_desc',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
 
 	<?php echo CHtml::activeHiddenField($model,'date_create'); ?>
 
@@ -40,8 +46,14 @@
 	<?php $this->widget('admin_ext.select2.ESelect2', array(
 		'name' => 'catalog',
 		'data' =>CHtml::listData(Catalog::model()->no_action()->findAll(), 'id', 'address'),
-		'htmlOptions' => array('id' => 'select','multiple'=>'multiple', 'style'=>'width: 40%;'),
-		//'options' => array('multiple'=>'multiple',)
+		'htmlOptions' => array('id' => 'select', 'multiple'=> true, 'style'=>'width: 40%;'),
+		'events' =>array(
+			'removed' => 'js:function(e) { $(".addCatItems .id" + e.val).remove(); $(".removeCatItems").append($("<input />").attr({name: "removeCatItems[]"}).addClass("id"+e.val).val(e.val)); }',
+			'selected' => 'js:function(e) { $(".removeCatItems .id" + e.val).remove(); $(".addCatItems").append($("<input />").attr({name: "addCatItems[]"}).addClass("id"+e.val).val(e.val)); }'
+		)/*,
+		'options' => array('initSelection'=>'js:function(){
+			console.log("fuck");
+		}',)*/
 	));
 	?>
 
@@ -57,17 +69,7 @@
 	<div class="removeCatItems" style="display: none;"></div>
 
 <?php $this->endWidget(); ?>
-
-<?php //Yii::app()->clientScript->registerScriptFile($this->module->getAssetsUrl() . '/js/action.js', CClientScript::POS_END);?>
 <?php Yii::app()->clientScript->registerScript('', '
-	$("#select")
-		.on("removed", function(e) {
-			$(".addCatItems .id" + e.val).remove(); 
-			$(".removeCatItems").append($("<input />").attr({name: "removeCatItems[]"}).addClass("id"+e.val).val(e.val)); 
-		})
-		.on("selected", function(e) {
-			$(".removeCatItems .id" + e.val).remove();
-			$(".addCatItems").append($("<input />").attr({name: "addCatItems[]"}).addClass("id"+e.val).val(e.val)); 
-		})
-	;
-', CClientScript::POS_END);?>
+	var preload_data = '.$this->getRoomsAction($model->id).';
+	$("#select").select2("data", preload_data);
+', CClientScript::POS_READY);?>

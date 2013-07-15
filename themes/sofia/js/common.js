@@ -43,8 +43,10 @@ var chaos = function (){
 
 }
 
-$('#slider-block').slider();
-//chaos();
+jQuery(document).ready(function(){
+	//$('#slider-block').slider();
+	chaos();
+});
 
 if($(".filters").size()>0){
 

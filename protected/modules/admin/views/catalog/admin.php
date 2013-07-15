@@ -46,7 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			//'name' => 'Обложка',
 			'header' => 'Превью',
 			'type'=>'html',
-			'value' => 'CHtml::link(CHtml::image($data->gallery->main->getPreview(), "", array("style"=>"height:75px;")),array("view","id"=>$data->id))'
+			'value' => '$data->gallery->main ? CHtml::link(CHtml::image($data->gallery->main->getPreview(), "", array("style"=>"height:75px;")),array("view","id"=>$data->id)) : ""'
 		),
 		array(
 			'name' => 'address',
