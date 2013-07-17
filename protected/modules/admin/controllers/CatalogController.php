@@ -97,6 +97,9 @@ class CatalogController extends AdminController
 			}
 		}
 
+		if(!empty($model->features))
+			$model->features = explode(',', $model->features);
+
 		$this->render('create',array(
 			'model'=>$model,
 			'areas'=>$areas
@@ -129,6 +132,9 @@ class CatalogController extends AdminController
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
+		
+		if(!empty($model->features))
+			$model->features = explode(',', $model->features);
 
 		$this->render('update',array(
 			'model'=>$model,
