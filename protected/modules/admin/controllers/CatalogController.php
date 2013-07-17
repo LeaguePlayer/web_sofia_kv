@@ -88,6 +88,11 @@ class CatalogController extends AdminController
 
 				$model->gallery_id = $gallery->id;
 				$model->save(false);
+
+				if(!empty($_POST['addItems'])){
+					$this->addAreasById($_POST['addItems'], $model->id);
+				}
+
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
@@ -113,6 +118,14 @@ class CatalogController extends AdminController
 		if(isset($_POST['Catalog']))
 		{
 			$model->attributes=$_POST['Catalog'];
+
+			if(!empty($_POST['addItems'])){
+				$this->addAreasById($_POST['addItems'], $model->id);
+			}
+			if(!empty($_POST['removeItems'])){
+				$this->removeAreasById($_POST['removeItems'], $model->id);
+			}
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -121,6 +134,35 @@ class CatalogController extends AdminController
 			'model'=>$model,
 			'areas'=>$areas
 		));
+	}
+
+	//Add relation for catalog item
+	private function addAreasById($areas, $id){
+		$command = Yii::app()->db->createCommand();
+		foreach ($areas as $key => $value) {
+			$command->insert('catalog_areas', array(
+			    'catalog_id' => $id,
+			    'area_id'=>$value,
+			));
+		}
+	}
+	//Remove relation for catalog item
+	private function removeAreasById($areas, $id){
+		$command = Yii::app()->db->createCommand();
+		foreach ($areas as $key => $value) {
+			$command->delete('catalog_areas', 'area_id=:id', array(':id' => $value));
+		}
+	}
+
+	//get Rooms related on Action
+	public function getItemAreas($id){
+		$items = Yii::app()->db->createCommand()
+		    ->select('id, name as text')
+		    ->from('area, catalog_areas')
+		    ->where('catalog_id = :id AND area_id = area.id', array(':id' => $id))
+		    ->queryAll();
+
+		return CJSON::encode($items);
 	}
 
 	/**

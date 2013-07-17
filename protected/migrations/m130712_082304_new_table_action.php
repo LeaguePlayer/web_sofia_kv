@@ -14,7 +14,7 @@ class m130712_082304_new_table_action extends CDbMigration
             'date_finish' => 'date',
             'gallery_id' => 'int',
             'sort' => 'int default 100'
-        ));
+        ), 'ENGINE = MYISAM');
 	}
 
 	public function down()

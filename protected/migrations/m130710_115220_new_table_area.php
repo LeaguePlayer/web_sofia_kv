@@ -7,7 +7,7 @@ class m130710_115220_new_table_area extends CDbMigration
 		$this->createTable('area', array(
             'id' => 'pk',
             'name' => 'string NOT NULL',
-        ));
+        ), 'ENGINE = MYISAM');
 	}
 
 	public function down()

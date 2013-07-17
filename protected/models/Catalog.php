@@ -48,12 +48,12 @@ class Catalog extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('address, number', 'required'),
-			array('number, price_24, price_night, price_hour, active, area, gallery_id, human_count, action_id', 'numerical', 'integerOnly'=>true),
+			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, action_id', 'numerical', 'integerOnly'=>true),
 			array('address, features, rooms_count', 'length', 'max'=>255),
 			array('desc', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, address, number, desc, features, price_24, price_night, price_hour, active, area, rooms_count, human_count, action_id', 'safe', 'on'=>'search'),
+			array('id, address, number, desc, features, price_24, price_night, price_hour, active, rooms_count, human_count, action_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -98,7 +98,7 @@ class Catalog extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cat_area' => array(self::BELONGS_TO, 'Area', 'area'),
+			'cat_areas' => array(self::MANY_MANY, 'Area', 'catalog_areas(catalog_id, area_id)'),
 			'action' => array(self::BELONGS_TO, 'Action', 'action_id')
 		);
 	}
@@ -118,7 +118,6 @@ class Catalog extends CActiveRecord
 			'price_night' => 'Цена за ночь',
 			'price_hour' => 'Цена за час',
 			'active' => 'Активна',
-			'area' => 'Район',
 			'rooms_count' => 'Количество комнат',
 			'human_count' => 'Количество спальных мест',
 			'action_id' => 'Акция'
@@ -152,7 +151,6 @@ class Catalog extends CActiveRecord
 		$criteria->compare('price_night',$this->price_night);
 		$criteria->compare('price_hour',$this->price_hour);
 		$criteria->compare('active',$this->active);
-		$criteria->compare('area',$this->area);
 		$criteria->compare('rooms_count',$this->rooms_count);
 		$criteria->compare('human_count',$this->human_count);
 		$criteria->compare('action_id',$this->action_id);
@@ -180,6 +178,17 @@ class Catalog extends CActiveRecord
 			3 => 'Стиральная машина',
 			4 => 'Утюг'
 		);
+	}
+
+	public function getPreviewImage($v = ''){
+		$image = $this->gallery->main;
+
+		if(!empty($image)){
+			if($v == '')
+				return $image->getPreview();
+			else
+				return $image->getUrl($v);
+		}
 	}
 
 	public static function getRoomsCount(){

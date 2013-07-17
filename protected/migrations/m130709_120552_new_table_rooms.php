@@ -14,9 +14,7 @@ class m130709_120552_new_table_rooms extends CDbMigration
             'price_night' => 'int',
             'price_hour' => 'int',
             'active' => 'TINYINT',
-            'preview' => 'int',
-            'area' => 'int'
-        ));
+        ), 'ENGINE = MYISAM');
 	}
 
 	public function down()

@@ -46,7 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			//'name' => 'Обложка',
 			'header' => 'Превью',
 			'type'=>'html',
-			'value' => '$data->gallery->main ? CHtml::link(CHtml::image($data->gallery->main->getPreview(), "", array("style"=>"height:75px;")),array("view","id"=>$data->id)) : ""'
+			'value' => 'CHtml::link(CHtml::image($data->getPreviewImage(),"",array("style"=>"width:100px;")), array("view","id"=>$data->id))'
 		),
 		array(
 			'name' => 'address',
@@ -69,10 +69,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'price_24',
 		'price_night',
 		'price_hour',
-		array(
+		/*array(
 			'name' => 'area',
 			'value' => '$data->cat_area->name'
-		),
+		),*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

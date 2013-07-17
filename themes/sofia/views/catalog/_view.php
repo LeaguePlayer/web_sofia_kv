@@ -1,7 +1,7 @@
 <div class="room">
 	<a class="link-addFavorites" href="#"><span></span></a>
 	<div class="room-images">
-		<?=$data->gallery->main ? CHtml::link(CHtml::image($data->gallery->main->getUrl('v2'), ""),array("view","id"=>$data->id)) : ""?>
+		<?=CHtml::link(CHtml::image($data->getPreviewImage('v2'), ""),array("view","id"=>$data->id))?>
 	</div>
 	<?=CHtml::link(CHtml::encode($data->rooms_count).' комнатная квартира, '.CHtml::encode($data->address), array('view','id'=>$data->id), array('class' => 'link-room')); ?>
 	<div class="sleepers">
@@ -12,16 +12,18 @@
 	</div>
 	<div class="dop">
 		<label class="text-title">Дополнительно</label><br>
-		<? $features = explode(',', $data->features);?>
-
-		<?foreach ($features as $value):?>
-		<div class="<?=Catalog::$classesFeatures[$value]?>-blue">
-			<div class="title">
-				<div class="top"></div>
-				<div class="bottom"><?=Catalog::$allowFeatures[$value]?></div>
+		<?if(!empty($data->features)){?>
+			<? $features = explode(',', $data->features);?>
+			<?foreach ($features as $value):?>
+			<div class="<?=Catalog::$classesFeatures[$value]?>-blue">
+				<div class="title">
+					<div class="top"></div>
+					<div class="bottom"><?=Catalog::$allowFeatures[$value]?></div>
+				</div>
 			</div>
-		</div>
-		<?endforeach;?>
+			<?endforeach;?>
+		<?}?>
+		
 	</div>
 	<div class="room-price">
 		<div class="col3-left">

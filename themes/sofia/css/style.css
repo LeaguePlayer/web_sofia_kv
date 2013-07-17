@@ -305,23 +305,19 @@ a.spec {
 .filters .sleeper .sleeper_count-num,
 #order .sleeper_count-num,
 .filters .price #price_count-num {
-    position: absolute;
-    top: 18px;
-    left: 20px;
     width: 24px;
     height: 32px;
     padding-top: 3px;
     background: url(../images/top_ugol.png) no-repeat;
     text-align: center;
+    margin: 28px 0 0 5px;
 }
 .filters .price #price_count-num {
-    position: absolute;
-    top: 18px;
-    left: 2px;
     width: 39px;
     height: 25px;
     padding-top: 3px;
     background: url(../images/top_ugol2.png) no-repeat;
+    margin: 28px 0 0 -3px;
 }
 
 .text-title,
@@ -407,6 +403,13 @@ div.text-title {
 .rooms-count a.room3 {
     padding-left: 70px;
     background: 0px 0px url(../images/3rooms.png) no-repeat;
+}
+
+.items .nothing{
+    margin-left: 25px;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 20px;
 }
 
 a.link-addFavorites,

@@ -9,7 +9,7 @@ class m130709_060617_new_table_page extends CDbMigration
             'title' => 'string NOT NULL',
             'alias' => 'string',
             'content' => 'text',
-        ));
+        ), 'ENGINE = MYISAM');
 	}
 
 	public function down()

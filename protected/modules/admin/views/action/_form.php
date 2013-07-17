@@ -56,6 +56,8 @@
 		}',)*/
 	));
 	?>
+	<div class="addCatItems" style="display: none;"></div>
+	<div class="removeCatItems" style="display: none;"></div>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -64,9 +66,6 @@
 			'label'=>$model->isNewRecord ? 'Создать' : 'Сохранить',
 		)); ?>
 	</div>
-
-	<div class="addCatItems" style="display: none;"></div>
-	<div class="removeCatItems" style="display: none;"></div>
 
 <?php $this->endWidget(); ?>
 <?php Yii::app()->clientScript->registerScript('', '

@@ -30,7 +30,24 @@
 
 	<?php echo $form->textFieldRow($model,'price_hour',array('class'=>'input-small')); ?>
 
-	<?php echo $form->dropDownListRow($model, 'area', CHtml::listData($areas, 'id', 'name')); ?>
+	<?php echo CHtml::label('Районы квартиры', 'areas'); ?>
+	<?php $this->widget('admin_ext.select2.ESelect2', array(
+		'name' => 'areas',
+		'data' =>CHtml::listData(Area::model()->findAll(), 'id', 'name'),
+		'htmlOptions' => array('id' => 'select', 'multiple'=> true, 'style'=>'min-width: 200px;'),
+		'events' =>array(
+			'removed' => 'js:function(e) { $(".addItems .id" + e.val).remove(); $(".removeItems").append($("<input />").attr({name: "removeItems[]"}).addClass("id"+e.val).val(e.val)); }',
+			'selected' => 'js:function(e) { $(".removeItems .id" + e.val).remove(); $(".addItems").append($("<input />").attr({name: "addItems[]"}).addClass("id"+e.val).val(e.val)); }'
+		)/*,
+		'options' => array('initSelection'=>'js:function(){
+			console.log("fuck");
+		}',)*/
+	));
+	?>
+	<div class="addItems" style="display: none;"></div>
+	<div class="removeItems" style="display: none;"></div>
+
+	<?php //echo $form->dropDownListRow($model, 'area', CHtml::listData($areas, 'id', 'name')); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -41,3 +58,7 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+<?php Yii::app()->clientScript->registerScript('', '
+	var preload_data = '.$this->getItemAreas($model->id).';
+	$("#select").select2("data", preload_data);
+', CClientScript::POS_READY);?>

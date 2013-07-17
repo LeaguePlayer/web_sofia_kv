@@ -41,7 +41,7 @@ class Area extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'rooms' => array(self::HAS_MANY, 'Catalog', 'area')
+			'area_rooms' => array(self::MANY_MANY, 'Catalog', 'catalog_areas(area_id, catalog_id)'),
 		);
 	}
 

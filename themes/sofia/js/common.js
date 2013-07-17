@@ -73,41 +73,21 @@ if($(".filters").size()>0){
 
 
 	// ползунок "Количество спальных мест" в филтре
-	$("#sleeper-slider").slider({
+	$("#sleeper-slider, #order_sleeper-count").slider({
 		range: "min",
 		min: 1,
 		max: 8,
 		step: 1,
-		value: 2,
+		create: function(event, ui){
+			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
+		},
 		slide: function( event, ui ) {	
-			$("input[name='sleeper_count']").val(ui.value);	
-			$(".filters .sleeper_count-num").html(ui.value);
-			if(ui.value==1)
-				$(".filters .sleeper_count-num").css("left","-12px");
-			else if(ui.value==2) {
-				$(".filters .sleeper_count-num").css("left","20px");
-			}
-			else if(ui.value==3) {
-				$(".filters .sleeper_count-num").css("left","50px");
-			}
-			else if(ui.value==4) {
-				$(".filters .sleeper_count-num").css("left","81px");
-			}
-			else if(ui.value==5) {
-				$(".filters .sleeper_count-num").css("left","112px");
-			}
-			else if(ui.value==6) {
-				$(".filters .sleeper_count-num").css("left","143px");
-			}
-			else if(ui.value==7) {
-				$(".filters .sleeper_count-num").css("left","174px");
-			}
-			else if(ui.value==8) {
-				$(".filters .sleeper_count-num").css("left","204px");
-			}
+			$(this).next().val(ui.value);
+			$(this).find('.ui-slider-handle div').html(ui.value);	
 		}
 	});
-	$("input[name='sleeper_count']").val($(".filters .sleeper_count").slider("value"));
+	$("#sleeper-slider").slider({ value: $("input.human").val() });
+	//$("input[name='sleeper_count']").val($(".filters .sleeper_count").slider("value"));
 	$(".filters .sleeper_count-num").html($(".filters .sleeper_count").slider("value"));
 
 	// ползунок "Цена" в филтре
@@ -117,53 +97,36 @@ if($(".filters").size()>0){
 		max: 5000,
 		step: 50,
 		value: 800,
+		create: function(event, ui){
+			$(this).find('.ui-slider-handle').append($('<div id="price_count-num"></div>'));
+		},
 		slide: function( event, ui ) {	
-			$("input[name='price_count']").val(ui.value);	
-			$("#price_count-num").html(ui.value);
-			var left = $("#price_count .ui-slider-handle").css("left");
+			$(this).next().val(ui.value);	
+			$(this).find('.ui-slider-handle div').html(ui.value);
+			/*var left = $("#price_count .ui-slider-handle").css("left");
 			left = left.substring(0, left.length-2);
 			left = left-19;
-			$("#price_count-num").css("left", left+"px");
+			$("#price_count-num").css("left", left+"px");*/
 		}
 	});
-	$("input[name='price_count']").val($("#price_count").slider("value"));
+	$("#price_count").slider({ value: $("input.price").val() });
+	//$("input[name='price_count']").val($("#price_count").slider("value"));
 	$("#price_count-num").html($("#price_count").slider("value"));
 
 	// ползунок "Количество спальных мест" в форме
-	$("#order_sleeper-count").slider({
+	/*$("#order_sleeper-count").slider({
 		range: "min",
 		min: 1,
 		max: 8,
 		step: 1,
-		value: 2,
+		create: function(event, ui){
+			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
+		},
 		slide: function( event, ui ) {	
-			$("input[name='sleeper']").val(ui.value);	
-			$("#order .sleeper_count-num").html(ui.value);
-			if(ui.value==1)
-				$("#order .sleeper_count-num").css("left","-12px");
-			else if(ui.value==2) {
-				$("#order .sleeper_count-num").css("left","20px");
-			}
-			else if(ui.value==3) {
-				$("#order .sleeper_count-num").css("left","50px");
-			}
-			else if(ui.value==4) {
-				$("#order .sleeper_count-num").css("left","81px");
-			}
-			else if(ui.value==5) {
-				$("#order .sleeper_count-num").css("left","112px");
-			}
-			else if(ui.value==6) {
-				$("#order .sleeper_count-num").css("left","143px");
-			}
-			else if(ui.value==7) {
-				$("#order .sleeper_count-num").css("left","174px");
-			}
-			else if(ui.value==8) {
-				$("#order .sleeper_count-num").css("left","204px");
-			}
+			$(this).next().val(ui.value);	
+			$(this).find('.ui-slider-handle div').html(ui.value);
 		}
-	});
+	});*/
 	$("input[name='sleeper']").val($("#order .sleeper_count").slider("value"));
 	$("#order .sleeper_count-num").html($("#order .sleeper_count").slider("value"));
 }

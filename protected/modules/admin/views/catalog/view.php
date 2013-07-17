@@ -55,13 +55,14 @@ $this->menu=array(
 		),
 		//'preview',
 		array(
-			'name' => 'area',
+			'label' => 'Районы',
 			'type' => 'text',
-			'value' => CHtml::encode($model->cat_area->name)
+			'value' => implode(', ', CHtml::listdata($model->cat_areas, 'id', 'name'))
 		),
 	),
 )); ?>
 
+<?php echo CHtml::label('Фотографии квартиры', 'gallery');?>
 <?php
 $this->widget('admin_ext.imagesgallery.GalleryManager', array(
 	'gallery' => $model->galleryBehavior->getGallery(),
