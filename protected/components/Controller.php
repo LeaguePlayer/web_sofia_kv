@@ -30,6 +30,23 @@ class Controller extends CController
 		
 		$cs = Yii::app()->clientScript;
 		$cs->registerCoreScript('jquery');
+
+		//Change theme
+		Yii::app()->theme = 'sofia';
+		$this->themeUrl = Yii::app()->theme->baseUrl;
+
+		//Css initialize
+		/*<link rel="stylesheet" href="<?=$this->themeUrl?>/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" />
+		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/chosen.css" />
+		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/reset.css" />
+		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/buttons.css" />
+		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/style.css" />*/
+		$cs->registerCssFile($this->themeUrl.'/css/ui-lightness/jquery-ui-1.10.3.custom.min.css');
+		$cs->registerCssFile($this->themeUrl.'/css/reset.css');
+		$cs->registerCssFile($this->themeUrl.'/css/style.css');
+		$cs->registerCssFile($this->themeUrl.'/css/buttons.css');
+		$cs->registerCssFile($this->themeUrl.'/css/chosen.css');
+
 	}
 
 	//Get Clip
@@ -43,14 +60,10 @@ class Controller extends CController
 		return (Yii::app()->controller->getId().'/'.Yii::app()->controller->getAction()->getId()) == 'site/index';
 	}
 
-	protected function beforeAction($action){
-
-		//Change theme
-		Yii::app()->theme = 'sofia';
-		$this->themeUrl = Yii::app()->theme->baseUrl;
+/*	protected function beforeAction($action){
 
 		return parent::beforeAction($action);
-	}
+	}*/
 
 	public function beforeRender($view)
     {

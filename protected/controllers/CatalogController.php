@@ -2,6 +2,13 @@
 
 class CatalogController extends Controller
 {
+
+	public function init(){
+		parent::init();
+
+		
+	}
+
 	public function actionIndex()
 	{
 		$model = new Catalog;
@@ -60,6 +67,38 @@ class CatalogController extends Controller
 			'model' => $model,
 			'areas' => $areas
 		));
+	}
+
+	public function actionView($id){
+
+		//similar items
+		$criteria = new CDbCriteria();
+		$criteria->limit = 4;
+
+		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
+
+		$this->render('view', array(
+			'model' => $this->loadModel($id),
+			'data' => $dataProvider
+		));
+	}
+
+	public function actionMap(){
+		$model = new Catalog;
+		$areas = Area::model()->findAll(array('order' => 'name'));
+
+		$this->render('map', array(
+			'model' => $model,
+			'areas' => $areas
+		));
+	}
+
+	public function loadModel($id)
+	{
+		$model=Catalog::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'Страница не найдена.');
+		return $model;
 	}
 
 	// Uncomment the following methods and override them if needed

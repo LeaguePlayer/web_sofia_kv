@@ -11,7 +11,6 @@
 			<a class="room3 <?=($model->rooms_count[3] != 0 ? "active" : "")?>" href="#">3х комнатные</a>
 	</div>
 	<?php
-
 	$this->widget('zii.widgets.CListView', array(
 	    'dataProvider'=>$data,
 	    'itemView'=>'_view',

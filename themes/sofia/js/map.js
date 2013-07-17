@@ -114,7 +114,7 @@ function init() {
         clusterer = new ymaps.Clusterer ({
             clusterDisableClickZoom: true,
             clusterIcons: [{
-                href:'images/cluster.png',
+                href:'/themes/sofia/images/cluster.png',
                 size: [41, 58],
                 offset: [-21, -56],
             }],
@@ -132,14 +132,6 @@ function init() {
         loadAllHotels($(".mainmenu_button.active a").attr("rel"));
     });
 }
-
-
-
-$('.cart_button').live('click', function() {
-    Cart.instance.addItem($(this).attr('rel'));
-    return false;
-});
-
 
 
 function getBounds(geoObjects) {
@@ -497,7 +489,7 @@ function loadAllHotels(categoryNumber) {
             }, {
                 //balloonPane: 'movableOuters',
                 //balloonShadowPane: 'movableOuters',
-                iconImageHref: "images/placemark.png",
+                iconImageHref: "/themes/sofia/images/placemark.png",
                 iconImageSize: [33, 46],
                 iconImageOffset: [-16, -44],
                 balloonContentBodyLayout: "hotels#baloonlayout",

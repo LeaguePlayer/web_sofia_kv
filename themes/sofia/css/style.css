@@ -136,6 +136,7 @@ a{text-decoration: none;}
 .center .left {
     width: 270px;
     height: auto;
+    min-height: 100px;
     float: left;
 }
 

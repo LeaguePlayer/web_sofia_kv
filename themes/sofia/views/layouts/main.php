@@ -4,12 +4,6 @@
 		<meta charset="utf-8" />
 		<title>Главная | Sofia style</title>
 
-		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" />
-		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/chosen.css" />
-		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/reset.css" />
-		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/buttons.css" />
-		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/style.css" />
-
 		<script type="text/javascript" src="<?=$this->themeUrl?>/js/modernizr.custom.js"></script>
 		<? /*<script type="text/javascript" src="<?=$this->themeUrl?>/js/jQuery_1.9.1.js"></script>*/?>
 		<script type="text/javascript" src="<?=$this->themeUrl?>/js/jquery-ui-1.10.3.custom.min.js"></script>

@@ -80,8 +80,14 @@ class CatalogController extends AdminController
 	                'v2' => array(
 	                    'adaptiveResize' => array(210, 280),
 	                ),
+	                '_gallery_mini' => array(
+	                    'adaptiveResize' => array(200, 200),
+	                ),
+	                '_gallery_big' => array(
+	                    'adaptiveResize' => array(920, 420),
+	                ),
 	                'medium' => array(
-	                    'adaptiveResize' => array(1000, 1000),
+	                    'resize' => array(1200, 1000),
 	                )
 				);
 				$gallery->save();
