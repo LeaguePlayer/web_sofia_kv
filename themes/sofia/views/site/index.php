@@ -79,132 +79,31 @@
 		<h1>Наши квартиры</h1>
 	</header>
 	<div class="rooms">
-		<div class="room-block">
-			<a href="#"><div class="icon"><span></span></div><div class="title">1 комнатные</div></a>
-			<div class="room-images">
-				<div class="image">
-					<img src="<?=$this->themeUrl?>/images/tmp/room.jpg">
-					<a href="#zoom" class="zoom"></a>
-					<a href="#" class="link-room">1 комнатная квартира, 50 лет октября</a>
-					<div class="room-price">
-						<div class="col3-left">
-							<b>1500</b> руб. в сутки
-						</div>
-						<div class="col3-left">
-							<b>600</b> руб. за ночь
-						</div>
-						<div class="col3-left">
-							<b>300</b> руб. за час
-						</div>
-						<div class="clear"></div>
+		<form method="post" action="/catalog">
+		<?foreach ($mainRooms as $key => $rooms) {?>	
+			<?if (!empty($rooms)){?>
+			<div class="room-block">
+				<?=CHtml::activeHiddenField(new Catalog, 'rooms_count['.($key+1).']', array('value' => 0))?>
+				<a href="#" class="filter">
+					<div class="icon">
+						<span></span>
+						<?if($key != 0){
+							for($i=0; $i<$key; $i++) echo '<span class="shift"></span>';
+						}?>
 					</div>
-				</div>
-				<div class="image">
-					<img src="<?=$this->themeUrl?>/images/tmp/room.jpg">
-					<a href="#zoom" class="zoom"></a>
-					<a href="#" class="link-room">1 комнатная квартира, 50 лет октября</a>
-					<div class="room-price">
-						<div class="col3-left">
-							<b>1500</b> руб. в сутки
-						</div>
-						<div class="col3-left">
-							<b>600</b> руб. за ночь
-						</div>
-						<div class="col3-left">
-							<b>300</b> руб. за час
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="room-block">
-			<a href="#"><div class="icon"><span></span><span class="shift"></span></div><div class="title">2х комнатные</div></a>
-			<div class="room-images">
-				<div class="image">
-					<img src="<?=$this->themeUrl?>/images/tmp/room.jpg">
-					<a href="#zoom" class="zoom"></a>
-					<a href="#" class="link-room">2 комнатная квартира, 50 лет октября</a>
-					<div class="room-price">
-						<div class="col3-left">
-							<b>1500</b> руб. в сутки
-						</div>
-						<div class="col3-left">
-							<b>600</b> руб. за ночь
-						</div>
-						<div class="col3-left">
-							<b>300</b> руб. за час
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				<div class="image">
-					<img src="<?=$this->themeUrl?>/images/tmp/room.jpg">
-					<a href="#zoom" class="zoom"></a>
-					<a href="#" class="link-room">2 комнатная квартира, 50 лет октября</a>
-					<div class="room-price">
-						<div class="col3-left">
-							<b>1500</b> руб. в сутки
-						</div>
-						<div class="col3-left">
-							<b>600</b> руб. за ночь
-						</div>
-						<div class="col3-left">
-							<b>300</b> руб. за час
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="room-block">
-			<a href="#"><div class="icon">
-				<span></span>
-				<span class="shift"></span>
-				<span class="shift"></span>
-			</div>
-			<div class="title">3х комнатные</div></a>
-			<div class="room-images">
-				<div class="image">
-					<img src="<?=$this->themeUrl?>/images/tmp/room.jpg">
-					<a href="#zoom" class="zoom"></a>
-					<a href="#" class="link-room">3 комнатная квартира, 50 лет октября</a>
-					<div class="room-price">
-						<div class="col3-left">
-							<b>1500</b> руб. в сутки
-						</div>
-						<div class="col3-left">
-							<b>600</b> руб. за ночь
-						</div>
-						<div class="col3-left">
-							<b>300</b> руб. за час
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				<div class="image">
-					<img src="<?=$this->themeUrl?>/images/tmp/room.jpg">
-					<a href="#zoom" class="zoom"></a>
-					<a href="#" class="link-room">3 комнатная квартира, 50 лет октября</a>
-					<div class="room-price">
-						<div class="col3-left">
-							<b>1500</b> руб. в сутки
-						</div>
-						<div class="col3-left">
-							<b>600</b> руб. за ночь
-						</div>
-						<div class="col3-left">
-							<b>300</b> руб. за час
-						</div>
-						<div class="clear"></div>
-					</div>
-			</div>
-			</div>
-		</div>
+					<div class="title"><?=($key+1)?><?=($key != 1 ? "х" : "")?> комнатные</div>
+				</a>
+				<?foreach ($rooms as $room) {
+					$this->renderPartial('_view_catalog', array('room' => $room));	
+				}?>
+			</div>	
+			<?}?>
+		<?}?>
+		</form>
 		<div class="clear"></div>
 	</div>
 	<div class="all">
-		<a class="yellow-button" href="#all"><span></span>Смотреть все квартиры</a>
+		<a class="yellow-button" href="/catalog"><span></span>Смотреть все квартиры</a>
 	</div>
 </section>
 <section id="pairs">
@@ -270,3 +169,22 @@
 	</div>
 	<div class="msg">Оставьте заявку прямо сейчас, мы обработаем её и свяжемся с Вами!</div>
 </section>
+<?php
+Yii::app()->clientScript->registerScript('#main_page', '
+	$(".room-block a.filter").click(function(e){
+		e.preventDefault();
+		$(this).closest("form").find("input").val(0);
+		$(this).closest(".room-block").find("input").val(1);
+		$(this).closest("form").submit();
+	});
+
+	$(".image .zoom").click(function(e){
+		e.preventDefault();
+		$.fancybox.open(jQuery("." + $(this).data("id")));
+	});
+', CClientScript::POS_READY);
+
+Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );
+//Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );
+Yii::app()->clientScript->registerCssFile($this->themeUrl.'/css/fancybox/jquery.fancybox.css');
+?>

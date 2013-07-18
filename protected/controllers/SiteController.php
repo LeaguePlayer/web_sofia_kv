@@ -31,7 +31,33 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
+		$mainRooms = array();
+
+		//one flat
+		$criteria1 = new CDbCriteria();
+		$criteria1->addCondition('rooms_count=1');
+		$criteria1->limit = 2;
+
+		$mainRooms[] = Catalog::model()->findAll($criteria1);
+
+		//two flat
+		$criteria2 = new CDbCriteria();
+		$criteria2->addCondition('rooms_count=2');
+		$criteria2->limit = 2;
+
+		$mainRooms[] = Catalog::model()->findAll($criteria2);
+
+		//three flat
+		$criteria3 = new CDbCriteria();
+		$criteria3->addCondition('rooms_count=3');
+		$criteria3->limit = 2;
+
+		$mainRooms[] = Catalog::model()->findAll($criteria3);
+
+		$this->render('index', array(
+			'mainRooms' => $mainRooms
+		));
 	}
 
 	/**

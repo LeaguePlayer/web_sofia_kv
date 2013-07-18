@@ -43,32 +43,12 @@
 				<img src="<?=$value->getUrl('_gallery_big')?>" alt="" />
 			</a>
 		<?}?>
-		<!-- <a class="fancybox active" rel="group" href="<?=$this->themeUrl?>/images/bigimg.jpg">
-			<img src="<?=$this->themeUrl?>/images/bigimg.jpg" alt="" />
-		</a>
-		<a class="fancybox" rel="group" href="http://2.bp.blogspot.com/-JIHqm0qWCC4/USdyqdd1hgI/AAAAAAAAm1A/5cEX6SqBWzc/s1600/Modern+living++room+sofa+design+ideas.+(4).jpg">
-			<img src="http://2.bp.blogspot.com/-JIHqm0qWCC4/USdyqdd1hgI/AAAAAAAAm1A/5cEX6SqBWzc/s1600/Modern+living++room+sofa+design+ideas.+(4).jpg" alt="" />
-		</a>
-		<a class="fancybox" rel="group" href="images/bigimg.jpg">
-			<img src="<?=$this->themeUrl?>/images/bigimg.jpg" alt="" />
-		</a>
-		<a class="fancybox" rel="group" href="http://2.bp.blogspot.com/-JIHqm0qWCC4/USdyqdd1hgI/AAAAAAAAm1A/5cEX6SqBWzc/s1600/Modern+living++room+sofa+design+ideas.+(4).jpg">
-			<img src="http://2.bp.blogspot.com/-JIHqm0qWCC4/USdyqdd1hgI/AAAAAAAAm1A/5cEX6SqBWzc/s1600/Modern+living++room+sofa+design+ideas.+(4).jpg" alt="" />
-		</a>
-		<a class="fancybox" rel="group" href="<?=$this->themeUrl?>/images/bigimg.jpg">
-			<img src="<?=$this->themeUrl?>/images/bigimg.jpg" alt="" />
-		</a> -->
 	</div>
 	<div class="small_images">
 		<?php foreach ($model->gallery->galleryPhotos as $key => $value) {?>
 			<a <?if($key == 0) echo 'class="active"';?> rel="group" href="#" style="background: url('<?=$value->getUrl('_gallery_mini')?>') center no-repeat;">
 			</a>
 		<?}?>
-		<!-- <a class="active" href="#"><img src="<?=$this->themeUrl?>/images/smallimg.jpg"></a>
-		<a href="#"><img src="<?=$this->themeUrl?>/images/smallimg.jpg"></a>
-		<a href="#"><img src="<?=$this->themeUrl?>/images/smallimg.jpg"></a>
-		<a href="#"><img src="<?=$this->themeUrl?>/images/smallimg.jpg"></a>
-		<a href="#"><img src="<?=$this->themeUrl?>/images/smallimg.jpg"></a> -->
 	</div>
 </div>
 <?}?>

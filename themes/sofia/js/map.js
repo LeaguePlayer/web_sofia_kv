@@ -409,7 +409,7 @@ function loadAllHotels(categoryNumber) {
      * Формат данных, возвращаемых AJAX методом - JSON, представлен ниже, переменная answer
      * Раскомментировать строки с 514-565 и указать в методе AJAX, нужный урл, для запроса
      */
-    answer = [
+    /*answer = [
         {
         "id":"232",
         "street":"Минская 67/1",
@@ -501,37 +501,39 @@ function loadAllHotels(categoryNumber) {
         }
         clusterer.add(hotelsOnMap);
         Map.geoObjects.add(clusterer);
-    }
+    }*/
 
-/*    $.ajax({
+    $.ajax({
         type: "GET",
-        url: "/ajax/getHotels",
+        url: "/catalog/getRooms",
         data: {cat_id: categoryNumber || 0},
-        success: function loadsHot(answer) {
-            var hotelsInfo = JSON.parse(answer);
+        success: function loadsHot(data) {
+            //console.log(answer);
+            //var hotelsInfo = JSON.parse(answer);
+
             hotelsOnMap = [];
             clusterer.removeAll();
             Map.geoObjects.each(function(item) {
                 Map.geoObjects.remove(item);
             });
             
-            for (var key in hotelsInfo) {
+            for (var key in data) {
                 GeoObject = new ymaps.GeoObject({
                     geometry: {
                         type: "Point",
                         coordinates: [hotelsInfo[key].coord1, hotelsInfo[key].coord2],
                     },
                     properties: {
-                        hotelId: hotelsInfo[key].id,
-                        hotelType: hotelsInfo[key].roomsCount + "-комнатная",
-                        photoSrc: "images/"+hotelsInfo[key].photo[0],
-                        hotelInfo: hotelsInfo[key].desc,
-                        priceDay: hotelsInfo[key].costDay,
-                        priceNight: hotelsInfo[key].costNight,
-                        priceHour: hotelsInfo[key].costHour,
-                        clusterCaption: hotelsInfo[key].street,
-                        hotelStreet: hotelsInfo[key].street,
-                        link: hotelsInfo[key].link,
+                        hotelId: data[key].id,
+                        hotelType: data[key].roomsCount + "-комнатная",
+                        photoSrc: "images/"+data[key].photo[0],
+                        hotelInfo: data[key].desc,
+                        priceDay: data[key].costDay,
+                        priceNight: data[key].costNight,
+                        priceHour: data[key].costHour,
+                        clusterCaption: data[key].street,
+                        hotelStreet: data[key].street,
+                        link: data[key].link,
                     }
                 }, {
                     //balloonPane: 'movableOuters',
@@ -554,7 +556,7 @@ function loadAllHotels(categoryNumber) {
                 });
             }
         }
-    });*/
+    });
 }
 
 

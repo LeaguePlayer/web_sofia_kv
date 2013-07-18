@@ -39,12 +39,12 @@ class CatalogController extends Controller
 				}
 			}
 
-			if($_POST['Catalog']['human_count'] != 0){
+			if(isset($_POST['Catalog']['human_count']) && $_POST['Catalog']['human_count'] != 0){
 				$criteria->addCondition('human_count >= :human_count');
 				$criteria->params[':human_count'] = $_POST['Catalog']['human_count'];
 			}
 
-			if($_POST['Catalog']['price_24'] != 0){
+			if(isset($_POST['Catalog']['price_24']) && $_POST['Catalog']['price_24'] != 0){
 				$criteria->addCondition('price_24 >= :price_24');
 				$criteria->params[':price_24'] = $_POST['Catalog']['price_24'];
 			}
@@ -91,6 +91,15 @@ class CatalogController extends Controller
 			'model' => $model,
 			'areas' => $areas
 		));
+	}
+
+	public function actionGetRooms(){
+		header('Content-type: application/json');
+
+		$rooms = Catalog::model()->findAll();
+		
+		echo CJSON::encode($rooms);
+		Yii::app()->end();
 	}
 
 	public function loadModel($id)

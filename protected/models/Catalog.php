@@ -47,9 +47,10 @@ class Catalog extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('address, number', 'required'),
-			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, action_id', 'numerical', 'integerOnly'=>true),
+			array('address, number, coords', 'required'),
+			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, action_id, sort', 'numerical', 'integerOnly'=>true),
 			array('address, features, rooms_count', 'length', 'max'=>255),
+			array('coords', 'length', 'max'=>100),
 			array('desc', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -120,7 +121,8 @@ class Catalog extends CActiveRecord
 			'active' => 'Активна',
 			'rooms_count' => 'Количество комнат',
 			'human_count' => 'Количество спальных мест',
-			'action_id' => 'Акция'
+			'action_id' => 'Акция',
+			'coords' => 'Координаты'
 		);
 	}
 

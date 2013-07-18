@@ -1,3 +1,4 @@
+<span class="span7">
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'catalog-form',
 	'enableAjaxValidation'=>false,
@@ -7,9 +8,11 @@
 
 	<?php echo $form->checkBoxRow($model, 'active',  array(1 => '')); ?>
 
-	<?php echo $form->textFieldRow($model,'address',array('class'=>'span5','maxlength'=>255)); ?>
+	<?php echo $form->textFieldRow($model,'address',array('class'=>'span5 address','maxlength'=>255)); ?>
 
 	<?php echo $form->textFieldRow($model,'number',array('class'=>'span1')); ?>
+
+	<?php echo $form->textFieldRow($model, 'coords', array('class'=>'coords span5')); ?>
 
 	<?php echo $form->dropDownListRow($model, 'rooms_count', Catalog::getRoomsCount(), array('class'=>'span1')); ?>
 
@@ -58,6 +61,14 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+</span>
+<span class="span4">
+	<div>Чтобы изменить координаты переташите метку на карте.</div>
+	<div id="YMapsID" style="height: 400px;"></div>
+</span>
+
+<?php Yii::app()->clientScript->registerScriptFile('http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU', CClientScript::POS_HEAD);?>
+<?php Yii::app()->clientScript->registerScriptFile($this->module->getAssetsUrl() . '/js/catalog.js', CClientScript::POS_END);?>
 <?php Yii::app()->clientScript->registerScript('', '
 	var preload_data = '.$this->getItemAreas($model->id).';
 	$("#select").select2("data", preload_data);

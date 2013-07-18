@@ -6,9 +6,9 @@
 <section id="catalog" class="right">
 	<div class="rooms-count">
 			<label class="text-title">смотреть только:</label>
-			<a class="room1 <?=($model->rooms_count[1] != 0 ? "active" : "")?>" href="#">1 комнатные</a>
-			<a class="room2 <?=($model->rooms_count[2] != 0 ? "active" : "")?>" href="#">2х комнатные</a>
-			<a class="room3 <?=($model->rooms_count[3] != 0 ? "active" : "")?>" href="#">3х комнатные</a>
+			<a class="room1 <?=((isset($model->rooms_count[1]) && $model->rooms_count[1] != 0) ? "active" : "")?>" href="#">1 комнатные</a>
+			<a class="room2 <?=((isset($model->rooms_count[2]) && $model->rooms_count[2] != 0) ? "active" : "")?>" href="#">2х комнатные</a>
+			<a class="room3 <?=((isset($model->rooms_count[3]) && $model->rooms_count[3] != 0) ? "active" : "")?>" href="#">3х комнатные</a>
 	</div>
 	<?php
 	$this->widget('zii.widgets.CListView', array(
