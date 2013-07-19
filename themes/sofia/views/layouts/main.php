@@ -4,17 +4,17 @@
 		<meta charset="utf-8" />
 		<title>Главная | Sofia style</title>
 
-		<script type="text/javascript" src="<?=$this->themeUrl?>/js/modernizr.custom.js"></script>
-		<? /*<script type="text/javascript" src="<?=$this->themeUrl?>/js/jQuery_1.9.1.js"></script>*/?>
-		<script type="text/javascript" src="<?=$this->themeUrl?>/js/jquery-ui-1.10.3.custom.min.js"></script>
-		<script type="text/javascript" src="<?=$this->themeUrl?>/js/chosen.jquery.min.js"></script>
+		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/modernizr.custom.js"></script>
+		<? /*<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jQuery_1.9.1.js"></script>*/?>
+		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/chosen.jquery.min.js"></script>
 	</head>
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
 		<header id="main">
 			<div class="center">
 				<div class="logo">
 					<h1><a href="/">Home hotel</a></h1>
-					<a href="/"><img src="<?=$this->themeUrl?>/images/logo.png"></a>
+					<a href="/"><img src="<?=$this->getAssetsUrl()?>/images/logo.png"></a>
 				</div>
 				<div class="contacts">
 					<a class="mail" href="mailto:info@sofiastyle.ru">info@sofiastyle.ru</a>
@@ -41,6 +41,6 @@
 			</div>
 			<div class="clear"></div>
 		</footer>
-		<script type="text/javascript" src="<?=$this->themeUrl?>/js/common.js"></script>
+		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/common.js"></script>
 	</body>
 </html>

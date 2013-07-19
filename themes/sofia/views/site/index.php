@@ -2,7 +2,7 @@
 <div id="recent">
 	<div class="big">
 		<a href="#">
-			<img src="<?=$this->themeUrl?>/images/tmp/big_image.png" alt="" />
+			<img src="<?=$this->getAssetsUrl()?>/images/tmp/big_image.png" alt="" />
 			<div class="info-room">
 				<div class="action_label"></div>
 				<div class="title">
@@ -14,7 +14,7 @@
 	</div>
 	<div class="small">
 		<a href="#">
-			<img src="<?=$this->themeUrl?>/images/tmp/mini.jpg" alt="" />
+			<img src="<?=$this->getAssetsUrl()?>/images/tmp/mini.jpg" alt="" />
 			<div class="info-room">
 				<div class="title">
 					<h2>2х комнатная</h2>
@@ -26,7 +26,7 @@
 	</div>
 	<div class="small">
 		<a href="#">
-			<img src="<?=$this->themeUrl?>/images/tmp/mini.jpg" alt="" />
+			<img src="<?=$this->getAssetsUrl()?>/images/tmp/mini.jpg" alt="" />
 			<div class="info-room">
 				<div class="title">
 					<h2>2х комнатная</h2>
@@ -38,7 +38,7 @@
 	</div>
 	<div class="small">
 		<a href="#">
-			<img src="<?=$this->themeUrl?>/images/tmp/mini.jpg" alt="" />
+			<img src="<?=$this->getAssetsUrl()?>/images/tmp/mini.jpg" alt="" />
 			<div class="info-room">
 				<div class="title">
 					<h2>2х комнатная</h2>
@@ -115,16 +115,16 @@
 		<a class="right show" href="#left"></a>
 		<div class="slider-box">
 			<div class="slider">
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->themeUrl?>/images/tmp/fb.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
+				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
 			</div>
 		</div>
 	</div>
@@ -184,7 +184,7 @@ Yii::app()->clientScript->registerScript('#main_page', '
 	});
 ', CClientScript::POS_READY);
 
-Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );
-//Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );
-Yii::app()->clientScript->registerCssFile($this->themeUrl.'/css/fancybox/jquery.fancybox.css');
+Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );
+//Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );
+Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
 ?>

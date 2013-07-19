@@ -73,5 +73,5 @@
 <div class="clear"></div>
 
 <?php
-Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/catalog.js',  CClientScript::POS_END);
+Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/catalog.js',  CClientScript::POS_END);
 ?>
