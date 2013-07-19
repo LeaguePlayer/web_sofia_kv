@@ -29,7 +29,7 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		<a class="go-to-map" href="/catalog/map">показать на карте</a>
+		<a class="go-to-map" href="<?=$this->createUrl('catalog/map',array('id'=>$model->id))?>">показать на карте</a>
 </div>
 <?php if($model->gallery->galleryPhotos){?>
 <div id="images">

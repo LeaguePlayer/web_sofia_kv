@@ -3,7 +3,7 @@
 	<div class="rooms-count no-margin-left">
 		<label class="text-title">смотреть только:</label>
 		<a class="room1" href="#">1 комнатные</a>
-		<a class="active room2" href="#">2х комнатные</a>
+		<a class="room2" href="#">2х комнатные</a>
 		<a class="room3" href="#">3х комнатные</a>
 	</div>
 </div>
@@ -12,7 +12,7 @@
 		<?php $this->renderPartial('_filter', array('model' => $model, 'areas' => $areas));?>
 	</section>
 </div>
-<div id="map"></div>
+<div id="map" data-id="<?=Yii::app()->getRequest()->getParam('id')?>"></div>
 <div class="afterMap">
 	<section class="left">
 		<div class="text-left_title">специальные предложения:</div>
@@ -75,3 +75,4 @@
 <?php Yii::app()->clientScript->registerCssFile($this->themeUrl.'/css/map.css' );?>
 <?php Yii::app()->clientScript->registerScriptFile('http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU' ,CClientScript::POS_HEAD );?>
 <?php Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/map.js' ,CClientScript::POS_END );?>
+<?php Yii::app()->clientScript->registerScriptFile($this->themeUrl.'/js/catalog.js' ,CClientScript::POS_END );?>

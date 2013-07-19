@@ -17,6 +17,8 @@
  */
 class Catalog extends CActiveRecord
 {
+	public $preview = "";
+
 	public static $classesFeatures = array(
 		1 => 'wifi',
 		2 => 'tele',
@@ -37,6 +39,10 @@ class Catalog extends CActiveRecord
 	public function tableName()
 	{
 		return 'catalog';
+	}
+
+	public function setPreview($val){
+		$this->preview = $val;
 	}
 
 	/**
@@ -210,4 +216,11 @@ class Catalog extends CActiveRecord
 
 	    return parent::beforeValidate();
 	}
+
+	public function getAttributes($names = true) {
+        $attrs = parent::getAttributes($names);
+        $attrs['preview'] = $this->getPreviewImage();
+
+        return $attrs;
+    }
 }

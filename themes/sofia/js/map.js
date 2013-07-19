@@ -1,7 +1,3 @@
-/**
- * Глобальные перменные
- */
-
 var Map;
 var clusterer;
 var hotelsCount = 0;
@@ -14,15 +10,17 @@ $(document).ready(function() {
 function init() {
     Map = new ymaps.Map ('map', {
         center: [57.140087,65.450609],
-        zoom: 12,
+        zoom: 14,
         type: 'yandex#publicMap',
         behaviors: ["drag"]
     });
 
-    Map.controls.add(
+    /*Map.controls.add(
         new ymaps.control.ZoomControl()
-    );
+    );*/
     
+    Map.controls.add('zoomControl', { top: 75, right: 15 });    
+
     $(function() {
         // количество квартир на карте        
         var baloonContent = ymaps.templateLayoutFactory.createClass(
@@ -30,7 +28,7 @@ function init() {
                 "<div class='baloon_title replace_bold'>$[properties.hotelType] квартира</div>" +
                 "<div class='baloon_subtitle replace'>$[properties.hotelStreet]</div>" +
                 "<div class='baloon_content'>" +
-                    "<div class='baloon_photo'><img src=$[properties.photoSrc] width='61' height='61' /></div>" +
+                    "<div class='baloon_photo'><img src='$[properties.photoSrc]' width='61' height='61' /></div>" +
                     "<div class='hotel_info'>$[properties.hotelInfo]</div>" +
                     "<div class='clear'></div>" +
                 "</div>" +
@@ -59,7 +57,7 @@ function init() {
                 "<div class='baloon_title replace_bold'></div>" +
                 "<div class='street'>$[properties.hotelStreet]</div>" +
                 "<div class='baloon_content'>" +
-                    "<div class='baloon_photo'><img src='' width='61' height='61' /></div>" +
+                    "<div class='baloon_photo'><img src='$[properties.photoSrc]' width='61' height='61' /></div>" +
                     "<div class='hotel_info'></div>" +
                     "<div class='clear'></div>" +
                 "</div>" +
@@ -129,7 +127,7 @@ function init() {
         });
         
         Map.geoObjects.add(clusterer);
-        loadAllHotels($(".mainmenu_button.active a").attr("rel"));
+        loadAllHotels();
     });
 }
 
@@ -158,7 +156,7 @@ function getBounds(geoObjects) {
 /**
  * Поиск квартир
  */
-$(".hotelssearch_form .search_button").live("click", function() {
+/*$(".hotelssearch_form .search_button").live("click", function() {
     $.ajax({
         type: "POST",
         url: "/ajax/searchHotels",
@@ -198,6 +196,7 @@ $(".hotelssearch_form .search_button").live("click", function() {
                             hotelStreet: data.hotels[key].street,
                             clusterCaption: data.hotels[key].street,
                             link: data.hotels[key].link,
+                            //link: data.hotels[key].link,
                         }
                     }, {
                         //balloonPane: 'movableOuters',
@@ -277,9 +276,56 @@ $(".hotelssearch_form .search_button").live("click", function() {
         }
     });
     return false;
-});
+});*/
 
-
+function addItemsOnMap(data){
+    hotelsOnMap = [];
+    clusterer.removeAll();
+    Map.geoObjects.each(function(item) {
+        Map.geoObjects.remove(item);
+    });
+    
+    for (var key in data) {
+        var coords = data[key].coords.split(",");
+        
+        GeoObject = new ymaps.GeoObject({
+            geometry: {
+                type: "Point",
+                coordinates: [coords[0], coords[1]],
+            },
+            properties: {
+                hotelId: data[key].id,
+                hotelType: data[key].rooms_count + "-комнатная",
+                photoSrc: data[key].preview,
+                hotelInfo: data[key].desc,
+                priceDay: data[key].price_24,
+                priceNight: data[key].price_night,
+                priceHour: data[key].price_hour,
+                clusterCaption: data[key].address,
+                hotelStreet: data[key].address,
+                link: "/catalog/" + data[key].id
+            }
+        }, {
+            //balloonPane: 'movableOuters',
+            //balloonShadowPane: 'movableOuters',
+            iconImageHref: "/themes/sofia/images/placemark.png",
+            iconImageSize: [33, 46],
+            iconImageOffset: [-16, -44],
+            balloonContentBodyLayout: "hotels#baloonlayout",
+            balloonMinWidth: 400,
+            balloonMaxWidth: 410,
+        });
+            
+        hotelsOnMap.push(GeoObject);
+    }
+    clusterer.add(hotelsOnMap);
+    Map.geoObjects.add(clusterer);
+    if (hotelsOnMap.length != 0) {
+        Map.setBounds(getBounds(hotelsOnMap), {
+            checkZoomRange: true,
+        });
+    }
+}
 
 function openObjectBalloon(GeoObject) {
     var openBalloon = function() {
@@ -291,7 +337,7 @@ function openObjectBalloon(GeoObject) {
             // Если объект попадает в кластер, открываем балун кластера с нужным выбранным объектом.
             if (geoObjectState.isClustered) {
                 geoObjectState.cluster.state.set('activeObject', GeoObject);
-                Map.panTo([parseFloat(coords[0]), parseFloat(coords[1])+0.015], {
+                Map.panTo([parseFloat(coords[0]), parseFloat(coords[1])-0.065], {
                     callback: function() {
                         geoObjectState.cluster.balloon.open();
                     },
@@ -397,180 +443,69 @@ function AddHotelOnMap(hotel_id, show_alert, open_balloon) {
     return true;
 }
 
-function loadAllHotels(categoryNumber) {
-    hotelsOnMap = [];
-    clusterer.removeAll();
-    Map.geoObjects.each(function(item) {
-        Map.geoObjects.remove(item);
-    });
-
-    /**
-     * Закоментировать до 512 строки, после настройки AJAX метода получения квартир
-     * Формат данных, возвращаемых AJAX методом - JSON, представлен ниже, переменная answer
-     * Раскомментировать строки с 514-565 и указать в методе AJAX, нужный урл, для запроса
-     */
-    /*answer = [
-        {
-        "id":"232",
-        "street":"Минская 67/1",
-        "roomsCount":"1",
-        "coord1":"57.129645",
-        "coord2":"65.551545",
-        "costDay":"1500",
-        "costNight":"600",
-        "costHour" : "300",
-        "desc":"Шикарная стильная однокомнатная квартира с дизайнерским воплощением мечты в 1 подъезде на 2-ом этаже 9-ти этажного нового дома.",
-        "link":"/kvartira/minskaya-67-1-232",
-        "photo":[
-            "smallimg.jpg",
-            "hotel46_a60e7329bb44f14f713323d1edc57153.jpg",
-            "hotel46_6712464a23c3052c6dd836ba72d68954.jpg",
-            "hotel46_b47364f43e5c9bc1387e500e50b3900f.jpg",
-            "hotel46_823b93e247070eb3236769506a1cfcfa.jpg",
-            "hotel46_5705cf836646c4c903b09dfe1e4f5a88.jpg",
-            "hotel46_259e051016151e69647b6306006c2fa9.jpg",
-            "hotel46_7a3a811f7fb05099d5f947b2cc38c452.jpg",
-            "hotel46_080159896fd5536f3272745a201acbc6.jpg",
-            "hotel46_c90dc0fea1f48d3bff3f1f5964d303ac.jpg",
-            "hotel46_44db0d79e19202dea8e13fcc15faee54.jpg"]
-        },
-        {
-        "id":"234",
-        "street":"Холодильная 50",
-        "roomsCount":"2",
-        "coord1":"57.124",
-        "coord2":"65.552",
-        "costDay":"1500",
-        "costNight":"600",
-        "costHour" : "300",
-        "desc":"Шикарная стильная однокомнатная квартира с дизайнерским воплощением мечты в 1 подъезде на 2-ом этаже 9-ти этажного нового дома.",
-        "link":"/kvartira/minskaya-67-1-232",
-        "photo":[
-            "smallimg.jpg",
-            "hotel46_a60e7329bb44f14f713323d1edc57153.jpg",
-            "hotel46_6712464a23c3052c6dd836ba72d68954.jpg",
-            "hotel46_b47364f43e5c9bc1387e500e50b3900f.jpg",
-            "hotel46_823b93e247070eb3236769506a1cfcfa.jpg",
-            "hotel46_5705cf836646c4c903b09dfe1e4f5a88.jpg",
-            "hotel46_259e051016151e69647b6306006c2fa9.jpg",
-            "hotel46_7a3a811f7fb05099d5f947b2cc38c452.jpg",
-            "hotel46_080159896fd5536f3272745a201acbc6.jpg",
-            "hotel46_c90dc0fea1f48d3bff3f1f5964d303ac.jpg",
-            "hotel46_44db0d79e19202dea8e13fcc15faee54.jpg"]
-        },
-    ];
-    loadsHot(answer);
-    function loadsHot(answer) {
-        var hotelsInfo = answer;
-        hotelsOnMap = [];
-        clusterer.removeAll();
-        Map.geoObjects.each(function(item) {
-            Map.geoObjects.remove(item);
-        });
-        
-        for (var key in hotelsInfo) {
-            GeoObject = new ymaps.GeoObject({
-                geometry: {
-                    type: "Point",
-                    coordinates: [hotelsInfo[key].coord1, hotelsInfo[key].coord2],
-                },
-                properties: {
-                    hotelId: hotelsInfo[key].id,
-                    hotelType: hotelsInfo[key].roomsCount + "-комнатная",
-                    photoSrc: "images/"+hotelsInfo[key].photo[0],
-                    hotelInfo: hotelsInfo[key].desc,
-                    priceDay: hotelsInfo[key].costDay,
-                    priceNight: hotelsInfo[key].costNight,
-                    priceHour: hotelsInfo[key].costHour,
-                    clusterCaption: hotelsInfo[key].street,
-                    hotelStreet: hotelsInfo[key].street,
-                    link: hotelsInfo[key].link,
-                }
-            }, {
-                //balloonPane: 'movableOuters',
-                //balloonShadowPane: 'movableOuters',
-                iconImageHref: "/themes/sofia/images/placemark.png",
-                iconImageSize: [33, 46],
-                iconImageOffset: [-16, -44],
-                balloonContentBodyLayout: "hotels#baloonlayout",
-                balloonMinWidth: 400,
-                balloonMaxWidth: 410,
-            });
-                
-            hotelsOnMap.push(GeoObject);
-        }
-        clusterer.add(hotelsOnMap);
-        Map.geoObjects.add(clusterer);
-    }*/
-
+function loadAllHotels() {
     $.ajax({
         type: "GET",
         url: "/catalog/getRooms",
-        data: {cat_id: categoryNumber || 0},
+        data: {},
         success: function loadsHot(data) {
-            //console.log(answer);
-            //var hotelsInfo = JSON.parse(answer);
+            addItemsOnMap(data);
 
-            hotelsOnMap = [];
-            clusterer.removeAll();
-            Map.geoObjects.each(function(item) {
-                Map.geoObjects.remove(item);
-            });
-            
-            for (var key in data) {
-                GeoObject = new ymaps.GeoObject({
-                    geometry: {
-                        type: "Point",
-                        coordinates: [hotelsInfo[key].coord1, hotelsInfo[key].coord2],
-                    },
-                    properties: {
-                        hotelId: data[key].id,
-                        hotelType: data[key].roomsCount + "-комнатная",
-                        photoSrc: "images/"+data[key].photo[0],
-                        hotelInfo: data[key].desc,
-                        priceDay: data[key].costDay,
-                        priceNight: data[key].costNight,
-                        priceHour: data[key].costHour,
-                        clusterCaption: data[key].street,
-                        hotelStreet: data[key].street,
-                        link: data[key].link,
-                    }
-                }, {
-                    //balloonPane: 'movableOuters',
-                    //balloonShadowPane: 'movableOuters',
-                    iconImageHref: "images/placemark.png",
-                    iconImageSize: [33, 46],
-                    iconImageOffset: [-16, -44],
-                    balloonContentBodyLayout: "hotels#baloonlayout",
-                    balloonMinWidth: 400,
-                    balloonMaxWidth: 410,
+            var room_id = $('#map').data('id');
+            if(parseInt(room_id) > 0){
+                console.log(hotelsOnMap);
+                $.each(hotelsOnMap, function(k, obj){
+                    //console.log(obj);
+                    //openObjectBalloon(obj);
+                    //console.log(obj.properties.get("hotelId"));
+                    if(obj.properties.get('hotelId') == room_id) openObjectBalloon(obj);
                 });
-                    
-                hotelsOnMap.push(GeoObject);
-            }
-            clusterer.add(hotelsOnMap);
-            Map.geoObjects.add(clusterer);
-            if (hotelsOnMap.length != 0) {
-                Map.setBounds(getBounds(hotelsOnMap), {
-                    checkZoomRange: true,
-                });
-            }
+            }      
         }
     });
 }
 
+//Filter items
+$('#catalog-filter').submit(function(event){
+    event.preventDefault();
+    var formData = $(this).serialize();
 
-$(".gallery_photo .add_on_map").live("click", function() {
+    $(".rooms-count a").removeClass("active");
+    $(this).find('.checkbox-rooms :checked').each(function(){
+        var i = $('.checkbox-rooms :checkbox').index($(this));
+        $(".rooms-count a").eq(i).addClass('active');
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/catalog/getrooms",
+        data: formData,
+        success: function(data){
+            addItemsOnMap(data);
+        }
+    });
+});
+
+/*$('.left .filters').css({opacity: 0.8});
+$('.left .filters').hover(
+    function(){
+        $(this).animate({opacity: 1}, 500);
+    }, function(){
+        $(this).animate({opacity: 0.8}, 500);
+    }
+);*/
+
+/*$(".gallery_photo .add_on_map").live("click", function() {
     AddHotelOnMap($(this).attr("rel"), true, false);
     return false;
 });
 
-
+*/
 
 /**
  * Переход к карте
  */
-$(".to_map").live("click", function () {
+/*$(".to_map").live("click", function () {
     //$("html:not(:animated)"+( ! $.browser.opera ? ",body:not(:animated)" : "")).animate({scrollTop: top-45},300);
     elementClick = $(this).attr("href");
     destination = $(elementClick).offset().top;
@@ -588,4 +523,4 @@ $(".to_map").live("click", function () {
     });
     //}
     return false;
-});
+});*/

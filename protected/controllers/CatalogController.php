@@ -5,18 +5,29 @@ class CatalogController extends Controller
 
 	public function init(){
 		parent::init();
-
-		
 	}
 
 	public function actionIndex()
 	{
 		$model = new Catalog;
-		$criteria = new CDbCriteria();
 
-		//Default initializtion
+		//Default initialization
 		$model->human_count = 2;
 		$model->price_24 = 800;
+
+		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $this->getCriteriaForFilter($model)));
+		$areas = Area::model()->findAll(array('order' => 'name'));
+
+		$this->render('index', array(
+			'data' => $dataProvider,
+			'model' => $model,
+			'areas' => $areas
+		));
+	}
+
+	//Function process POST and return object Criteria for filter items
+	private function getCriteriaForFilter(& $model){
+		$criteria = new CDbCriteria();
 
 		//Fucking filter
 		if(isset($_POST['Catalog'])){
@@ -33,8 +44,8 @@ class CatalogController extends Controller
 				$items = $_POST['Catalog']['rooms_count'];
 				foreach ($items as $key => $value) {
 					if($value != 0){
-						$criteria->addCondition('rooms_count=:rooms_count');
-						$criteria->params[':rooms_count'] = $key;
+						$criteria->addCondition('rooms_count=:rooms_count'.$key, 'OR');
+						$criteria->params[':rooms_count'.$key] = $key;
 					}
 				}
 			}
@@ -59,14 +70,7 @@ class CatalogController extends Controller
 			}
 		}
 
-		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
-		$areas = Area::model()->findAll(array('order' => 'name'));
-
-		$this->render('index', array(
-			'data' => $dataProvider,
-			'model' => $model,
-			'areas' => $areas
-		));
+		return $criteria;
 	}
 
 	public function actionView($id){
@@ -83,8 +87,13 @@ class CatalogController extends Controller
 		));
 	}
 
-	public function actionMap(){
+	public function actionMap($id = 0){
 		$model = new Catalog;
+
+		//Default initialization
+		$model->human_count = 2;
+		$model->price_24 = 800;
+
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
 		$this->render('map', array(
@@ -93,11 +102,23 @@ class CatalogController extends Controller
 		));
 	}
 
+	//ajax Filter from map action and get JSON
 	public function actionGetRooms(){
 		header('Content-type: application/json');
 
-		$rooms = Catalog::model()->findAll();
-		
+		$criteria = new CDbCriteria();
+
+		//if recive data from Filter
+		if(isset($_POST['Catalog'])){
+			$model = new Catalog;
+			$criteria = $this->getCriteriaForFilter($model);
+		}
+
+		$rooms = Catalog::model()->findAll($criteria);
+		foreach ($rooms as $val) {
+			$val->desc = strip_tags($val->desc);
+		}
+
 		echo CJSON::encode($rooms);
 		Yii::app()->end();
 	}
