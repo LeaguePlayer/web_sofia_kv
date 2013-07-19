@@ -30,8 +30,6 @@ class Controller extends CController
 	protected function preinit()
 	{
 		parent::preinit();
-
-		if(Yii::app()->getRequest()->getParam('update_assets')) $this->forceCopyAssets = true;
 	}
 
 	public function init(){
@@ -42,6 +40,8 @@ class Controller extends CController
 
 		//Change theme
 		Yii::app()->theme = 'sofia';
+
+		if(Yii::app()->getRequest()->getParam('update_assets')) $this->forceCopyAssets = true;
 
 		//Css initialize
 		/*<link rel="stylesheet" href="<?=$this->themeUrl?>/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" />
@@ -75,12 +75,11 @@ class Controller extends CController
 
 	public function getAssetsUrl()
     {
-        if (!isset($this->assetsUrl))
+        if (Yii::app()->getRequest()->getParam('update_assets') || !isset($this->assetsUrl))
         {
             $assetsPath = Yii::getPathOfAlias('webroot.themes.'.Yii::app()->theme->name.'.assets');
             $this->assetsUrl = Yii::app()->assetManager->publish($assetsPath, false, -1, $this->forceCopyAssets);
         }
-
         return $this->assetsUrl;
     }
 

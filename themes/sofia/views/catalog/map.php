@@ -12,7 +12,7 @@
 		<?php $this->renderPartial('_filter', array('model' => $model, 'areas' => $areas));?>
 	</section>
 </div>
-<div id="map" data-id="<?=Yii::app()->getRequest()->getParam('id')?>"></div>
+<div id="map" data-id="<?=Yii::app()->getRequest()->getParam('id')?>" data-assets="<?=$this->getAssetsUrl()?>"></div>
 <div class="afterMap">
 	<section class="left">
 		<div class="text-left_title">специальные предложения:</div>

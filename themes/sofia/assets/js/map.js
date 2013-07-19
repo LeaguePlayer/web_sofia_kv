@@ -2,6 +2,7 @@ var Map;
 var clusterer;
 var hotelsCount = 0;
 var hotelsOnMap = [];
+var assetsUrl = '';
 
 $(document).ready(function() {
     ymaps.ready(init);
@@ -14,6 +15,8 @@ function init() {
         type: 'yandex#publicMap',
         behaviors: ["drag"]
     });
+
+    assetsUrl = $('#map').data('assets');
 
     /*Map.controls.add(
         new ymaps.control.ZoomControl()
@@ -112,7 +115,7 @@ function init() {
         clusterer = new ymaps.Clusterer ({
             clusterDisableClickZoom: true,
             clusterIcons: [{
-                href:'/themes/sofia/images/cluster.png',
+                href: assetsUrl+'/images/cluster.png',
                 size: [41, 58],
                 offset: [-21, -56],
             }],
@@ -308,7 +311,7 @@ function addItemsOnMap(data){
         }, {
             //balloonPane: 'movableOuters',
             //balloonShadowPane: 'movableOuters',
-            iconImageHref: "/themes/sofia/images/placemark.png",
+            iconImageHref: assetsUrl+"/images/placemark.png",
             iconImageSize: [33, 46],
             iconImageOffset: [-16, -44],
             balloonContentBodyLayout: "hotels#baloonlayout",
