@@ -29,7 +29,7 @@ class ActionController extends AdminController
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'sort', 'checkRoom'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -104,24 +104,83 @@ class ActionController extends AdminController
 		));
 	}
 
+	//Check room
+	/*public function actionCheckRoom($id){
+		//header('Content-type:application/json');
+		$result = (object) array('errors' => array(), 'response' => array());
+
+		//Магическая ебать в рот функция
+		// проверяем привязана ли квартира к акции
+
+		$command = Yii::app()->db->createCommand();
+
+		$actions = $command
+			->select('t1.address, t2.name, t2.active')
+			->from('catalog as t1, action as t2, catalog_actions')
+			->where('t1.id = catalog_id AND t2.id = action_id AND catalog_id = :id', array(':id' => $id))
+			->queryAll();
+		if(empty($actions)){
+			//$result->response[] = 'Квартира не привязана не к одной из акций.';
+		}else{
+			foreach ($actions as $action) {
+				if(intval($action['active']) == 1) $result->errors[] = 'Квартира &laquo;'.$action['address'].'&raquo; привязана к акции - &laquo;'.$action['name'].'&raquo;';
+				if(intval($action['active']) == 0) $result->response[] = 'Квартира &laquo;'.$action['address'].'&raquo; привязана к неактивной акции - &laquo;'.$action['name'].'&raquo;';
+			}
+			
+		}
+
+		echo CJSON::encode($result);
+		Yii::app()->end();
+	}*/
+
 	//get Rooms related on Action
 	public function getRoomsAction($id){
 		$items = Yii::app()->db->createCommand()
 		    ->select('id, address as text')
-		    ->from('catalog')
-		    ->where('action_id = :id', array(':id' => $id))
+		    ->from('catalog, catalog_actions')
+		    ->where('action_id = :id AND catalog.id = catalog_id', array(':id' => $id))
 		    ->queryAll();
-
 		return CJSON::encode($items);
 	}
 
-	private function addCatItems($ids, $action_id){
-		Catalog::model()->updateByPk($ids, array('action_id' => $action_id));
+	//Add relation for catalog item
+	private function addCatItems($items, $id){
+		$command = Yii::app()->db->createCommand();
+		foreach ($items as $key => $value) {
+			$command->insert('catalog_actions', array(
+			    'catalog_id' => $value,
+			    'action_id'=>$id,
+			));
+		}
 	}
 
-	private function removeCatItems($ids){
-		Catalog::model()->updateByPk($ids, array('action_id' => 0));
+	//Remove relation for catalog item
+	private function removeCatItems($ids, $action_id){
+		$command = Yii::app()->db->createCommand();
+		foreach ($ids as $key => $value) {
+			$command->delete('catalog_actions', 'action_id = :id AND catalog_id = :catalog_id', array(':catalog_id' => $value, ':id' => $action_id));
+		}
 	}
+
+	/*private function addCatItems($ids, $action_id){
+		Catalog::model()->updateByPk($ids, array('action_id' => $action_id));
+	}*/
+
+	/*private function removeCatItems($ids){
+		Catalog::model()->updateByPk($ids, array('action_id' => 0));
+	}*/
+
+	public function actionSort()
+	{
+	    if (isset($_POST['items']) && is_array($_POST['items'])) {
+	        $i = 0;
+	        foreach ($_POST['items'] as $item) {
+	            $project = Action::model()->updateByPk($item, array('sort' => $i));
+	            $i++;
+	        }
+		}
+	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

@@ -40,16 +40,51 @@
 	?>
 	<?php echo CHtml::error($model,'date_finish'); ?>
 
-	<?php echo $form->textFieldRow($model,'sort',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'new_price',array('class'=>'span5')); ?>
 
 	<?php echo CHtml::label('Привязать квартиры', 'catalog'); ?>
-	<?php $this->widget('admin_ext.select2.ESelect2', array(
+	<?php 
+	$this->widget('admin_ext.select2.ESelect2', array(
 		'name' => 'catalog',
-		'data' =>CHtml::listData(Catalog::model()->no_action()->findAll(), 'id', 'address'),
+		'data' =>CHtml::listData(Catalog::model()->findAll(), 'id', 'address'),
 		'htmlOptions' => array('id' => 'select', 'multiple'=> true, 'style'=>'width: 40%;'),
 		'events' =>array(
 			'removed' => 'js:function(e) { $(".addCatItems .id" + e.val).remove(); $(".removeCatItems").append($("<input />").attr({name: "removeCatItems[]"}).addClass("id"+e.val).val(e.val)); }',
-			'selected' => 'js:function(e) { $(".removeCatItems .id" + e.val).remove(); $(".addCatItems").append($("<input />").attr({name: "addCatItems[]"}).addClass("id"+e.val).val(e.val)); }'
+			'selected' => 'js:function(e) { $(".removeCatItems .id" + e.val).remove(); $(".addCatItems").append($("<input />").attr({name: "addCatItems[]"}).addClass("id"+e.val).val(e.val)); }',
+			'change' => 'js:function(e) {
+				/*if(e.added){
+					var a = e.added;
+					$.ajax({
+						url: "'.$this->createUrl('checkRoom').'",
+						data: {id: a.id},
+						type: "get",
+						dataType: "json",
+						success: function(res){
+							var s = $("#select");
+							var data = s.select2("data");
+
+							//Dont attach room to action
+							if(res.errors.length > 0){
+								var tmp = [];
+								$.each(data, function(k,v){
+									if(v.id != a.id) tmp.push(data[k]);
+								});
+
+								$("#modalError").find(".modal-body p").html(res.errors.join("<br>"));
+								$("#modalError").modal();
+								s.select2("data", tmp);
+							}
+							//warning
+							if(res.response.length > 0){
+								$("#modalError").find(".modal-body p").html(res.response.join("<br>"));
+								$("#modalError").modal();
+							}
+						}
+					});
+				}else if(e.removed){
+					console.log(e);
+				}*/
+			}'
 		)/*,
 		'options' => array('initSelection'=>'js:function(){
 			console.log("fuck");
@@ -68,6 +103,9 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+
+<?php $this->renderPartial('_modal_window');?>
+
 <?php Yii::app()->clientScript->registerScript('', '
 	var preload_data = '.$this->getRoomsAction($model->id).';
 	$("#select").select2("data", preload_data);

@@ -31,3 +31,12 @@ body {
 form .line{
   margin-bottom: 10px;
 }
+.grid-view tbody td{
+  vertical-align: middle;
+}
+.grid-view tbody tr{
+  background-color: #eff;
+}
+.grid-view tbody .sort{
+  cursor: move;
+}

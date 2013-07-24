@@ -54,13 +54,13 @@ class Catalog extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('address, number, coords', 'required'),
-			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, action_id, sort', 'numerical', 'integerOnly'=>true),
+			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, sort', 'numerical', 'integerOnly'=>true),
 			array('address, features, rooms_count', 'length', 'max'=>255),
 			array('coords', 'length', 'max'=>100),
 			array('desc', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, address, number, desc, features, price_24, price_night, price_hour, active, rooms_count, human_count, action_id', 'safe', 'on'=>'search'),
+			array('id, address, number, desc, features, price_24, price_night, price_hour, active, rooms_count, human_count', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,7 +83,10 @@ class Catalog extends CActiveRecord
 	            ),
 	            'name' => true,
 	            'description' => true,
-	        )
+	        ),
+	        'sortableModel' => array(
+		      'class' => 'SortableCActiveRecordBehavior'
+		   )
 	    );
 	}
 
@@ -106,7 +109,7 @@ class Catalog extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'cat_areas' => array(self::MANY_MANY, 'Area', 'catalog_areas(catalog_id, area_id)'),
-			'action' => array(self::BELONGS_TO, 'Action', 'action_id')
+			'cat_actions' => array(self::MANY_MANY, 'Action', 'catalog_actions(catalog_id, action_id)'),
 		);
 	}
 
@@ -127,7 +130,6 @@ class Catalog extends CActiveRecord
 			'active' => 'Активна',
 			'rooms_count' => 'Количество комнат',
 			'human_count' => 'Количество спальных мест',
-			'action_id' => 'Акция',
 			'coords' => 'Координаты'
 		);
 	}
@@ -161,10 +163,12 @@ class Catalog extends CActiveRecord
 		$criteria->compare('active',$this->active);
 		$criteria->compare('rooms_count',$this->rooms_count);
 		$criteria->compare('human_count',$this->human_count);
-		$criteria->compare('action_id',$this->action_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+		        'defaultOrder'=>'sort ASC',
+		    )
 		));
 	}
 
@@ -198,6 +202,12 @@ class Catalog extends CActiveRecord
 				return $image->getUrl($v);
 		}
 	}
+
+	//mdaaaa
+	/*public function getNoActionItems(){
+		//$sql = 'SELECT id, address FROM catalog WHERE id NOT IN(SELECT catalog_id FROM catalog_actions);';
+		return Yii::app()->db->createCommand($sql)->queryAll();
+	}*/
 
 	public static function getRoomsCount(){
 		return array(1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5');

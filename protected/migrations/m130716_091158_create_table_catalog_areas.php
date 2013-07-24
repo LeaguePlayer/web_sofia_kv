@@ -2,7 +2,7 @@
 
 class m130716_091158_create_table_catalog_areas extends CDbMigration
 {
-		public function up()
+	public function up()
 	{
 		$this->createTable('catalog_areas', array(
             'catalog_id' => 'int',

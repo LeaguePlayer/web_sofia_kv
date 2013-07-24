@@ -30,7 +30,7 @@ class CatalogController extends AdminController
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'sort'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -175,6 +175,19 @@ class CatalogController extends AdminController
 		    ->queryAll();
 
 		return CJSON::encode($items);
+	}
+
+	public function actionSort()
+	{
+	    if (isset($_POST['items']) && is_array($_POST['items'])) {
+	        $i = 0;
+	        foreach ($_POST['items'] as $item) {
+	            $project = Catalog::model()->updateByPk($item, array('sort' => $i));
+	            /*$project->sort = $i;
+	            $project->save();*/
+	            $i++;
+	        }
+	    }
 	}
 
 	/**

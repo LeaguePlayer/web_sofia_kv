@@ -16,6 +16,11 @@
  */
 class Action extends CActiveRecord
 {
+	public function init()
+	{
+	   //$this->attachBehavior();
+	   parent::init();
+	}
 	/**
 	 * @return string the associated database table name
 	 */
@@ -33,14 +38,14 @@ class Action extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('active, gallery_id, sort', 'numerical', 'integerOnly'=>true),
+			array('active, gallery_id, sort, new_price', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('short_desc', 'length', 'max'=>150),
 			array('long_desc, date_create, date_finish', 'safe'),
 			array('date_create, date_finish', 'date', 'format' => 'yyyy-MM-dd'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, active, short_desc, long_desc, date_create, date_finish, gallery_id, sort', 'safe', 'on'=>'search'),
+			array('id, name, active, short_desc, long_desc, date_create, date_finish, gallery_id, sort, new_price', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +57,7 @@ class Action extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'cat_items' => array(self::HAS_MANY, 'Catalog', 'action_id'),
+			'action_rooms' => array(self::MANY_MANY, 'Catalog', 'catalog_actions(action_id, catalog_id)'),
 		);
 	}
 
@@ -71,6 +76,7 @@ class Action extends CActiveRecord
 			'date_finish' => 'Дата окончания',
 			'gallery_id' => 'Gallery',
 			'sort' => 'Вес',
+			'new_price' => 'Новая цена для квартир'
 		);
 	}
 
@@ -93,14 +99,17 @@ class Action extends CActiveRecord
 	            ),
 	            'name' => true,
 	            'description' => true,
-	        )
+	        ),
+	        'sortableModel' => array(
+		      'class' => 'SortableCActiveRecordBehavior'
+		   )
 	    );
 	}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
-	 * Typical usecase:
+	 * Typical usecase:@
 	 * - Initialize the model fields with values from filter form.
 	 * - Execute this method to get CActiveDataProvider instance which will filter
 	 * models according to data in model fields.
@@ -124,10 +133,25 @@ class Action extends CActiveRecord
 		$criteria->compare('date_finish',$this->date_finish,true);
 		$criteria->compare('gallery_id',$this->gallery_id);
 		$criteria->compare('sort',$this->sort);
+		$criteria->compare('new_price',$this->new_price);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
+		        'defaultOrder'=>'sort ASC',
+		    )
 		));
+	}
+
+	public function getPreviewImage($v = ''){
+		$image = $this->gallery->main;
+
+		if(!empty($image)){
+			if($v == '')
+				return $image->getPreview();
+			else
+				return $image->getUrl($v);
+		}
 	}
 
 	/**

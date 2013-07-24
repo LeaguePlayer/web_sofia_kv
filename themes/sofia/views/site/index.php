@@ -1,56 +1,5 @@
 
-<div id="recent">
-	<div class="big">
-		<a href="#">
-			<img src="<?=$this->getAssetsUrl()?>/images/tmp/big_image.png" alt="" />
-			<div class="info-room">
-				<div class="action_label"></div>
-				<div class="title">
-					<h2>Предложение недели</h2>
-					<div>Квартира с евро-ремонтом и джакузи</div>
-				</div>
-			</div>
-		</a>
-	</div>
-	<div class="small">
-		<a href="#">
-			<img src="<?=$this->getAssetsUrl()?>/images/tmp/mini.jpg" alt="" />
-			<div class="info-room">
-				<div class="title">
-					<h2>2х комнатная</h2>
-					<div>Повышенный комфорт</div>
-				</div>
-				<div class="price">3 500 .-</div>
-			</div>
-		</a>
-	</div>
-	<div class="small">
-		<a href="#">
-			<img src="<?=$this->getAssetsUrl()?>/images/tmp/mini.jpg" alt="" />
-			<div class="info-room">
-				<div class="title">
-					<h2>2х комнатная</h2>
-					<div>Повышенный комфорт</div>
-				</div>
-				<div class="price">3 500 .-</div>
-			</div>
-		</a>
-	</div>
-	<div class="small">
-		<a href="#">
-			<img src="<?=$this->getAssetsUrl()?>/images/tmp/mini.jpg" alt="" />
-			<div class="info-room">
-				<div class="title">
-					<h2>2х комнатная</h2>
-					<div>Повышенный комфорт</div>
-				</div>
-				<div class="price">3 500 .-</div>
-			</div>
-			<div class="action_label"></div>
-		</a>
-	</div>
-	<div class="clear"></div>
-</div>
+<? $this->renderPartial('_main_actions', array('actions' => $actions)); ?>
 <section id="features">
 	<header>
 		<h1>Наши преимущества</h1>

@@ -26,8 +26,13 @@ class CatalogController extends Controller
 	}
 
 	//Function process POST and return object Criteria for filter items
-	private function getCriteriaForFilter(& $model){
+	public static function getCriteriaForFilter(& $model){
 		$criteria = new CDbCriteria();
+
+		//only active
+		$criteria->addCondition('t.active=1');
+		//sort field
+		$criteria->order = 't.sort';
 
 		//Fucking filter
 		if(isset($_POST['Catalog'])){

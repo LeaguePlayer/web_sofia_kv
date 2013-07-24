@@ -47,7 +47,7 @@ class Redactor extends CInputWidget {
 
 		// Get assets dir
         $baseDir = dirname(__FILE__);
-        $assets = Yii::app()->getAssetManager()->publish($baseDir.DIRECTORY_SEPARATOR.'assets');
+        $assets = Yii::app()->getAssetManager()->publish($baseDir.DIRECTORY_SEPARATOR.'assets', false, -1, true);
 
 		// Publish required assets
 		$cs = Yii::app()->getClientScript();

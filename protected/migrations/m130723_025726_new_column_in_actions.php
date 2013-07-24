@@ -1,15 +1,15 @@
 <?php
 
-class m130712_103257_add_column_in_catalog extends CDbMigration
+class m130723_025726_new_column_in_actions extends CDbMigration
 {
 	public function up()
 	{
-		$this->addColumn('catalog', 'action_id', 'INT default 0');
+		$this->addColumn('action', 'new_price', 'integer default 0');
 	}
 
 	public function down()
 	{
-		$this->dropColumn('catalog', 'action_id');
+		$this->dropColumn('action', 'new_price');
 	}
 
 	/*

@@ -37,7 +37,7 @@ $this->menu=array(
 			'type' => 'text',
 			'value' => $model->date_finish != '0000-00-00' ? date("d.m.Y", strtotime($model->date_finish)) : 'Не задана'
 		),
-		//'sort',
+		'new_price',
 	),
 )); ?>
 
