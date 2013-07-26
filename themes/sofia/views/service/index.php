@@ -1,48 +1,5 @@
 <section class="left">
-	<div class="filters promo">
-		<form>
-		<h1>Подберите квартиру <strong>прямо сейчас!</strong></h1>
-		<div class="select-style">
-			<select id="region">
-				<option value="0">Выбрать район</option>
-				<option value="1">Калининский район</option>
-				<option value="2">Центральный район</option>
-				<option value="3">Южный район</option>
-			</select>
-		</div>
-		<div class="checkbox-rooms">
-			<input type="checkbox" id="checkbox1" /><label for="checkbox1">1-комнатная</label>
-			<input type="checkbox" id="checkbox2" /><label for="checkbox2">2-комнатная</label>
-			<input type="checkbox" id="checkbox3" /><label for="checkbox3">3-комнатная</label>
-		</div>
-		<div class="sleeper">
-			<label class="text-title">количество спальных мест</label>
-			<div id="sleeper-slider" class="sleeper_count">
-				<div class="sleeper_count-num">2</div>
-			</div>
-			<input type="hidden" name="sleeper_count" value="2">
-			<label class="text-ot">от <b>1</b></label>
-			<label class="text-do">от <b>8</b></label>
-		</div>
-		<div class="price">
-			<label class="text-title">Цена</label>
-			<div id="price_count">
-				<div id="price_count-num">800</div>
-			</div>
-			<input type="hidden" name="price_count" value="2">
-			<label class="text-ot">от <b>300</b></label>
-			<label class="text-do">от <b>5000</b></label>
-		</div>
-		<div class="checkbox-dop">
-			<div class="text-title">Дополнительно</div>
-			<label class="active"><input type="checkbox" id="wifi" /><label for="wifi"></label>Wi-Fi</label>
-			<label><input type="checkbox" id="tele" /><label for="tele"></label>Кабельное телевиденье</label>
-			<label><input type="checkbox" id="wash" /><label for="wash"></label>Стиральная машина</label>
-			<label><input type="checkbox" id="iron" /><label for="iron"></label>Утюг</label>
-		</div>
-		<input type="submit" class="blue-button" value="Подобрать квартиру">
-		</form>				
-	</div>
+	<?php $this->renderPartial('/catalog/_filter', array('model' => $model, 'areas' => $areas));?>
 </section>
 <section class="right">
 	<div class="top-block">
@@ -127,9 +84,7 @@
 				</div>
 				<label class="text-title">Количество спальных мест</label>
 				<div class="row sleeper">
-					<div id="order_sleeper-count" class="sleeper_count">
-						<div class="sleeper_count-num">2</div>
-					</div>
+					<div id="order_sleeper-count" class="sleeper_count"></div>
 					<input type="hidden" name="sleeper" value="2">
 					<label class="text-ot">от <b>1</b></label>
 					<label class="text-do">от <b>8</b></label>

@@ -1,13 +1,16 @@
 <?php
 $arrayAreas = array(0 => 'Выбрать район');
 $arrayAreas += Chtml::listData($areas, 'id', 'name');
+
+$submit_text = $this->getId() == 'service' ? "Перейти к квартирам" : 'Подобрать квартиру';
+$form_action = $this->getId() == 'service' ? '/catalog/#catalog' : '#catalog';
 ?>
 
 <div class="filters">
 	<?php $form = $this->beginWidget('CActiveForm', array(
 	    'id'=>'catalog-filter',
 	    'method'=>'post',
-	    'action'=>'#catalog'
+	    'action'=>$form_action
 	)); ?>
 	<h1>Подберите квартиру <strong>прямо сейчас!</strong></h1>
 	<div class="select-style">
@@ -40,6 +43,6 @@ $arrayAreas += Chtml::listData($areas, 'id', 'name');
 			<?php echo $form->checkBox($model, "features[$key]", array('id'=>$value, 'value'=>$key));?><label for="<?=$value?>"></label>
 		<?}?>
 	</div>
-	<?php echo CHtml::submitButton('Подобрать квартиру', array('class' => 'blue-button'));?>
+	<?php echo CHtml::submitButton($submit_text, array('class' => 'blue-button'));?>
 	<?php $this->endWidget(); ?>		
 </div>
