@@ -513,6 +513,7 @@ a.link-addFavorites:hover span:after {
     vertical-align: middle;
     font-size: 40px;
     font-weight: bold;
+    max-height: 730px;
 }
 
 .top-block .oldPrice {
@@ -806,7 +807,7 @@ a.link-addFavorites:hover span:after {
 }
 
 #features ul{
-    margin-top: 65px;
+    margin-top: 75px;
     display: inline-block;
     list-style: none;
 }

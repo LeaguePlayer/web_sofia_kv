@@ -56,7 +56,7 @@ class SiteController extends Controller
 		$mainRooms[] = Catalog::model()->findAll($criteria3);
 
 
-		//get 4 actions
+		//get main blocks
 		$criteria_main = new CDbCriteria();
 		//$criteria_action->addCondition('active=1');
 		$criteria_main->order = 'sort';

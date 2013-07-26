@@ -86,9 +86,20 @@ class CatalogController extends Controller
 
 	public function actionView($id){
 
+		$room = $this->loadModel($id);
+
 		//similar items
 		$criteria = new CDbCriteria();
 		$criteria->limit = 4;
+
+		//price between -300 and + 300 rub
+		$criteria->addCondition('price_24 >= :min AND price_24 <= :max');
+		$criteria->addCondition('id != :id');
+		$criteria->params = array(
+			':min' => $room->price_24 - 300, 
+			':max' => $room->price_24 + 300,
+			':id' => $room->id
+		);
 
 		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
 
@@ -137,7 +148,7 @@ class CatalogController extends Controller
 	public function loadModel($id)
 	{
 		$model=Catalog::model()->findByPk($id);
-		if($model===null)
+		if($model===null && $model->active == 1)
 			throw new CHttpException(404,'Страница не найдена.');
 		return $model;
 	}

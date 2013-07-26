@@ -62,23 +62,26 @@
 <div class="social-share">
 	<div class="text-title">поделиться с друзьями:</div>
 </div>
-<h1>Похожие квартиры</h1>
-<section id="apartments">
-	<?php
-	$this->widget('zii.widgets.CListView', array(
-	    'dataProvider'=>$data,
-	    'itemView'=>'_view',
-	    'template'=>'{items}',
-	    'cssFile'=>false,
-	    'id'=>'catalog-list',
-	    'emptyText'=>'<div class="nothing">Ничего не найдено.</div>'
-	));
-	?>
-	<div class="clear"></div>
-</section>
-<div class="all">
-	<a class="yellow-button" href="/catalog"><span></span>Смотреть все предложения</a>
-</div>
+
+<?if(count($data->getData()) > 0){?>
+	<h1>Похожие квартиры</h1>
+	<section id="apartments">
+		<?php
+		$this->widget('zii.widgets.CListView', array(
+		    'dataProvider'=>$data,
+		    'itemView'=>'_view',
+		    'template'=>'{items}',
+		    'cssFile'=>false,
+		    'id'=>'catalog-list',
+		    'emptyText'=>'<div class="nothing">Ничего не найдено.</div>'
+		));
+		?>
+		<div class="clear"></div>
+	</section>
+	<div class="all">
+		<a class="yellow-button" href="/catalog"><span></span>Смотреть все предложения</a>
+	</div>
+<?}?>
 <div>
 	<section class="left">
 		<div class="text-left_title">специальные предложения:</div>

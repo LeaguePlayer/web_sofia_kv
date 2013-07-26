@@ -7,11 +7,17 @@ class PromoController extends Controller
 		$model = new Catalog;
 		$criteria = new CDbCriteria();
 
+		$criteria->addCondition('active=1');
+		$criteria->order = 'sort';
+
+		$action = Action::model()->find($criteria);
+
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
 		$this->render('index',array(
 			'model' => $model,
-			'areas' => $areas
+			'areas' => $areas,
+			''
 		));
 	}
 

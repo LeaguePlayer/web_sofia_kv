@@ -180,4 +180,25 @@ class Action extends CActiveRecord
 
 		return parent::beforeValidate();
 	}
+
+	protected function beforeSave(){
+		//only one action active
+		if($this->active == 1){ //if publication
+			self::model()->updateAll(array('active' => 0));
+			$this->active = 1;
+		}
+			
+
+		return parent::beforeSave();
+	}
+
+	protected function afterSave(){
+
+		//update main_block action
+		if($this->active == 1){ //if publication
+			MainBlock::model()->updateAll(array('model_id' => $this->id), 'model="Action"');
+		}
+
+		return parent::afterSave();
+	}
 }

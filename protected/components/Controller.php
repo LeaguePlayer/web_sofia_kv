@@ -21,6 +21,9 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
+	//for link in main menu
+	public $action = null;
+
 	public $cs;
 
 	protected $forceCopyAssets = false;
@@ -85,6 +88,13 @@ class Controller extends CController
 
 	public function beforeRender($view)
     {
+    	//check active action for link on main menu
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('active=1');
+		$criteria->order = 'sort';
+
+		$this->action = Action::model()->find($criteria);
+
         $this->renderPartial('//layouts/clips/_main_menu'); 
 
         return parent::beforeRender($view);
