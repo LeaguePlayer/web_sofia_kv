@@ -14,3 +14,4 @@ protected/config/console.php
 *~
 /index.php
 protected/yiic.php
+/upload
