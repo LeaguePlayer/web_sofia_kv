@@ -57,16 +57,16 @@ class SiteController extends Controller
 
 
 		//get 4 actions
-		$criteria_action = new CDbCriteria();
-		$criteria_action->addCondition('active=1');
-		$criteria_action->order = 'sort';
-		$criteria_action->limit = 4;
+		$criteria_main = new CDbCriteria();
+		//$criteria_action->addCondition('active=1');
+		$criteria_main->order = 'sort';
+		$criteria_main->limit = 4;
 
-		$actions = Action::model()->findAll($criteria_action);
+		$main_blocks = MainBlock::model()->findAll($criteria_main);
 
 		$this->render('index', array(
 			'mainRooms' => $mainRooms,
-			'actions' => $actions
+			'main_blocks' => $main_blocks
 		));
 	}
 

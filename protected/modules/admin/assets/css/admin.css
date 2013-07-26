@@ -40,3 +40,20 @@ form .line{
 .grid-view tbody .sort{
   cursor: move;
 }
+.row-fluid .handler{
+  padding: 3px 5px;
+  cursor: move;
+  display: block;
+  color: #fff;
+  border: 1px solid #ccc;
+  background-color: #0088cc;
+}
+
+.row-fluid .block{
+  border: 1px dashed #ccc;
+  padding: 3px;
+  background-color: #fff;
+}
+.delete_block {
+  cursor: pointer;
+}

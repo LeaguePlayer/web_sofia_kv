@@ -50,41 +50,7 @@
 		'htmlOptions' => array('id' => 'select', 'multiple'=> true, 'style'=>'width: 40%;'),
 		'events' =>array(
 			'removed' => 'js:function(e) { $(".addCatItems .id" + e.val).remove(); $(".removeCatItems").append($("<input />").attr({name: "removeCatItems[]"}).addClass("id"+e.val).val(e.val)); }',
-			'selected' => 'js:function(e) { $(".removeCatItems .id" + e.val).remove(); $(".addCatItems").append($("<input />").attr({name: "addCatItems[]"}).addClass("id"+e.val).val(e.val)); }',
-			'change' => 'js:function(e) {
-				/*if(e.added){
-					var a = e.added;
-					$.ajax({
-						url: "'.$this->createUrl('checkRoom').'",
-						data: {id: a.id},
-						type: "get",
-						dataType: "json",
-						success: function(res){
-							var s = $("#select");
-							var data = s.select2("data");
-
-							//Dont attach room to action
-							if(res.errors.length > 0){
-								var tmp = [];
-								$.each(data, function(k,v){
-									if(v.id != a.id) tmp.push(data[k]);
-								});
-
-								$("#modalError").find(".modal-body p").html(res.errors.join("<br>"));
-								$("#modalError").modal();
-								s.select2("data", tmp);
-							}
-							//warning
-							if(res.response.length > 0){
-								$("#modalError").find(".modal-body p").html(res.response.join("<br>"));
-								$("#modalError").modal();
-							}
-						}
-					});
-				}else if(e.removed){
-					console.log(e);
-				}*/
-			}'
+			'selected' => 'js:function(e) { $(".removeCatItems .id" + e.val).remove(); $(".addCatItems").append($("<input />").attr({name: "addCatItems[]"}).addClass("id"+e.val).val(e.val)); }'
 		)/*,
 		'options' => array('initSelection'=>'js:function(){
 			console.log("fuck");

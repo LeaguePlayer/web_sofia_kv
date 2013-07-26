@@ -1,6 +1,6 @@
 <div class="top-block no-margin-left">
 	<h2><?=CHtml::encode($model->rooms_count)?>-комнатная квартира, <?=CHtml::encode($model->address)?></h2>
-	<a id="link-share" class="gray-button" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
+	<a id="link-share" class="gray-button map" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
 </div>
 <div class="dops">
 	<div class="dop">

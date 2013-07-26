@@ -86,7 +86,7 @@ class Catalog extends CActiveRecord
 	        ),
 	        'sortableModel' => array(
 		      'class' => 'SortableCActiveRecordBehavior'
-		   )
+		   	)
 	    );
 	}
 

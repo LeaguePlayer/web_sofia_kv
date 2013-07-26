@@ -540,7 +540,7 @@ a.link-addFavorites:hover span:after {
 }
 
 .top-block #link-share.map {
-    position: static !important;
+    position: static;
     margin: 0;
 }
 

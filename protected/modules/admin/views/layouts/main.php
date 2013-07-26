@@ -29,6 +29,9 @@
 	                array('label'=>'Районы', 'url'=>'/admin/area', 'active'=> (strpos($this->getId(), 'area') !== false), 'items' => array(
 	                    array('label'=>'Управление', 'url'=>'/admin/area/'),
 	                )),
+	                array('label'=>'Промоблок на главной', 'url'=>'/admin/mainBlock', 'active'=> (strpos($this->getId(), 'mainBlock') !== false), 'items' => array(
+	                    array('label'=>'Управление', 'url'=>'/admin/mainBlock/'),
+	                )),
 	            ),
 	        ),
 	        array(

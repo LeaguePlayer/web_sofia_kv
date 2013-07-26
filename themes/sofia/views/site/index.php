@@ -1,5 +1,5 @@
 
-<? $this->renderPartial('_main_actions', array('actions' => $actions)); ?>
+<? $this->renderPartial('_main_blocks', array('main_blocks' => $main_blocks)); ?>
 <section id="features">
 	<header>
 		<h1>Наши преимущества</h1>

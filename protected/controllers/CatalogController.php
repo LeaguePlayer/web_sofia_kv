@@ -47,10 +47,16 @@ class CatalogController extends Controller
 
 			if(!empty($_POST['Catalog']['rooms_count'])){
 				$items = $_POST['Catalog']['rooms_count'];
+
+				$flag = false;
 				foreach ($items as $key => $value) {
 					if($value != 0){
-						$criteria->addCondition('rooms_count=:rooms_count'.$key, 'OR');
+						if (!$flag)
+							$criteria->addCondition('rooms_count=:rooms_count'.$key);
+						else
+							$criteria->addCondition('rooms_count=:rooms_count'.$key, 'OR');
 						$criteria->params[':rooms_count'.$key] = $key;
+						$flag = true;
 					}
 				}
 			}
