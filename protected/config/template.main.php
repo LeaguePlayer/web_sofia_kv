@@ -20,6 +20,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.controllers.CatalogController',
+		'application.modules.admin.components.SortableCActiveRecordBehavior',
 	),
 
 	'modules'=>array(
@@ -69,10 +71,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=x',
+			'connectionString' => 'mysql:host=localhost;dbname=box',
 			'emulatePrepare' => true,
-			'username' => 'x',
-			'password' => 'x',
+			'username' => 'root',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
@@ -86,12 +88,12 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				/*
-				array(
+				/*array(
 					'class'=>'CWebLogRoute',
-				),
-				*/
+                    'levels'=>'error, warning, trace, profile, info',
+                    'enabled'=>true,
+				),*/
+				
 			),
 		),
 	),
