@@ -5,7 +5,7 @@
 	<div class="top-block">
 		<h2>Квартиры по 1200</h2>
 		<div class="oldPrice">вместо <span>1500</span></div>
-		<a id="link-share" class="gray-button map" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
+		<a id="link-share" class="gray-button" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
 	</div>
 	<div class="room">
 		<a class="link-addFavorites active" href="#"><span></span></a>

@@ -33,7 +33,7 @@
 </div>
 <?php if($model->gallery->galleryPhotos){?>
 <div id="images">
-	<a class="link-addFavorites <?=(FavoritesController::is_room_exists($data->id) ? 'active' : '')?>" href="#" data-id="<?=$model->id?>"><span></span></a>
+	<a class="link-addFavorites <?=(FavoritesController::is_room_exists($model->id) ? 'active' : '')?>" href="#" data-id="<?=$model->id?>"><span></span></a>
 	<a class="nextImage" href="#"></a>
 	<a class="prevImage" href="#"></a>
 	<a class="zoomImage" href="#"></a>
