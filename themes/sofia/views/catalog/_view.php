@@ -1,5 +1,13 @@
+<?php
+	$classes = 'link-addFavorites';
+	if($this->getId() == 'favorites'){ // Favorites page
+		$classes = 'link-removeFavorites';
+	}else{ // other pages
+		$classes .= FavoritesController::is_room_exists($data->id) ? ' active' : '';
+	}
+?>
 <div class="room">
-	<a class="link-addFavorites" href="#"><span></span></a>
+	<a class="<?=$classes?>" href="#" data-id="<?=$data->id?>"><span></span></a>
 	<div class="room-images">
 		<?=CHtml::link(CHtml::image($data->getPreviewImage('v2'), ""),array('catalog/view','id'=>$data->id))?>
 	</div>

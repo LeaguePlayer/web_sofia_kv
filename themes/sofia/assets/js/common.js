@@ -46,6 +46,47 @@ var chaos = function (){
 jQuery(document).ready(function(){
 	//$('#slider-block').slider();
 	chaos();
+
+	//add room in favorites
+	$(".link-addFavorites").on('click', function(e){
+		e.preventDefault();
+		var self = $(this);
+
+		if(!self.hasClass('active')){
+			var send = true; //lock multiple sending
+			if(send){
+				$.ajax({
+					url: '/favorites/addRoom',
+					data: {id: self.data('id')},
+					type: 'GET',
+					beforeSend: function(){
+						send = false;
+					},
+					success: function(){
+						self.addClass('active');
+						send = true; // unlock sending
+					}
+				});
+			}
+		}else{
+			window.location = "/favorites/";
+		}
+	});
+
+	//remove room from favorites
+	$(".link-removeFavorites").on('click', function(e){
+		e.preventDefault();
+		var self = $(this);
+
+		$.ajax({
+			url: '/favorites/removeRoom',
+			data: {id: self.data('id')},
+			type: 'GET',
+			success: function(){
+				self.closest('.room').animate({opacity: 0}, 500).hide(500);
+			}
+		});
+	});
 });
 
 if($(".filters").size()>0){
@@ -58,15 +99,18 @@ if($(".filters").size()>0){
 			return false;
 		}
 		scroll = $(document).scrollTop();
-		console.log(scroll);
+		var stop_line =  $(document).height() - $(".filters").height() - $('body > footer').height() - 100;
 		if(scroll<offsetTop){
 			$('.left .filters').stop(true).animate({top: 0}, 500);
 			$('.left #link-share').stop(true).animate({top: 650}, 500);
 			return false;
 		}
-		if(scroll>=offsetTop || offsetTop > 358){
+		if(scroll < stop_line && (scroll>=offsetTop || offsetTop > 358) ){
 			$('.left .filters').stop(true).animate({top: scroll-350}, 500);
 			$('.left #link-share').stop(true).animate({top: scroll+300}, 500);
+		}else{
+			//$('.left .filters').stop(true).animate({top: stop_line}, 500);
+			//$('.left #link-share').stop(true).animate({top: stop_line}, 500);
 		}
         return false;
     });
@@ -86,7 +130,7 @@ if($(".filters").size()>0){
 			$(this).find('.ui-slider-handle div').html(ui.value);	
 		}
 	});
-	$("#sleeper-slider").slider({ value: $("input.human").val() });
+	$("#sleeper-slider, #order_sleeper-count").slider({ value: $("input.human").val() });
 	//$("input[name='sleeper_count']").val($(".filters .sleeper_count").slider("value"));
 	$(".filters .sleeper_count-num").html($(".filters .sleeper_count").slider("value"));
 

@@ -153,6 +153,26 @@ class CatalogController extends Controller
 		return $model;
 	}
 
+	public function actionSendForm(){
+		$model = new BookingForm;
+
+		if(isset($_POST['BookingForm'])){
+
+			$model->attributes = $_POST['BookingForm'];
+			//print_r($_POST['BookingForm']);
+
+			if($model->validate())
+				echo "ok";
+			else{
+				Yii::app()->clientScript->scriptMap['jquery.js'] = false;
+				Yii::app()->clientScript->scriptMap['jquery-ui.js'] = false;
+				$this->renderPartial('_booking_form', array('ajax' => true, 'model' => $model));
+			}
+				
+		}
+		Yii::app()->end();
+	}
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

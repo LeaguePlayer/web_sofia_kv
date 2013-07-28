@@ -4,6 +4,9 @@ class SiteController extends Controller
 {
 	public $layout = "//layouts/home";
 
+	//public $count;
+
+	public $city_block_rooms;
 	/**
 	 * Declares class-based actions.
 	 */
@@ -63,6 +66,23 @@ class SiteController extends Controller
 		$criteria_main->limit = 4;
 
 		$main_blocks = MainBlock::model()->findAll($criteria_main);
+
+		/*$city_criteria = new CDbCriteria();
+		$city_criteria->select
+		$city_criteria->addCondition('active=1');
+		$city_criteria->order = 'sort';
+		$city_criteria->limit = 12;*/
+
+		$this->city_block_rooms = Yii::app()->db->createCommand()
+		    ->select('rooms_count, price_24')
+		    ->from('catalog')
+		    ->where('active=1')
+		    ->queryAll();
+
+		//$this->city_block_rooms = Catalog::model()->findAll($city_criteria);
+
+		//count rooms
+		//$this->count = Catalog::model()->count('active=1');
 
 		$this->render('index', array(
 			'mainRooms' => $mainRooms,

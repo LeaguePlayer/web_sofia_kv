@@ -1,5 +1,5 @@
 <section class="left">
-	<?php $this->renderPartial('_filter', array('model' => $model, 'areas' => $areas));?>
+	<?php $this->renderPartial('/catalog/_filter', array('model' => $model, 'areas' => $areas));?>
 	<a id="link-share" class="gray-button" href="#"><i class="plus-blue"></i> Квартиры в закладках</a>
 	&nbsp;
 </section>
@@ -13,7 +13,7 @@
 	<?php
 	$this->widget('zii.widgets.CListView', array(
 	    'dataProvider'=>$data,
-	    'itemView'=>'_view',
+	    'itemView'=>'/catalog/_view',
 	    'template'=>'{items}',
 	    'cssFile'=>false,
 	    'id'=>'catalog-list',
@@ -21,54 +21,7 @@
 	));
 	?>
 	<div class="clear"></div>
-	<section id="order">
-		<div class="order-block">
-			<header>
-				<h1>Нет времени подбирать квартиру самостоятельно?</h1>
-			</header>
-			<form action="" method="POST">
-			<div class="left">
-				<div class="text-title">Количество комнат</div>
-				<div class="row checkbox-rooms">
-					<input type="checkbox" id="check1" /><label for="check1">1-комнатная</label>
-					<input type="checkbox" id="check2" /><label for="check2">2-комнатная</label>
-					<input type="checkbox" id="check3" /><label for="check3">3-комнатная</label>
-				</div>
-				<label class="text-title">Количество спальных мест</label>
-				<div class="row sleeper">
-					<div id="order_sleeper-count" class="sleeper_count"></div>
-					<input type="hidden" name="sleeper" value="2">
-					<label class="text-ot">от <b>1</b></label>
-					<label class="text-do">от <b>8</b></label>
-				</div>
-				<div class="row price">
-					<label class="text-title">Цена</label>
-					<input class="input" type="text" name="price">
-					<span>рублей</span>
-				</div>
-				<div class="row days">
-					<label class="text-title">Количество дней</label>
-					<input class="input" type="number" name="days" min="0" value="4">
-				</div>
-			</div>
-			<div class="right">
-				<div class="row">
-					<input class="input" type="text" value="ФИО">
-				</div>
-				<div class="row">
-					<input class="input" type="text" value="Контактный номер телефона">
-				</div>
-				<div class="row">
-					<input class="input" type="email" value="E-mail">
-				</div>
-				<div class="row">
-					<textarea class="input">Комментарий</textarea>
-				</div>
-				<button class="blue-button" type="submit">Подберите мне квартиру<i class="strelka"></i></button>
-			</div>
-			</form>
-		</div>
-	</section>
+	<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
 </section>
 <div class="clear"></div>
 

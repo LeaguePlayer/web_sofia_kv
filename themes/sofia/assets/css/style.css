@@ -413,9 +413,23 @@ div.text-title {
     padding-top: 20px;
 }
 
+a.link-removeFavorites{
+    display: block;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+    right: -6px;
+    width: 15px;
+    height: 37px;
+    padding-top: 8px;
+    padding-left: 30px;
+    background: #000000 center center url(../images/minus-white.png) no-repeat;
+}
+
 a.link-addFavorites,
 a.link-addFavorites.active {
     display: block;
+    font-weight: bold;
     position: absolute;
     top: 5px;
     right: -6px;
@@ -437,11 +451,15 @@ a.link-addFavorites:hover {
     text-transform: uppercase;
 }
 
-a.link-addFavorites.active span:after,
 a.link-addFavorites:hover span:after {
+    content: "в мои закладки";
+}
+a.link-addFavorites.active span:after{
     content: "мои закладки";
 }
-
+a.link-addFavorites.active:hover span:after{
+    content: "перейти в закладки";
+}
 
 .ui-slider-horizontal {
     height: 6px; 
@@ -1346,6 +1364,13 @@ a.link-room:hover {
     font-size: 20px;
     font-weight: normal;
 }
+#order a.blue-button{
+    width: 290px;
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    font-size: 22px;
+}
 #booking form .fio{
     width: 500px;
 }
@@ -1443,12 +1468,12 @@ footer .phone .grey:hover{
     color: #999999;
 }
 
-footer .social {
+footer .social, .page-content .social {
     width: 200px;
     height: auto;
     float: left;
 }
-footer .social a {
+footer .social a, .page-content .social a {
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -1456,7 +1481,7 @@ footer .social a {
     background-image: url(../images/social.png);
     background-repeat: no-repeat;
 }
-footer .social a:first-child {
+footer .social a:first-child, .page-content .social a:first-child {
     margin-left: 0px;
 }
 .link-vk {
@@ -1541,4 +1566,24 @@ footer .social a:first-child {
 }
 .safari .go-to-map {
     font-family: Arial;
+}
+
+/*pages*/
+
+.page-content{
+    min-height: 500px;
+    margin: 40px 0 80px;
+    font-size: 22px;
+}
+
+.page-content p{
+    margin-bottom: 20px;
+}
+
+.page-content .rek{
+    width: 911px;
+    height: 308px;
+    background: no-repeat center url('../images/rekvisiti.png');
+    padding: 40px;
+    margin-bottom: 40px;
 }

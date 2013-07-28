@@ -11,7 +11,7 @@ $this->widget('zii.widgets.CMenu',array(
 		array('label'=>'Просмотр на карте', 'url'=>array('/catalog/map')),
 		$action_link,
 		array('label'=>'Дополнительные услуги', 'url'=>array('/service/'), 'active'=> (strpos($this->getId(), 'service') !== false)),
-		array('label'=>'Контакты', 'url'=>array('/page/contacts'))
+		array('label'=>'Контакты', 'url'=>array('/page/contacts'), 'active'=> (strpos($this->getId(), 'page') !== false))
 	),
 )); ?>
 </nav>

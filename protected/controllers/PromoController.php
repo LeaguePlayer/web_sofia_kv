@@ -17,7 +17,6 @@ class PromoController extends Controller
 		$this->render('index',array(
 			'model' => $model,
 			'areas' => $areas,
-			''
 		));
 	}
 

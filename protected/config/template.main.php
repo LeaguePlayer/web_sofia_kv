@@ -21,6 +21,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.controllers.CatalogController',
+		'application.controllers.FavoritesController',
 		'application.modules.admin.components.SortableCActiveRecordBehavior',
 	),
 
@@ -59,6 +60,7 @@ return array(
 			'showScriptName'=>false,
 			'urlFormat'=>'path',
 			'rules'=>array(
+				'page/<alias:\w+>' => 'page/view',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

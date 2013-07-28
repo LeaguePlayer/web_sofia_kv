@@ -39,6 +39,10 @@ $counter = 0;
 				case 'Action':
 					$items = CHtml::listData(call_user_func(array($block->model, 'model'))->findAll($criteria), 'id', 'name');
 					break;
+
+				case 'Page':
+					$items = CHtml::listData(call_user_func(array($block->model, 'model'))->findAll($criteria), 'id', 'title');
+					break;
 			}
 		?>
 		<div style="text-align: center; padding: 5px;">

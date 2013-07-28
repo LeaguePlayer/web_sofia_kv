@@ -1,6 +1,6 @@
 <div class="top-block no-margin-left">
 	<h2><?=CHtml::encode($model->rooms_count)?>-комнатная квартира, <?=CHtml::encode($model->address)?></h2>
-	<a id="link-share" class="gray-button map" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
+	<a id="link-share" class="gray-button map" href="/favorites"><i class="plus-gray"></i> Квартиры в закладках</a>
 </div>
 <div class="dops">
 	<div class="dop">
@@ -33,7 +33,7 @@
 </div>
 <?php if($model->gallery->galleryPhotos){?>
 <div id="images">
-	<a class="link-addFavorites" href="#"><span></span></a>
+	<a class="link-addFavorites <?=(FavoritesController::is_room_exists($data->id) ? 'active' : '')?>" href="#" data-id="<?=$model->id?>"><span></span></a>
 	<a class="nextImage" href="#"></a>
 	<a class="prevImage" href="#"></a>
 	<a class="zoomImage" href="#"></a>
@@ -89,56 +89,7 @@
 		<a class="spec" href="#"><img src="images/spec.jpg"></a>
 	</section>
 	<section class="right">
-		<section id="order">
-			<div class="order-block">
-				<header>
-					<h1>Нет времени подбирать квартиру самостоятельно?</h1>
-				</header>
-				<form action="" method="POST">
-				<div class="left">
-					<div class="text-title">Количество комнат</div>
-					<div class="row checkbox-rooms">
-						<input type="checkbox" id="check1" /><label for="check1">1-комнатная</label>
-						<input type="checkbox" id="check2" /><label for="check2">2-комнатная</label>
-						<input type="checkbox" id="check3" /><label for="check3">3-комнатная</label>
-					</div>
-					<label class="text-title">Количество спальных мест</label>
-					<div class="row sleeper">
-						<div id="order_sleeper-count" class="sleeper_count">
-							<div class="sleeper_count-num">2</div>
-						</div>
-						<input type="hidden" name="sleeper" value="2">
-						<label class="text-ot">от <b>1</b></label>
-						<label class="text-do">от <b>8</b></label>
-					</div>
-					<div class="row price">
-						<label class="text-title">Цена</label>
-						<input class="input" type="text" name="price">
-						<span>рублей</span>
-					</div>
-					<div class="row days">
-						<label class="text-title">Количество дней</label>
-						<input class="input" type="number" name="days" min="0" value="4">
-					</div>
-				</div>
-				<div class="right">
-					<div class="row">
-						<input class="input" type="text" value="ФИО">
-					</div>
-					<div class="row">
-						<input class="input" type="text" value="Контактный номер телефона">
-					</div>
-					<div class="row">
-						<input class="input" type="email" value="E-mail">
-					</div>
-					<div class="row">
-						<textarea class="input">Комментарий</textarea>
-					</div>
-					<button class="blue-button" type="submit">Подберите мне квартиру<i class="strelka"></i></button>
-				</div>
-				</form>
-			</div>
-		</section>
+		<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
 	</section>
 	<div class="clear"></div>
 </div>

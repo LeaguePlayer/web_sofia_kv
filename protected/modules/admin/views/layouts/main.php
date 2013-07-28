@@ -32,6 +32,9 @@
 	                array('label'=>'Промоблок на главной', 'url'=>'/admin/mainBlock', 'active'=> (strpos($this->getId(), 'mainBlock') !== false), 'items' => array(
 	                    array('label'=>'Управление', 'url'=>'/admin/mainBlock/'),
 	                )),
+	                array('label'=>'Страницы', 'url'=>'/admin/page', 'active'=> (strpos($this->getId(), 'page') !== false), 'items' => array(
+	                    array('label'=>'Управление', 'url'=>'/admin/page/admin'),
+	                )),
 	            ),
 	        ),
 	        array(

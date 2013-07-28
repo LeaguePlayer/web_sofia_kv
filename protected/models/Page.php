@@ -27,10 +27,9 @@ class Page extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title', 'required'),
-			array('title', 'length', 'max'=>255),
+			array('title, alias', 'length', 'max'=>255),
 			array('content', 'safe'),
-			array('file', 'file', 'on'=>'insert', 'allowEmpty'=>true, 'types'=>'jpg,jpeg,gif,png', 'maxSize'=>1024*1024*6),
-            array('file', 'file', 'on'=>'update', 'allowEmpty'=>true, 'types'=>'jpg,jpeg,gif,png', 'maxSize'=>1024*1024*6),
+			array('active', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, content', 'safe', 'on'=>'search'),
@@ -55,9 +54,10 @@ class Page extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'content' => 'Content',
-			'file' => 'File'
+			'title' => 'Заголовок',
+			'alias' => 'Алиас',
+			'content' => 'Контент страницы',
+			'active' => 'Активна'
 		);
 	}
 
