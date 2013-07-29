@@ -17,6 +17,12 @@
 			'validateOnSubmit'=>true,
 		),
 	)); ?>
+	<div class="errors" style="display: none;"><?=$form->errorSummary($model)?></div>
+	<div class="success" style="display: none;">
+		<p class="upper">Ваша заявка принята,Спасибо!<p>
+		<p class="blue upper">мы свяжемся с Вами, <br>В ближайшее время</p>
+		<p class="button"><a href="#send" class="blue-button"><span>&nbsp;</span>Вернуться на сайт</a></p>
+	</div>
 	<div class="left">
 		<div class="text-title"><?=$model->getAttributeLabel('rooms_count')?></div>
 		<div class="row checkbox-rooms">
@@ -85,7 +91,15 @@
 						
 						$("#order_sleeper-count").slider({ value: $("#order .human").val() });
 						$("#order .sleeper_count-num").html($("#order .sleeper_count").slider("value"));
-						console.log($("#order_sleeper-count").slider("value"));
+
+						$("#BookingForm_phone").mask("+7 (999) 999-99-99");
+						
+						$.fancybox.open($("#order").find(".errors"), {wrapCSS: "sofia-modal"});
+					}else{
+						$.fancybox.open($("#order").find(".success"), {wrapCSS: "sofia-modal", modal: true});
+						$(".sofia-modal .blue-button").click(function(){
+							window.location = "'.Yii::app()->request->url.'";
+						});
 					}
 				}'
 			), 
@@ -94,7 +108,6 @@
 </div>
 
 <?php
-	Yii::app()->clientScript->registerScript('bookin_form', '
-
-	');
+	Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js' ,CClientScript::POS_HEAD );
+	Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
 ?>

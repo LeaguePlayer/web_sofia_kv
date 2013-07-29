@@ -159,7 +159,6 @@ class CatalogController extends Controller
 		if(isset($_POST['BookingForm'])){
 
 			$model->attributes = $_POST['BookingForm'];
-			//print_r($_POST['BookingForm']);
 
 			if($model->validate())
 				echo "ok";

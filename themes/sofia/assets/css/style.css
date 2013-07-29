@@ -1400,7 +1400,9 @@ a.link-room:hover {
 
 
 #city{
-    width: 1378px;
+    width: 100%;
+    max-width: 1378px;
+    overflow: hidden;
     padding-top: 600px;
     margin: 60px auto 0 auto;
     background: repeat-x top left url('../images/city.png');
@@ -1586,4 +1588,42 @@ footer .social a:first-child, .page-content .social a:first-child {
     background: no-repeat center url('../images/rekvisiti.png');
     padding: 40px;
     margin-bottom: 40px;
+}
+
+.sofia-modal{
+    background-color: #ececec;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.sofia-modal .fancybox-skin{
+    background-color: #fff;
+    margin: 25px;
+    padding: 25px !important;
+    box-shadow: none !important;
+    font-size: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.sofia-modal p.upper{
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.sofia-modal p.blue{
+    color: #0daff0;
+    text-align: center;
+    font-weight: bold;
+}
+.sofia-modal p.button{
+    text-align: center;
+}
+
+.sofia-modal .blue-button{
+    font-size: 18px;
+    text-transform: none;
+    margin-top: 20px;
 }
