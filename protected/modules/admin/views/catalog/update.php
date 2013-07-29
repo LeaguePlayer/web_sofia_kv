@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Catalog','url'=>array('index')),
-	array('label'=>'Create Catalog','url'=>array('create')),
-	array('label'=>'View Catalog','url'=>array('view','id'=>$model->id)),
-	array('label'=>'Manage Catalog','url'=>array('admin')),
+	//array('label'=>'List Catalog','url'=>array('index')),
+	array('label'=>'Создать','url'=>array('create')),
+	array('label'=>'Просмотреть','url'=>array('view','id'=>$model->id)),
+	array('label'=>'Управление','url'=>array('admin')),
 );
 ?>
 

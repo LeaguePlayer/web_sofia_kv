@@ -111,6 +111,12 @@ class MainBlock extends CActiveRecord
 		return parent::model($className);
 	}
 
+	protected function beforeDelete()
+	{
+	    $this->removeImages();
+	    return parent::beforeDelete();
+	}
+
 	public static function getAllowModels(){
 		return array(
 			'Catalog' => 'Квартира',

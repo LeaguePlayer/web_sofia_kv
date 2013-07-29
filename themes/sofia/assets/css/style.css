@@ -1272,8 +1272,8 @@ a.link-room:hover {
 }
 .booking-block{
     background: no-repeat center url('../images/border_form.png');
-    padding: 80px 0 0 100px;
-    width: 880px;
+    padding: 80px 100px 0 100px;
+    width: 780px;
     height: 605px;
 }
 #booking h1{
@@ -1372,7 +1372,7 @@ a.link-room:hover {
     font-size: 22px;
 }
 #booking form .fio{
-    width: 500px;
+    width: 350px;
 }
 #booking form .counter{
     width: 50px;
@@ -1582,11 +1582,10 @@ footer .social a:first-child, .page-content .social a:first-child {
     margin-bottom: 20px;
 }
 
-.page-content .rek{
-    width: 911px;
-    height: 308px;
+.page-content table.rek{
+    width: 981px;
+    height: 388px;
     background: no-repeat center url('../images/rekvisiti.png');
-    padding: 40px;
     margin-bottom: 40px;
 }
 

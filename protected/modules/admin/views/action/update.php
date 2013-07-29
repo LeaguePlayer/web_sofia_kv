@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Actions'=>array('index'),
+	'Акции'=>array('admin'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'Обновление',
 );
 
 $this->menu=array(
-	array('label'=>'List Action','url'=>array('index')),
-	array('label'=>'Create Action','url'=>array('create')),
-	array('label'=>'View Action','url'=>array('view','id'=>$model->id)),
-	array('label'=>'Manage Action','url'=>array('admin')),
+	//array('label'=>'Список','url'=>array('index')),
+	array('label'=>'Создать','url'=>array('create')),
+	array('label'=>'Просмотреть','url'=>array('view','id'=>$model->id)),
+	array('label'=>'Управление','url'=>array('admin')),
 );
 ?>
 

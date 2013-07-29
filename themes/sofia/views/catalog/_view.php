@@ -35,7 +35,7 @@
 	</div>
 	<div class="room-price">
 		<div class="col3-left">
-			<b><? echo CHtml::encode($data->price_24)?></b> руб. в сутки
+			<b><? echo CHtml::encode(($data->cat_actions ? $data->cat_actions[0]->new_price : $data->price_24))?></b> руб. в сутки
 		</div>
 		<div class="col3-left">
 			<b><? echo CHtml::encode($data->price_night)?></b> руб. за ночь

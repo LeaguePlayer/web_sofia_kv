@@ -37,38 +37,21 @@
 	</div>
 	<div class="clear"></div>
 
+	<?php if($links){?>
 	<section id="relax-type">
 		<h1>Не знаете где и как отдохнуть в тюмени?</h1>
 		<h4>Спланируйте свой отдых тут:</h4>
 		<div>
-			<div class="col3">
-				<header><span>рестораны</span></header>
-				<a href="#">tumen.gorko.ru</a>
-			</div>
-			<div class="col3">
-				<header><span>заказ еды</span></header>
-				<a href="#">tumen.gorko.ru</a>
-			</div>
-			<div class="col3">
-				<header><span>покупки</span></header>
-				<a href="#">tumen.gorko.ru</a>
-			</div>
-			<div class="col3">
-				<header><span>рестораны</span></header>
-				<a href="#">tumen.gorko.ru</a>
-			</div>
-			<div class="col3">
-				<header><span>заказ еды</span></header>
-				<a href="#">tumen.gorko.ru</a>
-			</div>
-			<div class="col3">
-				<header><span>покупки</span></header>
-				<a href="#">tumen.gorko.ru</a>
-			</div>
+			<?php foreach ($links as $link):?>
+				<div class="col3">
+					<header><span><?=CHtml::encode($link->category)?></span></header>
+					<a href="<?=CHtml::encode($link->link)?>"><?=CHtml::encode($link->link_text)?></a>
+				</div>
+			<?endforeach;?>
 			<div class="clear"></div>
 		</div>
 	</section>
-
+	<?}?>
 	<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
 </section>
 <div class="clear"></div>

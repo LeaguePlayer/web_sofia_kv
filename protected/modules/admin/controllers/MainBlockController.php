@@ -194,23 +194,28 @@ class MainBlockController extends AdminController
 
 		switch ($model) {
 			case 'Catalog':
-				$items += Yii::app()->db->createCommand()
+				$items = array_merge($items, Yii::app()->db->createCommand()
 				    ->select('id, address as text')
 				    ->from('catalog')
 				    ->where('active=1')
-				    ->queryAll();
+				    ->queryAll());
 				break;
 			case 'Action':
-				$items += Yii::app()->db->createCommand()
+				$items = array_merge($items, Yii::app()->db->createCommand()
 				    ->select('id, name as text')
 				    ->from('action')
 				    ->where('active=1')
-				    ->queryAll();
+				    ->queryAll());
+				break;
+			case 'Page':
+				$items = array_merge($items, Yii::app()->db->createCommand()
+				    ->select('id, title as text')
+				    ->from('page')
+				    ->where('active=1')
+				    ->queryAll());
 				break;
 		}
-		
-		//echo CHtml::
-		//print_r($items);
+
 		echo CJSON::encode($items);
 
 		Yii::app()->end();

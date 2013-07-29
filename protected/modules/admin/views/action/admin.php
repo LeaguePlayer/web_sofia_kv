@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Actions'=>array('index'),
-	'Manage',
+	'Акции'=>array('admin'),
+	'Управление',
 );
 
 $this->menu=array(
-	array('label'=>'List Action','url'=>array('index')),
-	array('label'=>'Create Action','url'=>array('create')),
+	//array('label'=>'Список','url'=>array('index')),
+	array('label'=>'Создать','url'=>array('create')),
 );
 
 /*Yii::app()->clientScript->registerScript('search', "

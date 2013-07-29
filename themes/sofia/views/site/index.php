@@ -79,44 +79,7 @@
 	</div>
 </section>
 <section id="booking">
-	<div class="booking-block">
-		<header>
-			<h1>Забронируйте вашу квартиру <strong>прямо сейчас!</strong></h1>
-		</header>
-		<form action="" method="POST">
-			<table>
-				<tr class="label">
-					<td class="small"><label>Количество комнат</label></td>
-					<td colspan="2"><label>Ваше ФИО</label></td>
-				</tr>
-				<tr class="inputs">
-					<td><input class="number counter input" name="" type="number" min="1" max="3" value="1"></td>
-					<td colspan="2"><input class="input fio" name="" type="text" value="4"></td>
-				</tr>
-				<tr class="label">
-					<td class="small"><label>Количество дней</label></td>
-					<td><label>Номер телефона</label></td>
-					<td><label>Электронная почта</label></td>
-				</tr>
-				<tr class="inputs">
-					<td><input class="number counter input" name="" type="number" value="4"></td>
-					<td class="phone">
-						<input class="input number beg" name="" type="text" value="4" maxlength="3">
-						<input class="input number end" name="" type="text" value="4" maxlength="7">
-					</td>
-					<td><input class="input" name="" type="text" value="4" ></td>
-				</tr>
-				<tr class="label">
-					<td colspan="3" class="small"><label>Комментарий</label></td>
-				</tr>
-				<tr class="inputs">
-					<td colspan="3"><textarea></textarea></td>
-				</tr>
-			</table>
-			<a href="#submit" class="blue-button"><span></span>Отправить заявку</a>
-		</form>
-	</div>
-	<div class="msg">Оставьте заявку прямо сейчас, мы обработаем её и свяжемся с Вами!</div>
+	<?php $this->renderPartial('_booking_form_main');?>
 </section>
 <?php
 Yii::app()->clientScript->registerScript('#main_page', '

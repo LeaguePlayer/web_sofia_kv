@@ -3,7 +3,7 @@
 /* @var $model MainBlock */
 
 $this->breadcrumbs=array(
-	'Main Blocks'=>array('index'),
+	'Блок на главной'=>array('index'),
 	'Manage',
 );
 

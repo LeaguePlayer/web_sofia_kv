@@ -98,20 +98,24 @@ if($(".filters").size()>0){
 		if($(".filters-map").length){
 			return false;
 		}
-		scroll = $(document).scrollTop();
-		var stop_line =  $(document).height() - $(".filters").height() - $('body > footer').height() - 100;
-		if(scroll<offsetTop){
-			$('.left .filters').stop(true).animate({top: 0}, 500);
-			$('.left #link-share').stop(true).animate({top: 650}, 500);
-			return false;
+		console.log();
+		if($(window).height() > 700){
+			scroll = $(document).scrollTop();
+			var stop_line =  $(document).height() - $(".filters").height() - $('body > footer').height() - 100;
+			if(scroll<offsetTop){
+				$('.left .filters').stop(true).animate({top: 0}, 500);
+				$('.left #link-share').stop(true).animate({top: 650}, 500);
+				return false;
+			}
+			if(scroll < stop_line && (scroll>=offsetTop || offsetTop > 358) ){
+				$('.left .filters').stop(true).animate({top: scroll-350}, 500);
+				$('.left #link-share').stop(true).animate({top: scroll+300}, 500);
+			}else{
+				//$('.left .filters').stop(true).animate({top: stop_line}, 500);
+				//$('.left #link-share').stop(true).animate({top: stop_line}, 500);
+			}
 		}
-		if(scroll < stop_line && (scroll>=offsetTop || offsetTop > 358) ){
-			$('.left .filters').stop(true).animate({top: scroll-350}, 500);
-			$('.left #link-share').stop(true).animate({top: scroll+300}, 500);
-		}else{
-			//$('.left .filters').stop(true).animate({top: stop_line}, 500);
-			//$('.left #link-share').stop(true).animate({top: stop_line}, 500);
-		}
+		
         return false;
     });
 

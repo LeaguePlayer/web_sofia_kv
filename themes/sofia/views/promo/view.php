@@ -4,8 +4,8 @@
 <section class="right">
 	<div class="top-block">
 		<h2><?=CHtml::encode($action->name)?></h2>
-		<div class="oldPrice">вместо <span>1500</span></div>
-		<a id="link-share" class="gray-button map" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
+		<?if($fixed_price){?><div class="oldPrice">вместо <span><?=CHtml::encode($fixed_price)?></span></div><?}?>
+		<a id="link-share" class="gray-button map" href="/favorites/"><i class="plus-gray"></i> Квартиры в закладках</a>
 	</div>
 	<?php
 	/*foreach ($action->action_rooms as $item) {

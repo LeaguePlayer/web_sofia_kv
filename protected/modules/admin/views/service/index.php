@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Акции',
+	'Отдых',
 );
 
 $this->menu=array(
@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Акции</h1>
+<h1>Ссылки</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

@@ -31,21 +31,34 @@ class PromoController extends Controller
 
 		$action_rooms=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
 
+		//Check fixed price
+		$fixed = false;
+		$fixed_price = null;
+
+		foreach ($action_rooms->getData() as $value) {
+			if(!$fixed_price) {
+				$fixed_price = $value->price_24;
+				$fixed = true;
+			}
+			else $fixed = $fixed && ($fixed_price == $value->price_24);
+		}
+		if(!$fixed) {
+			$fixed_price = null;
+		}
+		
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
 		$this->render('view', array(
 			'action' => $this->loadModel($id),
 			'model' => $model,
 			'areas' => $areas,
-			'action_rooms' => $action_rooms
+			'action_rooms' => $action_rooms,
+			'fixed_price' => $fixed_price
 		));
 	}
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
+
+
 	public function loadModel($id)
 	{
 		$model=Action::model()->findByPk($id);

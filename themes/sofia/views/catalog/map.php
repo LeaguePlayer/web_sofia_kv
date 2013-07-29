@@ -1,5 +1,5 @@
 <div class="top-block no-margin-left">
-	<a id="link-share" class="gray-button map" href="#"><i class="plus-gray"></i> Квартиры в закладках</a>
+	<a id="link-share" class="gray-button map" href="/favorites/"><i class="plus-gray"></i> Квартиры в закладках</a>
 	<div class="rooms-count no-margin-left">
 		<label class="text-title">смотреть только:</label>
 		<a class="room1" href="#">1 комнатные</a>
@@ -14,13 +14,14 @@
 </div>
 <div id="map" data-id="<?=Yii::app()->getRequest()->getParam('id')?>" data-assets="<?=$this->getAssetsUrl()?>"></div>
 <div class="afterMap">
+	<?if($action){?>
 	<section class="left">
 		<div class="text-left_title">специальные предложения:</div>
-		<a class="spec" href="#"><img src="images/spec.jpg"></a>
-		<a class="spec" href="#"><img src="images/spec.jpg"></a>
+		<a class="spec" href="<?=$this->createUrl('/promo/view', array('id' => $action->id))?>"><img src="<?=CHtml::encode($action->getPreviewImage('v2'))?>"></a>
 	</section>
+	<?}?>
 	<section class="right">
-		<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
+		<section id="order" <?=($action ? '' : 'style="margin-left: 160px"')?>><?php $this->renderPartial('/catalog/_booking_form');?></section>
 	</section>
 	<div class="clear"></div>
 </div>

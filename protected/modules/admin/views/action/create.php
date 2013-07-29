@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Actions'=>array('index'),
-	'Create',
+	'Акции'=>array('admin'),
+	'Создать',
 );
 
 $this->menu=array(
-	array('label'=>'List Action','url'=>array('index')),
-	array('label'=>'Manage Action','url'=>array('admin')),
+	//array('label'=>'Список','url'=>array('index')),
+	array('label'=>'Управление','url'=>array('admin')),
 );
 ?>
 

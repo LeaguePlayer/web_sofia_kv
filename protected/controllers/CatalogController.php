@@ -101,11 +101,14 @@ class CatalogController extends Controller
 			':id' => $room->id
 		);
 
+		$action = Action::model()->find('active=1');
+
 		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
 
 		$this->render('view', array(
 			'model' => $this->loadModel($id),
-			'data' => $dataProvider
+			'data' => $dataProvider,
+			'action' => $action
 		));
 	}
 
@@ -118,9 +121,12 @@ class CatalogController extends Controller
 
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
+		$action = Action::model()->find('active=1');
+
 		$this->render('map', array(
 			'model' => $model,
-			'areas' => $areas
+			'areas' => $areas,
+			'action' => $action
 		));
 	}
 
@@ -165,7 +171,10 @@ class CatalogController extends Controller
 			else{
 				Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 				Yii::app()->clientScript->scriptMap['jquery-ui.js'] = false;
-				$this->renderPartial('_booking_form', array('ajax' => true, 'model' => $model));
+				if(!isset($_POST['main']))
+					$this->renderPartial('_booking_form', array('ajax' => true, 'model' => $model));
+				else
+					$this->renderPartial('/site/_booking_form_main', array('ajax' => true, 'model' => $model));
 			}
 				
 		}

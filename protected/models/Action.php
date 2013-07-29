@@ -187,6 +187,12 @@ class Action extends CActiveRecord
 			self::model()->updateAll(array('active' => 0));
 			$this->active = 1;
 		}
+		if($this->active == 0){ //unpublication
+			$action_on_main = MainBlock::model()->find('model=:model AND model_id=:model_id', array(':model' => 'Action', ':model_id' => $this->id));
+			if($action_on_main){
+				$action_on_main->delete();
+			}
+		}
 			
 
 		return parent::beforeSave();

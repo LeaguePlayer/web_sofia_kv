@@ -1,11 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Catalogs',
+	'Квартиры',
 );
 
 $this->menu=array(
-	array('label'=>'Create Catalog','url'=>array('create')),
-	array('label'=>'Manage Catalog','url'=>array('admin')),
+	array('label'=>'Создать','url'=>array('create')),
+	array('label'=>'Управление','url'=>array('admin')),
 );
 ?>
 

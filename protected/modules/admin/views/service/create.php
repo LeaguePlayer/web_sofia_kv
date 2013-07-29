@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Страницы'=>array('admin'),
+	'Отдых'=>array('admin'),
 	'Создать',
 );
 
 $this->menu=array(
-	//array('label'=>'List Page','url'=>array('index')),
+	//array('label'=>'Список','url'=>array('index')),
 	array('label'=>'Управление','url'=>array('admin')),
 );
 ?>
 
-<h1>Создать</h1>
+<h1>Создать ссылку</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

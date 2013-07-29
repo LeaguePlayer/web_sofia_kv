@@ -1,11 +1,11 @@
 <?php
 $this->breadcrumbs=array(
-	'Страницы'=>array('admin'),
+	'Отдых'=>array('admin'),
 	'Управление',
 );
 
 $this->menu=array(
-	//array('label'=>'List Page','url'=>array('index')),
+	//array('label'=>'Список','url'=>array('index')),
 	array('label'=>'Создать','url'=>array('create')),
 );
 
@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('page-grid', {
+	$.fn.yiiGridView.update('service-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -24,21 +24,14 @@ $('.search-form form').submit(function(){
 ?>
 
 <h1>Управление</h1>
-
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'page-grid',
+	'id'=>'service-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		//'id',
-		array(
-			'name' => 'title',
-			'type'=>'html',
-			'value' => 'CHtml::link($data->title, array("view","id"=>$data->id))'
-		),
-		'alias',
-		//'content',
-		'active',
+		'category',
+		'link',
+		'link_text',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

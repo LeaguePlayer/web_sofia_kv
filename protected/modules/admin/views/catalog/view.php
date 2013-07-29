@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Catalogs'=>array('index'),
+	'Квартиры'=>array('admin'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List Catalog','url'=>array('index')),
-	array('label'=>'Create Catalog','url'=>array('create')),
-	array('label'=>'Update Catalog','url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Catalog','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Catalog','url'=>array('admin')),
+	//array('label'=>'List Catalog','url'=>array('index')),
+	array('label'=>'Создать','url'=>array('create')),
+	array('label'=>'Обновить','url'=>array('update','id'=>$model->id)),
+	array('label'=>'Удалить','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Управление','url'=>array('admin')),
 );
 ?>
 

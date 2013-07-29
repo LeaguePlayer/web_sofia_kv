@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Areas',
+	'Районы',
 );
-
+/*
 $this->menu=array(
 	array('label'=>'Create Area','url'=>array('create')),
 	array('label'=>'Manage Area','url'=>array('admin')),
-);
+);*/
 ?>
 
 <h1>Районы</h1>
