@@ -210,15 +210,7 @@ class CatalogController extends Controller
 			}
 			
 		}
-		//Yii::app()->clientScript->scriptMap['jquery*'] = false;
-		//Yii::app()->clientScript->scriptMap['jquery-ui.js'] = false;
-		//Yii::app()->clientScript->scriptMap['jquery-ui.min.js'] = false;
-		/*Yii::app()->clientScript->scriptMap['jquery-ui-i18n.min.js'] = false;
-		Yii::app()->clientScript->scriptMap['*.css'] = false;*/
 
-		//Yii::app()->coreCss=false;
-		//Yii::app()->clientScript->corePackages = array();
-		//Yii::app()->clientScript->registerCoreScript('maskedinput');
 		if($model->id)
 			$this->renderPartial('_booking_room', array('model' => $model, 'ajax' => true, 'room' => Catalog::model()->findByPk($model->id)));
 		else
@@ -237,37 +229,8 @@ class CatalogController extends Controller
 		//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
 		if($form->fio) $headers .= 'From: '.$form->fio.' <'.$form->email.'>' . "\r\n";
 		else $headers .= 'From: Гость <'.$form->email.'>' . "\r\n";
-		//$headers .= 'Cc: sofiastylecc@example.com' . "\r\n";
-		//$headers .= 'Bcc: sofiastylebcc@example.com' . "\r\n";
 
 		// Mail it
 		mail($to, $subject, $message, $headers);
 	}
-
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
 }

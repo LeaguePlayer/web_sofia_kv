@@ -35,7 +35,8 @@ class BookingForm extends CFormModel{
 			'rooms_count'=>'Количество комнат',
 			'human_count'=>'Количество спальных мест',
 			'days'=>'Количество дней',
-			'date'=>'Дата заезда'
+			'date'=>'Дата заезда',
+			'message' => 'Сообщение'
 		);
 	}
 
