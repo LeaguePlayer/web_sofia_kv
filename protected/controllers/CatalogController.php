@@ -172,7 +172,7 @@ class CatalogController extends Controller
 			if($model->validate()){
 				echo "ok";
 				$msg = $this->renderPartial('_mail_template', array('model' => $model), true);
-				$this->sendMail('vitgvr@gmail.com', $_POST['subject'], $msg, $model);
+				$this->sendMail(Settings::getEmail(), $_POST['subject'], $msg, $model);
 			}else{
 				Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 				Yii::app()->clientScript->scriptMap['jquery-ui.js'] = false;
@@ -202,7 +202,7 @@ class CatalogController extends Controller
 				echo "ok";
 				//$this->renderPartial('_mail_template', array('model' => $model));
 				$msg = $this->renderPartial('_mail_template', array('model' => $model), true);
-				$this->sendMail('vitgvr@gmail.com', $_POST['subject'], $msg, $model);
+				$this->sendMail(Settings::getEmail(), $_POST['subject'], $msg, $model);
 				Yii::app()->end();
 			}
 			else{

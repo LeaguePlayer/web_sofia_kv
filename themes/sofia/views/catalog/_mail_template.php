@@ -1,5 +1,4 @@
-<table style="width: 500px">
-	<?echo $model->phone;?>
+<table style="width: 700px">
 	<?if(isset($model->id)){?>
 	<?
 		$room = Catalog::model()->findByPk($model->id);

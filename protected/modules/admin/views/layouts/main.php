@@ -38,6 +38,9 @@
 	                array('label'=>'Отдых', 'url'=>'/admin/service', 'active'=> (strpos($this->getId(), 'service') !== false), 'items' => array(
 	                    array('label'=>'Управление', 'url'=>'/admin/service/admin'),
 	                )),
+	                array('label'=>'Настройки', 'url'=>'/admin/settings', 'active'=> (strpos($this->getId(), 'settings') !== false), 'items' => array(
+	                    array('label'=>'Управление', 'url'=>'/admin/settings/index'),
+	                )),
 	            ),
 	        ),
 	        array(
