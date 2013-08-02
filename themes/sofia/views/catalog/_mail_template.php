@@ -1,4 +1,5 @@
 <table style="width: 500px">
+	<?echo $model->phone;?>
 	<?if(isset($model->id)){?>
 	<?
 		$room = Catalog::model()->findByPk($model->id);
@@ -18,6 +19,12 @@
 	<tr>
 		<td><?=$model->getAttributeLabel('phone')?> :</td>
 		<td><?=CHtml::encode($model->phone)?></td>
+	</tr>
+	<?}?>
+	<?if(isset($model->email)){?>
+	<tr>
+		<td><?=$model->getAttributeLabel('email')?> :</td>
+		<td><?=CHtml::encode($model->email)?></td>
 	</tr>
 	<?}?>
 	<?if(isset($model->price)){?>
@@ -47,16 +54,22 @@
 		<td><?=CHtml::encode($model->human_count)?></td>
 	</tr>
 	<?}?>
-	<?if(isset($model->human_count)){?>
+	<?if(isset($model->days)){?>
 	<tr>
 		<td><?=$model->getAttributeLabel('days')?> :</td>
-		<td><?=CHtml::encode($model->human_count)?></td>
+		<td><?=CHtml::encode($model->days)?></td>
 	</tr>
 	<?}?>
-	<?if(isset($model->human_count)){?>
+	<?if(isset($model->date)){?>
 	<tr>
 		<td><?=$model->getAttributeLabel('date')?> :</td>
 		<td><?=CHtml::encode($model->date)?></td>
+	</tr>
+	<?}?>
+	<?if(isset($model->message)){?>
+	<tr>
+		<td><?=$model->getAttributeLabel('message')?> :</td>
+		<td><?=CHtml::encode($model->message)?></td>
 	</tr>
 	<?}?>
 </table>
