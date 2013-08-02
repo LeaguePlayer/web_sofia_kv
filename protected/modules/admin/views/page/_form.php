@@ -14,8 +14,18 @@
 	<?php echo $form->textFieldRow($model,'alias',array('class'=>'span5 alias','maxlength'=>255)); ?>
 
 	<?php echo CHtml::activelabel($model,'content'); ?>
-	<?php $this->widget('admin_ext.redactorjs.Redactor', array( 'model' => $model, 'attribute' => 'content'
-	)); ?>
+	<?php $this->widget('admin_ext.ckeditor.CkeditorWidget', array( 'model' => $model, 'attribute' => 'content')); ?>
+
+	<?if($model->asa('seo')){?><br><br>
+	<fieldset>
+		<legend>Для SEO специалиста:</legend>
+	    <?php echo $form->textFieldRow($model,'meta_title'); ?>
+	    <?php echo $form->textFieldRow($model,'meta_keys'); ?>
+	    <?php echo $form->textAreaRow($model,'meta_desc'); ?>
+	    <?php echo CHtml::activelabel($model, 'meta_html');?>
+	    <?php $this->widget('admin_ext.ckeditor.CkeditorWidget', array( 'model' => $model, 'attribute' => 'meta_html')); ?>
+	</fieldset>
+	<?}?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

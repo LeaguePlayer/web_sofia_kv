@@ -92,6 +92,13 @@
     line-height: 30px;
     box-shadow: none;
 }
+.baloon_buttton.fav{
+    width: 90px;
+    line-height: 1;
+    text-align: center;
+    font-size: 14px;
+    padding: 1px 10px;
+}
 .gray-button.baloon_buttton {
     color: #7b7b7b;
 }

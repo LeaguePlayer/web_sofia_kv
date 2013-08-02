@@ -2,6 +2,7 @@
 
 class BookingForm extends CFormModel{
 
+	public $id;
 	public $rooms_count;
 	public $human_count;
 	public $price;
@@ -18,7 +19,7 @@ class BookingForm extends CFormModel{
 		// will receive user inputs.
 		return array(
 			array('phone, email, rooms_count', 'required'),
-			array('human_count, days, price', 'numerical'),
+			array('human_count, days, price, id', 'numerical'),
 			array('fio, phone, email, rooms_count, date', 'length', 'max'=>255),
 			array('email', 'email'),
 			array('message', 'safe'),
@@ -33,7 +34,6 @@ class BookingForm extends CFormModel{
 			'price' => 'Цена',
 			'rooms_count'=>'Количество комнат',
 			'human_count'=>'Количество спальных мест',
-			'price'=>'Цена',
 			'days'=>'Количество дней',
 			'date'=>'Дата заезда'
 		);

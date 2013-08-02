@@ -21,6 +21,8 @@ class PromoController extends Controller
 	}
 
 	public function actionView($id){
+		$promo = $this->loadModel($id);
+
 		$model = new Catalog;
 		$criteria = CatalogController::getCriteriaForFilter($model);
 		//$criteria->join = 'LEFT JOIN catalog_actions ON action_id=:id';
@@ -48,8 +50,11 @@ class PromoController extends Controller
 		
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
+		//seo
+		$this->addMetaTags($promo, 'name');
+
 		$this->render('view', array(
-			'action' => $this->loadModel($id),
+			'action' => $promo,
 			'model' => $model,
 			'areas' => $areas,
 			'action_rooms' => $action_rooms,

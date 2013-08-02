@@ -25,7 +25,8 @@ class FavoritesController extends Controller{
 		$this->render('/catalog/index', array(
 			'data' => $dataProvider,
 			'model' => $model,
-			'areas' => $areas
+			'areas' => $areas,
+			'favor' => true
 		));
 	}
 

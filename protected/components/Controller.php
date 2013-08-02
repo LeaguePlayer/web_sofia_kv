@@ -21,6 +21,10 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
+
+	//for seo
+	public $meta_html;
+
 	//for link in main menu
 	public $action = null;
 
@@ -57,7 +61,6 @@ class Controller extends CController
 		$cs->registerCssFile($this->getAssetsUrl().'/css/style.css');
 		$cs->registerCssFile($this->getAssetsUrl().'/css/buttons.css');
 		$cs->registerCssFile($this->getAssetsUrl().'/css/chosen.css');
-
 	}
 
 	//Get Clip
@@ -98,5 +101,22 @@ class Controller extends CController
         $this->renderPartial('//layouts/clips/_main_menu'); 
 
         return parent::beforeRender($view);
+    }
+
+    protected function addMetaTags($model, $other_title = ''){
+    	//add seo meta tags
+		if($model->asa('seo')){
+			
+			if($model->meta_title) $this->pageTitle = $model->meta_title;
+			elseif($other_title) $this->pageTitle = $model->{$other_title};
+
+			if($model->meta_keys) Yii::app()->clientScript->registerMetaTag($model->meta_keys, 'keys');
+			if($model->meta_desc) Yii::app()->clientScript->registerMetaTag($model->meta_desc, 'description');
+
+			if($model->meta_html) $this->meta_html = $model->meta_html;
+			
+    	}elseif($other_title){
+    		
+    	}
     }
 }

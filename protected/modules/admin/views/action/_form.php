@@ -13,8 +13,7 @@
 	<?php echo $form->textAreaRow($model,'short_desc',array('class'=>'span5','maxlength'=>150)); ?>
 
 	<?php echo CHtml::activelabel($model,'long_desc'); ?>
-	<?php $this->widget('admin_ext.redactorjs.Redactor', array( 'model' => $model, 'attribute' => 'long_desc', 
-		'htmlOptions' => array('style'=>'height: 220px;')
+	<?php $this->widget('admin_ext.ckeditor.CkeditorWidget', array( 'model' => $model, 'attribute' => 'long_desc', 'htmlOptions' => array('style'=>'height: 220px;')
 	)); ?>
 
 	<?php //echo $form->textAreaRow($model,'long_desc',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
@@ -59,6 +58,17 @@
 	?>
 	<div class="addCatItems" style="display: none;"></div>
 	<div class="removeCatItems" style="display: none;"></div>
+
+	<?if($model->asa('seo')){?><br><br>
+	<fieldset>
+		<legend>Для SEO специалиста:</legend>
+	    <?php echo $form->textFieldRow($model,'meta_title'); ?>
+	    <?php echo $form->textFieldRow($model,'meta_keys'); ?>
+	    <?php echo $form->textAreaRow($model,'meta_desc'); ?>
+	    <?php echo CHtml::activelabel($model, 'meta_html');?>
+	    <?php $this->widget('admin_ext.ckeditor.CkeditorWidget', array( 'model' => $model, 'attribute' => 'meta_html')); ?>
+	</fieldset>
+	<?}?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

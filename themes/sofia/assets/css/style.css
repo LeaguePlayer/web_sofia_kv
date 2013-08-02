@@ -492,11 +492,8 @@ a.link-addFavorites.active:hover span:after{
     background: linear-gradient(top, #50ccf2, #1f8abd); /* CSS3 */
     box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
 }
-
-.ui-state-default,
-.ui-state-focus,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default {
+.ui-slider .ui-slider-handle 
+{
     border: none;
     background: top center url(../images/slider-handle.png) no-repeat;
 }
@@ -526,12 +523,10 @@ a.link-addFavorites.active:hover span:after{
 }
 
 .top-block h2 {
-    display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
     font-size: 40px;
     font-weight: bold;
-    max-height: 730px;
 }
 
 .top-block .oldPrice {
@@ -561,6 +556,8 @@ a.link-addFavorites.active:hover span:after{
 .top-block #link-share.map {
     position: static;
     margin: 0;
+    float: right;
+    margin-left: 10px;
 }
 
 #map {
@@ -816,7 +813,7 @@ a.link-addFavorites.active:hover span:after{
     text-align: center;
 }
 
-#features h1, #rooms-on-main h1, #pairs h1, #booking h1{
+#features h1, #rooms-on-main h1, #pairs h1, .booking-block h1{
     font-size: 41px;
     font-family: 'a_avanteltnr';
     font-weight: normal;
@@ -1276,35 +1273,35 @@ a.link-room:hover {
     width: 780px;
     height: 605px;
 }
-#booking h1{
+.booking-block h1{
     text-align: left;
 }
-#booking form{
+.booking-block form{
     margin-top: 40px;
 }
 
-#booking table{
+.booking-block table{
     width: 100%;
 }
 
-#booking table .label td{
+.booking-block table .label td, .sofia-modal table .label td{
     padding-bottom: 10px;
 }
-#booking table .inputs td{
+.booking-block table .inputs td{
     padding-bottom: 20px;
 }
 
-#booking label {
+.booking-block label {
     font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
 }
-#booking .small{
+.booking-block .small{
     width: 200px;
 }
 #order form .input,
-#booking form .input,
-#booking form textarea {
+.booking-block form .input,
+.booking-block form textarea {
     border: 1px solid #b9b9b9;
     background-color: #f3f3f3;
     font-size: 16px;
@@ -1314,7 +1311,7 @@ a.link-room:hover {
     border-radius: 3px;
 }
 #order form .input:focus,
-#booking form .input:focus {
+.booking-block form .input:focus {
     background-color: #fff;
     color: #0daff0;
     font-weight: bold;
@@ -1371,23 +1368,23 @@ a.link-room:hover {
     font-weight: bold;
     font-size: 22px;
 }
-#booking form .fio{
+.booking-block form .fio{
     width: 350px;
 }
-#booking form .counter{
+.booking-block form .counter{
     width: 50px;
 }
-#booking form .number{
+.booking-block form .number{
     font-size: 22px;
     padding: 5px 10px;
 }
-#booking form .phone{
+.booking-block form .phone{
     width: 200px;
 }
-#booking form .beg{ width: 40px;}
-#booking form .end{ width: 80px;}
+.booking-block form .beg{ width: 40px;}
+.booking-block form .end{ width: 80px;}
 
-#booking form textarea{
+.booking-block form textarea{
     width: 700px;
     height: 130px;
 }
@@ -1582,11 +1579,12 @@ footer .social a:first-child, .page-content .social a:first-child {
     margin-bottom: 20px;
 }
 
-.page-content table.rek{
-    width: 981px;
-    height: 388px;
+.page-content .rek{
+    width: 901px;
+    height: 308px;
     background: no-repeat center url('../images/rekvisiti.png');
     margin-bottom: 40px;
+    padding: 40px;
 }
 
 .sofia-modal{
@@ -1625,4 +1623,30 @@ footer .social a:first-child, .page-content .social a:first-child {
     font-size: 18px;
     text-transform: none;
     margin-top: 20px;
+}
+
+/* fancybox-form */
+.sofia-modal .booking-block{
+    background: none;
+    padding: 0;
+    height: auto;
+}
+
+.sofia-modal .errorSummary{
+    font-size: 16px;
+    background-color: #F57373;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+.sofia-modal .booking-block form .fio{
+    width: 300px;
+}
+
+.sofia-modal .booking-block form{
+    margin-top: 10px;
+}
+.sofia-modal .booking-block h1{
+    font-size: 33px;
+    text-align: center;
 }

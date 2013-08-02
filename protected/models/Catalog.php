@@ -18,6 +18,7 @@
 class Catalog extends CActiveRecord
 {
 	public $preview = "";
+	public $in_favorites = false;
 
 	public static $classesFeatures = array(
 		1 => 'wifi',
@@ -86,7 +87,8 @@ class Catalog extends CActiveRecord
 	        ),
 	        'sortableModel' => array(
 		      'class' => 'SortableCActiveRecordBehavior'
-		   	)
+		   	),
+		   	'seo' => array('class' => 'SeoBehavior')
 	    );
 	}
 
@@ -232,6 +234,7 @@ class Catalog extends CActiveRecord
 	public function getAttributes($names = true) {
         $attrs = parent::getAttributes($names);
         $attrs['preview'] = $this->getPreviewImage();
+        $attrs['in_favorites'] = FavoritesController::is_room_exists($this->id);
 
         return $attrs;
     }

@@ -46,6 +46,25 @@ var chaos = function (){
 jQuery(document).ready(function(){
 	//$('#slider-block').slider();
 	chaos();
+	$.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+	//console.log($('.contacts .form'));
+	$('.contacts .form, .room-form').fancybox({
+		wrapCSS: 'sofia-modal'
+	});
+	/*$('.contacts .form').fancybox({
+		href: '/catalog/fancyForm',
+		wrapCSS: 'sofia-modal',
+		type: 'ajax',
+		autoSize: true,
+		width: 795,
+		height: 580,
+		afterShow: function(){
+			$.fancybox.open($(".fancybox-inner").find(".success"), {wrapCSS: "sofia-modal", modal: true});
+			//$("#date").datepicker( $.datepicker.regional[ "fr" ] );
+			//$("#phone").mask("+7 (999) 999-99-99");
+			//jQuery("#date").datepicker(jQuery.extend({showMonthAfterYear:false},jQuery.datepicker.regional["ru"],{"showAnim":"fold","dateFormat":"dd.mm.yy","minDate":0}));
+		}
+	});*/
 
 	//add room in favorites
 	$(".link-addFavorites").on('click', function(e){
@@ -83,10 +102,39 @@ jQuery(document).ready(function(){
 			data: {id: self.data('id')},
 			type: 'GET',
 			success: function(){
-				self.closest('.room').animate({opacity: 0}, 500).hide(500);
+				self.closest('.room').animate({opacity: 0}, 500).hide(500, function(){
+					console.log($('.room:visible').length);
+					if($('.room:visible').length == 0)
+						self.closest('.items').hide().html('<span class="empty"><div class="all"><a class="yellow-button" href="/catalog"><span></span>Перейти в каталог</a></div></span>').slideDown(500);
+				});
+				
 			}
 		});
 	});
+
+	$("#order_sleeper-count").slider({
+		range: "min",
+		min: 1,
+		max: 8,
+		step: 1,
+		create: function(event, ui){
+			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
+		},
+		slide: function( event, ui ) {	
+			$(this).next().val(ui.value);
+			$(this).find('.ui-slider-handle div').html(ui.value);	
+		}
+	});
+	$("#order_sleeper-count").slider({ value: $("input.human").val() });
+	$("#booking-form .sleeper_count-num").html($("#order_sleeper-count").slider("value"));
+
+	//add height for catalog items
+	var rh = 0;
+	$('.room').each(function(){
+		var h = $(this).height();
+		if(rh < h) rh = h;
+	});
+	$('.room').height(rh);
 });
 
 if($(".filters").size()>0){

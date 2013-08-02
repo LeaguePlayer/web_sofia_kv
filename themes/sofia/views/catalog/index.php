@@ -11,13 +11,16 @@
 			<a class="room3 <?=((isset($model->rooms_count[3]) && $model->rooms_count[3] != 0) ? "active" : "")?>" href="#">3х комнатные</a>
 	</div>
 	<?php
+	if(isset($favor)) $emptyText = '<div class="all"><a class="yellow-button" href="/catalog"><span></span>Перейти в каталог</a></div>';
+	else $emptyText = '<div class="nothing">Ничего не найдено.</div>';
+	
 	$this->widget('zii.widgets.CListView', array(
 	    'dataProvider'=>$data,
 	    'itemView'=>'/catalog/_view',
 	    'template'=>'{items}',
 	    'cssFile'=>false,
 	    'id'=>'catalog-list',
-	    'emptyText'=>'<div class="nothing">Ничего не найдено.</div>'
+	    'emptyText'=> $emptyText
 	));
 	?>
 	<div class="clear"></div>

@@ -38,7 +38,8 @@ function init() {
             "</div>" +
             "<div class='baloon_buttons'>"+
                 "<a href='$[properties.link]' class='blue-button baloon_buttton'>Посмотреть</a>"+
-                "<a rel='$[properties.hotelId]' href='#' class='gray-button baloon_buttton'>В закладки</a>"+
+                "[if properties.in_favorites]<a href='/favorites' class='gray-button baloon_buttton fav'>Перейти в закладки</a>[else]<a href='#' class='gray-button baloon_buttton add_to_fav'>В закладки</a>[endif]"+
+                //"<a rel='$[properties.hotelId]' href='#' class='gray-button baloon_buttton'>В закладки</a>"+
                 "<div class='price_tag in_baloon'>"+
                     "<div class='room-price'>"+
                         "<div class='col3-left'>"+
@@ -52,7 +53,34 @@ function init() {
                         "</div>"+
                         "<div class='clear'></div>"+
                     "</div>"+
-            "</div>"
+            "</div>",
+            {
+                build: function () {
+                    baloonContent.superclass.build.call(this);
+                    var room = this;
+
+                    if(!room.getData().properties.get('in_favorites')){
+                        var id = room.getData().properties.get('hotelId');
+                        $('.gray-button').on('click', function(e){
+                            e.preventDefault();
+                            var self = $(this);
+                            $.ajax({
+                                url: '/favorites/addRoom',
+                                data: {id: id},
+                                type: 'GET',
+                                success: function(){
+                                    room.getData().properties.set('in_favorites', true);
+                                    self.attr('href', '/favorites').text('Перейти в закладки').addClass('fav');
+                                }
+                            });
+                        });
+                    }
+                },
+                clear: function () {
+                    $('.gray-button').off('click');
+                    baloonContent.superclass.clear.call(this);
+                }
+            }
         );
         
         var clusterBaloonLayout = ymaps.templateLayoutFactory.createClass(
@@ -67,7 +95,7 @@ function init() {
             "</div>"+
             "<div class='baloon_buttons cluster'>"+
                 "<a href='$[properties.link]' class='blue-button baloon_buttton'>Посмотреть</a>"+
-                "<a rel='$[properties.hotelId]' href='#' class='gray-button baloon_buttton'>В закладки</a>"+
+                "<a href='#' class='gray-button baloon_buttton'>В закладки</a>"+
                 "<div class='price_tag in_baloon'>"+
                     "<div class='room-price'>"+
                         "<div class='col3-left'>"+
@@ -107,6 +135,26 @@ function init() {
             $(".price_tag.in_baloon .priceNight b").html(this.activeObject.properties.get("priceNight"));
             $(".price_tag.in_baloon .priceHour b").html(this.activeObject.properties.get("priceHour"));
             $('.cart_button').attr('rel', this.activeObject.properties.get('hotelId'))
+            var f = this.activeObject.properties.get('in_favorites');
+            if(f) {
+                $('.gray-button').attr('href', '/favorites').text('Перейти в закладки').addClass('fav');
+            }else{
+                var acitveO = this.activeObject;
+                var id = acitveO.properties.get('hotelId');
+                $('.gray-button').attr('href', '#').text('В закладки').removeClass('fav').click(function(e){
+                    e.preventDefault();
+                    var self = $(this);
+                    $.ajax({
+                        url: '/favorites/addRoom',
+                        data: {id: id},
+                        type: 'GET',
+                        success: function(){
+                            acitveO.properties.set('in_favorites', true);
+                            self.attr('href', '/favorites').text('Перейти в закладки').addClass('fav');
+                        }
+                    });
+                });
+            }
         }
         
         ymaps.layout.storage.add("hotels#baloonlayout", baloonContent);
@@ -290,7 +338,7 @@ function addItemsOnMap(data){
     
     for (var key in data) {
         var coords = data[key].coords.split(",");
-        
+
         GeoObject = new ymaps.GeoObject({
             geometry: {
                 type: "Point",
@@ -306,7 +354,8 @@ function addItemsOnMap(data){
                 priceHour: data[key].price_hour,
                 clusterCaption: data[key].address,
                 hotelStreet: data[key].address,
-                link: "/catalog/" + data[key].id
+                link: "/catalog/" + data[key].id,
+                in_favorites: data[key].in_favorites
             }
         }, {
             //balloonPane: 'movableOuters',
@@ -360,6 +409,7 @@ function openObjectBalloon(GeoObject) {
         }
         clusterer.events.remove('objectsaddtomap', openBalloon);
     }
+    console.log(openBalloon);
     clusterer.events.add('objectsaddtomap', openBalloon);
 }
 
@@ -489,14 +539,14 @@ $('#catalog-filter').submit(function(event){
     });
 });
 
-/*$('.left .filters').css({opacity: 0.8});
+$('.left .filters').css({opacity: 0.7});
 $('.left .filters').hover(
     function(){
-        $(this).animate({opacity: 1}, 500);
+        $(this).stop(false, false).animate({opacity: 1}, 700);
     }, function(){
-        $(this).animate({opacity: 0.8}, 500);
+        $(this).stop(false, false).animate({opacity: 0.7}, 700);
     }
-);*/
+);
 
 /*$(".gallery_photo .add_on_map").live("click", function() {
     AddHotelOnMap($(this).attr("rel"), true, false);

@@ -12,16 +12,20 @@
 
 	<?php echo $form->textFieldRow($model,'number',array('class'=>'span1')); ?>
 
-	<?php echo $form->textFieldRow($model, 'coords', array('class'=>'coords span5')); ?>
+	<?php echo CHtml::activeHiddenField($model, 'coords', array('class'=>'coords')); ?>
 
-	<?php echo $form->dropDownListRow($model, 'rooms_count', Catalog::getRoomsCount(), array('class'=>'span1')); ?>
+	<?php echo $form->dropDownListRow($model, 'rooms_count', Catalog::getRoomsCount(), array('class'=>'span2')); ?>
 
-	<?php echo $form->dropDownListRow($model, 'human_count', Catalog::getHumanCount(), array('class'=>'span1')); ?>
+	<?php echo $form->dropDownListRow($model, 'human_count', Catalog::getHumanCount(), array('class'=>'span2')); ?>
 
 	<?php echo CHtml::activelabel($model,'desc'); ?>
-	<?php $this->widget('admin_ext.redactorjs.Redactor', array( 'model' => $model, 'attribute' => 'desc', 
+	
+	<?php $this->widget('admin_ext.ckeditor.CkeditorWidget', array( 'model' => $model, 'attribute' => 'desc', 
 		'htmlOptions' => array('style'=>'height: 220px;')
 	)); ?>
+	<?php /*$this->widget('admin_ext.redactorjs.Redactor', array( 'model' => $model, 'attribute' => 'desc', 
+		'htmlOptions' => array('style'=>'height: 220px;')
+	));*/ ?>
 	
 	<?php //echo $form->textAreaRow($model,'desc',array('rows'=>6, 'cols'=>50, 'class'=>'span5')); ?>
 
@@ -51,6 +55,17 @@
 	<div class="removeItems" style="display: none;"></div>
 
 	<?php //echo $form->dropDownListRow($model, 'area', CHtml::listData($areas, 'id', 'name')); ?>
+
+	<?if($model->asa('seo')){?><br><br>
+	<fieldset>
+		<legend>Для SEO специалиста:</legend>
+	    <?php echo $form->textFieldRow($model,'meta_title'); ?>
+	    <?php echo $form->textFieldRow($model,'meta_keys'); ?>
+	    <?php echo $form->textAreaRow($model,'meta_desc'); ?>
+	    <?php echo CHtml::activelabel($model, 'meta_html');?>
+	    <?php $this->widget('admin_ext.ckeditor.CkeditorWidget', array( 'model' => $model, 'attribute' => 'meta_html')); ?>
+	</fieldset>
+	<?}?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

@@ -95,8 +95,4 @@ Yii::app()->clientScript->registerScript('#main_page', '
 		$.fancybox.open(jQuery("." + $(this).data("id")));
 	});
 ', CClientScript::POS_READY);
-
-Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );
-//Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );
-Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
 ?>

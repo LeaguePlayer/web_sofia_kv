@@ -105,6 +105,9 @@ class CatalogController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
 
+		//seo
+		$this->addMetaTags($room, 'address');
+
 		$this->render('view', array(
 			'model' => $this->loadModel($id),
 			'data' => $dataProvider,
@@ -166,9 +169,11 @@ class CatalogController extends Controller
 
 			$model->attributes = $_POST['BookingForm'];
 
-			if($model->validate())
+			if($model->validate()){
 				echo "ok";
-			else{
+				$msg = $this->renderPartial('_mail_template', array('model' => $model), true);
+				$this->sendMail('vitgvr@gmail.com', $_POST['subject'], $msg, $model);
+			}else{
 				Yii::app()->clientScript->scriptMap['jquery.js'] = false;
 				Yii::app()->clientScript->scriptMap['jquery-ui.js'] = false;
 				if(!isset($_POST['main']))
@@ -176,9 +181,67 @@ class CatalogController extends Controller
 				else
 					$this->renderPartial('/site/_booking_form_main', array('ajax' => true, 'model' => $model));
 			}
-				
+			Yii::app()->end();	
 		}
+		//$this->renderPartial('/site/_booking_form_main', array('ajax' => true, 'model' => $model));
 		Yii::app()->end();
+	}
+
+	public function actionFancyForm(){
+		$model = new BookingForm;
+
+		$model->human_count = 1;
+		$model->rooms_count = 1;
+		$model->days = 1;
+
+		if(isset($_POST['BookingForm'])){
+
+			$model->attributes = $_POST['BookingForm'];
+
+			if($model->validate()){
+				echo "ok";
+				//$this->renderPartial('_mail_template', array('model' => $model));
+				$msg = $this->renderPartial('_mail_template', array('model' => $model), true);
+				$this->sendMail('vitgvr@gmail.com', $_POST['subject'], $msg, $model);
+				Yii::app()->end();
+			}
+			else{
+				//ii::app()->clientScript->corePackages = array();
+			}
+			
+		}
+		//Yii::app()->clientScript->scriptMap['jquery*'] = false;
+		//Yii::app()->clientScript->scriptMap['jquery-ui.js'] = false;
+		//Yii::app()->clientScript->scriptMap['jquery-ui.min.js'] = false;
+		/*Yii::app()->clientScript->scriptMap['jquery-ui-i18n.min.js'] = false;
+		Yii::app()->clientScript->scriptMap['*.css'] = false;*/
+
+		//Yii::app()->coreCss=false;
+		//Yii::app()->clientScript->corePackages = array();
+		//Yii::app()->clientScript->registerCoreScript('maskedinput');
+		if($model->id)
+			$this->renderPartial('_booking_room', array('model' => $model, 'ajax' => true, 'room' => Catalog::model()->findByPk($model->id)));
+		else
+			$this->renderPartial('_fancy_form', array('model' => $model, 'ajax' => true));
+		//$this->renderPartial('/site/_booking_form_main', array('ajax' => true, 'model' => $model));
+		Yii::app()->end();
+	}
+
+
+	private function sendMail($to, $subject, $message, $form){
+		// To send HTML mail, the Content-type header must be set
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+		// Additional headers
+		//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
+		if($form->fio) $headers .= 'From: '.$form->fio.' <'.$form->email.'>' . "\r\n";
+		else $headers .= 'From: Гость <'.$form->email.'>' . "\r\n";
+		//$headers .= 'Cc: sofiastylecc@example.com' . "\r\n";
+		//$headers .= 'Bcc: sofiastylebcc@example.com' . "\r\n";
+
+		// Mail it
+		mail($to, $subject, $message, $headers);
 	}
 
 	// Uncomment the following methods and override them if needed

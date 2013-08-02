@@ -1,6 +1,8 @@
 <div class="top-block no-margin-left">
-	<h2><?=CHtml::encode($model->rooms_count)?>-комнатная квартира, <?=CHtml::encode($model->address)?></h2>
-	<a id="link-share" class="gray-button map" href="/favorites/"><i class="plus-gray"></i> Квартиры в закладках</a>
+	<h2>
+		<a id="link-share" class="gray-button map" href="/favorites/"><i class="plus-gray"></i> Квартиры в закладках</a>
+		<?=CHtml::encode($model->rooms_count)?>-комнатная квартира, <?=CHtml::encode($model->address)?>
+	</h2>
 </div>
 <div class="dops">
 	<div class="dop">
@@ -19,7 +21,7 @@
 		</div>
 		<div class="room-price">
 			<div class="col3-left">
-				<b><?=CHtml::encode($model->price_24)?></b> руб. в сутки
+				<b><? echo CHtml::encode(($model->cat_actions ? $model->cat_actions[0]->new_price : $model->price_24))?></b> руб. в сутки
 			</div>
 			<div class="col3-left">
 				<b><?=CHtml::encode($model->price_night)?></b> руб. за ночь
@@ -53,10 +55,12 @@
 </div>
 <?}?>
 
+<div id="fancy-room" style="display:none;"><?php $this->renderPartial('/catalog/_booking_room', array('room' => $model));?></div>
+
 <div id="bron">
-	<div class="text">Предлагаем вам в аренду квартиры на сутки и более. Каким бы ни был ваш выбор все квартиры с качественным ремонтом, меблированы, оборудованы бытовой техникой, чистые и уютные.</div>
+	<div class="text"><?=strip_tags($model->desc)?></div>
 	<div class="button">
-		<a href="#" class="blue-button"><i class="key"></i>Забронировать квартиру</a>
+		<a href="#fancy-room" class="blue-button room-form"><i class="key"></i>Забронировать квартиру</a>
 	</div>
 </div>
 <div class="social-share">

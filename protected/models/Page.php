@@ -61,6 +61,13 @@ class Page extends CActiveRecord
 		);
 	}
 
+	public function behaviors()
+	{
+	    return array(
+	        'seo' => array('class' => 'SeoBehavior')
+	    );
+	}
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

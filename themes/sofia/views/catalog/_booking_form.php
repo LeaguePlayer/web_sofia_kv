@@ -17,6 +17,7 @@
 			'validateOnSubmit'=>true,
 		),
 	)); ?>
+	<?=CHtml::hiddenField('subject', 'Заявка на подбор квартиры')?>
 	<div class="errors" style="display: none;"><?=$form->errorSummary($model)?></div>
 	<div class="success" style="display: none;">
 		<p class="upper">Ваша заявка принята,Спасибо!<p>

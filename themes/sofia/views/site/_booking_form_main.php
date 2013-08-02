@@ -24,6 +24,7 @@
 			<p class="blue upper">мы свяжемся с Вами, <br>В ближайшее время</p>
 			<p class="button"><a href="#send" class="blue-button"><span>&nbsp;</span>Вернуться на сайт</a></p>
 		</div>
+		<?=CHtml::hiddenField('subject', 'Заявка на бронирование квартиры')?>
 		<?=CHtml::hiddenField('main', '1')?>
 		<table>
 			<tr class="label">
@@ -39,6 +40,7 @@
 					    'attribute'=>'date',
 					    'model' => $model,
 					    'language' => 'ru',
+					    'cssFile' => false,
 					    // additional javascript options for the date picker plugin
 					    'options'=>array(
 					        'showAnim'=>'fold',

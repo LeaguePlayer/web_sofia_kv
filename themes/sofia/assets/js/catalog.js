@@ -4,9 +4,13 @@ $(".rooms-count a").on("click", function(e){
 	var links = $(this).parent().find("a");
 	var index = links.index($(this));
 
-	$(this).parent().find("a").removeClass("active");
-	$(this).addClass("active");
-	$(".checkbox-rooms :checkbox").attr("checked", false).eq(index).attr("checked", true);
-
+	if($(this).hasClass('active')){
+		links.removeClass("active");
+		$(".checkbox-rooms :checkbox").eq(index).attr("checked", false);
+	}else{
+		links.removeClass("active");
+		$(this).addClass("active");
+		$(".checkbox-rooms :checkbox").attr("checked", false).eq(index).attr("checked", true);
+	}
 	$("#catalog-filter").submit();
 });

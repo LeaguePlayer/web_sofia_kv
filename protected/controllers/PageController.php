@@ -3,7 +3,12 @@
 class PageController extends Controller
 {
 	public function actionView($alias){
-		$this->render('view', array('model' => $this->loadModel($alias)));
+		$model = $this->loadModel($alias);
+
+		//seo
+		$this->addMetaTags($model, 'title');
+
+		$this->render('view', array('model' => $model));
 	}
 
 	public function loadModel($alias)

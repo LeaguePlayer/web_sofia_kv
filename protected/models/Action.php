@@ -100,9 +100,10 @@ class Action extends CActiveRecord
 	            'name' => true,
 	            'description' => true,
 	        ),
-	        'sortableModel' => array(
+	    	'sortableModel' => array(
 		      'class' => 'SortableCActiveRecordBehavior'
-		   )
+		   	),
+	       	'seo' => array('class' => 'SeoBehavior')
 	    );
 	}
 
