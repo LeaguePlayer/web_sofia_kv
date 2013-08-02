@@ -46,6 +46,8 @@
     font-weight: normal;
     font-style: italic;
 }*/
+
+
 /*==ICONS==*/
 i {
     display: inline-block;
@@ -168,10 +170,15 @@ a{text-decoration: none;}
     top: 0px;
     left: 0px;
     width: 235px;
-    height: 605px;
+    /*height: 605px;*/
     padding-left: 15px;
+    padding-bottom: 10px;
     border: solid 10px #e8e8e8;
     border-radius: 10px;
+}
+.left .filters .small_text{
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 .left .filters.promo {
@@ -296,7 +303,7 @@ a.spec {
 #order .sleeper,
 .filters .price {
     width: 215px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .filters .sleeper .sleeper_count,
 #order .sleeper_count,
@@ -677,7 +684,7 @@ a.link-addFavorites.active:hover span:after{
 #main{
     width: 1200px;
     margin: 0 auto;
-    background: no-repeat left center url('../images/logo_layout.gif');
+    background: no-repeat left center url('../images/logo_layout.png');
     min-height: 200px;
 }
 
@@ -1649,4 +1656,23 @@ footer .social a:first-child, .page-content .social a:first-child {
 .sofia-modal .booking-block h1{
     font-size: 33px;
     text-align: center;
+}
+
+
+@media screen and (max-width: 1185px) {
+    #main{
+        width: 100%;
+    }
+    #main .center{
+        width: 100%;
+    }
+    #main .logo {
+        margin: 20px 0 0 13%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .center{
+        width: 100%;
+    }
 }

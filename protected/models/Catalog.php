@@ -133,7 +133,7 @@ class Catalog extends CActiveRecord
 			'price_hour' => 'Цена за час',
 			'active' => 'Активна',
 			'rooms_count' => 'Количество комнат',
-			'human_count' => 'Количество спальных мест',
+			'human_count' => 'Количество человек',
 			'coords' => 'Координаты'
 		);
 	}
@@ -218,7 +218,7 @@ class Catalog extends CActiveRecord
 	}
 
 	public static function getHumanCount(){
-		return array(1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5', 6 => '6', 7 => '7', 8 => '8');
+		return array(1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5', 6 => '6', 7 => '7', 8 => '8', 9 => '9', 10 => '10');
 	}
 
 	protected function beforeValidate()

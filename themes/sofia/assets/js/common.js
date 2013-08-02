@@ -115,7 +115,7 @@ jQuery(document).ready(function(){
 	$("#order_sleeper-count").slider({
 		range: "min",
 		min: 1,
-		max: 8,
+		max: 10,
 		step: 1,
 		create: function(event, ui){
 			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
@@ -147,17 +147,17 @@ if($(".filters").size()>0){
 			return false;
 		}
 		console.log();
-		if($(window).height() > 700){
+		if($(window).height() > 750){
 			scroll = $(document).scrollTop();
-			var stop_line =  $(document).height() - $(".filters").height() - $('body > footer').height() - 100;
+			var stop_line =  $(document).height() - $(".filters").height() - $('body > footer').height() - 170;
 			if(scroll<offsetTop){
 				$('.left .filters').stop(true).animate({top: 0}, 500);
-				$('.left #link-share').stop(true).animate({top: 650}, 500);
+				$('.left #link-share').stop(true).animate({top: 690}, 500);
 				return false;
 			}
 			if(scroll < stop_line && (scroll>=offsetTop || offsetTop > 358) ){
 				$('.left .filters').stop(true).animate({top: scroll-350}, 500);
-				$('.left #link-share').stop(true).animate({top: scroll+300}, 500);
+				$('.left #link-share').stop(true).animate({top: scroll+340}, 500);
 			}else{
 				//$('.left .filters').stop(true).animate({top: stop_line}, 500);
 				//$('.left #link-share').stop(true).animate({top: stop_line}, 500);
@@ -172,7 +172,7 @@ if($(".filters").size()>0){
 	$("#sleeper-slider, #order_sleeper-count").slider({
 		range: "min",
 		min: 1,
-		max: 8,
+		max: 10,
 		step: 1,
 		create: function(event, ui){
 			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
