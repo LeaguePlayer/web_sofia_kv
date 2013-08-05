@@ -61,6 +61,16 @@ class Action extends CActiveRecord
 		);
 	}
 
+	public function defaultScope()
+	{
+		//only with photos
+	    return array(
+	    	'select' => $this->getTableAlias(false,false).'.*',
+	    	'distinct' => true,
+	    	'join' => 'INNER JOIN gallery ON gallery_id = gallery.id INNER JOIN gallery_photo ON gallery.id = gallery_photo.gallery_id'
+	    );
+	}
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -208,4 +218,12 @@ class Action extends CActiveRecord
 
 		return parent::afterSave();
 	}
+
+	protected function beforeFind() {
+    	parent::beforeFind();
+	   	
+	   	if(Yii::app()->controller instanceof AdminController){
+	   		$this->resetScope();
+	   	}    
+  	}
 }

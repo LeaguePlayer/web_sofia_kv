@@ -7,6 +7,9 @@
 			case 'Action':
 				$this->renderPartial('_action', array('block' => $block, 'i' => $key));
 				break;
+			case 'Page':
+				$this->renderPartial('_page', array('block' => $block, 'i' => $key));
+				break;
 		}
 	?>
 	<?endforeach;?>
