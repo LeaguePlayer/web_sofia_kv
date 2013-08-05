@@ -92,15 +92,15 @@ class Catalog extends CActiveRecord
 	    );
 	}
 
-	public function scopes()
-    {
-        return array(
-            'no_action'=>array(
-                'condition'=>'action_id=0',
-                'order'=>'address'
-            ),
-        );
-    }
+	public function defaultScope()
+	{
+		//only with photos
+	    return array(
+	    	'select' => $this->getTableAlias(false,false).'.*',
+	    	'distinct' => true,
+	    	'join' => 'INNER JOIN gallery ON gallery_id = gallery.id INNER JOIN gallery_photo ON gallery.id = gallery_photo.gallery_id'
+	    );
+	}
 
 	/**
 	 * @return array relational rules.
@@ -238,4 +238,16 @@ class Catalog extends CActiveRecord
 
         return $attrs;
     }
+
+
+    protected function beforeFind() {
+    	parent::beforeFind();
+	   	
+	   	if(Yii::app()->controller instanceof AdminController){
+	   		$this->resetScope();
+	   	}
+		//if(false) 
+		//echo get_called_class();
+    
+  	}
 }

@@ -7,9 +7,9 @@ class FavoritesController extends Controller{
 		$criteria = CatalogController::getCriteriaForFilter($model);
 
 		if($this->cookie_exists())
-			$criteria->addInCondition('id', unserialize($this->getRoomsCookie()));
+			$criteria->addInCondition('t.id', unserialize($this->getRoomsCookie()));
 		else
-			$criteria->addInCondition('id', array());
+			$criteria->addInCondition('t.id', array());
 
 		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $criteria));
 
