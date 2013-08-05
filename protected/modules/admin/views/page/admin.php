@@ -36,9 +36,14 @@ $('.search-form form').submit(function(){
 			'type'=>'html',
 			'value' => 'CHtml::link($data->title, array("view","id"=>$data->id))'
 		),
+		'active',
 		'alias',
 		//'content',
-		'active',
+		array(
+			'header' => 'Ссылка',
+			'type'=>'html',
+			'value' => 'CHtml::link("/page/".$data->alias, "/page/".$data->alias, array("target"=>"_blank"))'
+		),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

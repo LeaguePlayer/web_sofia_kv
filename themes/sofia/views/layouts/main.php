@@ -17,7 +17,7 @@
 					<a href="/"><img src="<?=$this->getAssetsUrl()?>/images/logo.png"></a>
 				</div>
 				<div class="contacts">
-					<a class="mail" href="mailto:info@sofiastyle.ru">info@sofiastyle.ru</a>
+					<a class="mail" href="mailto:info@sofiastyle.ru"><?=Settings::getEmail()?></a>
 					<span class="phone">8 912 922 555</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
 				</div>
@@ -37,7 +37,7 @@
 			</div>
 			<div class="phone">
 				<span>8 912 922 555</span>
-				<a class="grey" href="mailto:info@sofiastyle.ru">info@sofiastyle.ru</a>
+				<a class="grey" href="mailto:info@sofiastyle.ru"><?=Settings::getEmail()?></a>
 			</div>
 			<div class="clear"></div>
 		</footer>

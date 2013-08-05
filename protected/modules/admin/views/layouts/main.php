@@ -47,6 +47,7 @@
 	            'class'=>'bootstrap.widgets.TbMenu',
 	            'htmlOptions'=>array('class'=>'pull-right'),
 	            'items'=>array(
+	            	array('label'=>'На сайт', 'url'=>'/'),
 	                array('label'=>'Выйти', 'url'=>'/admin/user/logout'),
 	            ),
 	        ),
