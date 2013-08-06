@@ -171,7 +171,7 @@ class CatalogController extends Controller
 
 			if($model->validate()){
 				echo "ok";
-				Catalog::sendSMSLight('+79220448947', $_POST['subject'], 'sofia72.ru');
+				Catalog::sendSMSLight(Settings::getPhone(), $_POST['subject'], 'sofia72.ru');
 
 				$msg = $this->renderPartial('_mail_template', array('model' => $model), true);
 				$this->sendMail(Settings::getEmail(), $_POST['subject'], $msg, $model);
@@ -202,7 +202,7 @@ class CatalogController extends Controller
 
 			if($model->validate()){
 				echo "ok";
-				Catalog::sendSMSLight('+79220448947', $_POST['subject'], 'sofia72.ru');
+				Catalog::sendSMSLight(Settings::getPhone(), $_POST['subject'], 'sofia72.ru');
 				//$this->renderPartial('_mail_template', array('model' => $model));
 				$msg = $this->renderPartial('_mail_template', array('model' => $model), true);
 				$this->sendMail(Settings::getEmail(), $_POST['subject'], $msg, $model);

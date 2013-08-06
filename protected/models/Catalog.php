@@ -253,35 +253,35 @@ class Catalog extends CActiveRecord
 
   	//send sms
   	public static function sendSMSLight($phone, $text, $sender)
-        {
-       		$login = "LeaguePlayer";
-			$password = "qwelpo86";
-			$host = "api.infosmska.ru";
+    {
+   		$login = "LeaguePlayer";
+		$password = "qwelpo86";
+		$host = "api.infosmska.ru";
 
-			$fp = fsockopen($host, 80);
-			fwrite($fp, "GET /interfaces/SendMessages.ashx" .
-				"?login=" . rawurlencode($login) .
-				"&pwd=" . rawurlencode($password) .
-				"&phones=" . rawurlencode($phone) .
-				"&message=" . rawurlencode($text) .
-				"&sender=" . rawurlencode($sender) .
-				" HTTP/1.1\r\nHost: $host\r\nConnection: Close\r\n\r\n");
+		$fp = fsockopen($host, 80);
+		fwrite($fp, "GET /interfaces/SendMessages.ashx" .
+			"?login=" . rawurlencode($login) .
+			"&pwd=" . rawurlencode($password) .
+			"&phones=" . rawurlencode($phone) .
+			"&message=" . rawurlencode($text) .
+			"&sender=" . rawurlencode($sender) .
+			" HTTP/1.1\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
-			fwrite($fp, "Host: " . $host . "\r\n");
-			fwrite($fp, "\n");
+		fwrite($fp, "Host: " . $host . "\r\n");
+		fwrite($fp, "\n");
 
-			$response = '';
+		$response = '';
 
-			while(!feof($fp)) {
-				$response .= fread($fp, 1);
-			}
+		while(!feof($fp)) {
+			$response .= fread($fp, 1);
+		}
 
-			fclose($fp);
+		fclose($fp);
 
-			list($other, $responseBody) = explode("\r\n\r\n", $response, 2);
-			list($other, $ids_str) = explode(":", $responseBody, 2);
-			list($sms_id, $other) = explode(";", $ids_str, 2);
+		list($other, $responseBody) = explode("\r\n\r\n", $response, 2);
+		list($other, $ids_str) = explode(":", $responseBody, 2);
+		list($sms_id, $other) = explode(";", $ids_str, 2);
 
-			return $sms_id;
-        } 
+		return $sms_id;
+    } 
 }

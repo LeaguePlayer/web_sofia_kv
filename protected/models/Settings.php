@@ -102,4 +102,16 @@ class Settings extends CActiveRecord
 		return Yii::app()->params['adminEmail'];
 
 	}
+
+	public static function getPhone(){
+		$model = Settings::model()->find();
+
+		if($model && $model->summary){
+			$data = unserialize($model->summary);
+			return $data['phone_sms'];
+		}
+
+		return Yii::app()->params['phone'];
+
+	}
 }
