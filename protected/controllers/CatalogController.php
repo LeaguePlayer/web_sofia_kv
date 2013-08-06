@@ -94,7 +94,7 @@ class CatalogController extends Controller
 
 		//price between -300 and + 300 rub
 		$criteria->addCondition('price_24 >= :min AND price_24 <= :max');
-		$criteria->addCondition('id != :id');
+		$criteria->addCondition('t.id != :id');
 		$criteria->params = array(
 			':min' => $room->price_24 - 300, 
 			':max' => $room->price_24 + 300,
