@@ -89,7 +89,8 @@ class Catalog extends CActiveRecord
 	        'sortableModel' => array(
 		      'class' => 'SortableCActiveRecordBehavior'
 		   	),
-		   	'seo' => array('class' => 'SeoBehavior')
+		   	'seo' => array('class' => 'SeoBehavior'),
+		   	'tour' => array('class' => 'TourBehavior')
 	    );
 	}
 
@@ -215,26 +216,6 @@ class Catalog extends CActiveRecord
 		return Yii::app()->db->createCommand($sql)->queryAll();
 	}*/
 
-	public function create3dTour(){
-		if($this->tour_3d){
-			$root = YiiBase::getPathOfAlias('webroot');
-			$uploads_dir = $root.DIRECTORY_SEPARATOR."uploads";
-			$tour_dir = $uploads_dir.DIRECTORY_SEPARATOR."tours";
-
-			if(!is_dir($uploads_dir))
-				mkdir($uploads_dir, 0777);
-
-			if(!is_dir($tour_dir)) 
-				mkdir($tour_dir, 0777);
-
-			if(!is_dir($tour_dir.DIRECTORY_SEPARATOR.$this->id)) 
-				mkdir($tour_dir.DIRECTORY_SEPARATOR.$this->id, 0777);
-
-			$this->tour_3d->saveAs($tour_dir.DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR.$this->tour_3d->name);
-
-		}
-	}
-
 	public static function getRoomsCount(){
 		return array(1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5');
 	}
@@ -307,13 +288,4 @@ class Catalog extends CActiveRecord
 		return $sms_id;
     }
 
-    protected function beforeDelete()
-	{
-		$dir = YiiBase::getPathOfAlias('webroot').DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR.'tours'.DIRECTORY_SEPARATOR.$this->id;
-		@unlink($dir.DIRECTORY_SEPARATOR.$this->tour_3d);
-		if(is_dir($dir)){
-			rmdir($dir);
-		}
-		return parent::beforeDelete();
-	}
 }

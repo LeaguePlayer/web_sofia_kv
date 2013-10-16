@@ -98,7 +98,7 @@ class CatalogController extends AdminController
 
 				$model->save(false);
 
-				$model->create3dTour();
+				//$model->create3dTour();
 
 				if(!empty($_POST['addItems'])){
 					$this->addAreasById($_POST['addItems'], $model->id);
@@ -139,6 +139,9 @@ class CatalogController extends AdminController
 			if(!empty($_POST['removeItems'])){
 				$this->removeAreasById($_POST['removeItems'], $model->id);
 			}
+
+			$model->tour_3d=CUploadedFile::getInstance($model,'tour_3d');
+			//$model->create3dTour();
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
