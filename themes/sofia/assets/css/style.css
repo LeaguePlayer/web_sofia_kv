@@ -458,6 +458,20 @@ a.link-addFavorites:hover {
     text-transform: uppercase;
 }
 
+a.tour-3d{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    padding: 15px 10px;
+    background: #000;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+a.tour-3d:hover{
+    background-color: #0daff0;
+}
+
 a.link-addFavorites:hover span:after {
     content: "в мои закладки";
 }

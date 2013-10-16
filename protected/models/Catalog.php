@@ -57,6 +57,7 @@ class Catalog extends CActiveRecord
 			array('address, number, coords', 'required'),
 			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, sort', 'numerical', 'integerOnly'=>true),
 			array('address, features, rooms_count', 'length', 'max'=>255),
+			array('tour_3d', 'file', 'allowEmpty'=>true, 'types' => 'swf'),
 			array('coords', 'length', 'max'=>100),
 			array('desc', 'safe'),
 			// The following rule is used by search().
@@ -134,7 +135,8 @@ class Catalog extends CActiveRecord
 			'active' => 'Активна',
 			'rooms_count' => 'Количество комнат',
 			'human_count' => 'Количество человек',
-			'coords' => 'Координаты'
+			'coords' => 'Координаты',
+			'tour_3d' => '3d тур'
 		);
 	}
 
@@ -213,6 +215,26 @@ class Catalog extends CActiveRecord
 		return Yii::app()->db->createCommand($sql)->queryAll();
 	}*/
 
+	public function create3dTour(){
+		if($this->tour_3d){
+			$root = YiiBase::getPathOfAlias('webroot');
+			$uploads_dir = $root.DIRECTORY_SEPARATOR."uploads";
+			$tour_dir = $uploads_dir.DIRECTORY_SEPARATOR."tours";
+
+			if(!is_dir($uploads_dir))
+				mkdir($uploads_dir, 0777);
+
+			if(!is_dir($tour_dir)) 
+				mkdir($tour_dir, 0777);
+
+			if(!is_dir($tour_dir.DIRECTORY_SEPARATOR.$this->id)) 
+				mkdir($tour_dir.DIRECTORY_SEPARATOR.$this->id, 0777);
+
+			$this->tour_3d->saveAs($tour_dir.DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR.$this->tour_3d->name);
+
+		}
+	}
+
 	public static function getRoomsCount(){
 		return array(1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5');
 	}
@@ -283,5 +305,15 @@ class Catalog extends CActiveRecord
 		list($sms_id, $other) = explode(";", $ids_str, 2);
 
 		return $sms_id;
-    } 
+    }
+
+    protected function beforeDelete()
+	{
+		$dir = YiiBase::getPathOfAlias('webroot').DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR.'tours'.DIRECTORY_SEPARATOR.$this->id;
+		@unlink($dir.DIRECTORY_SEPARATOR.$this->tour_3d);
+		if(is_dir($dir)){
+			rmdir($dir);
+		}
+		return parent::beforeDelete();
+	}
 }

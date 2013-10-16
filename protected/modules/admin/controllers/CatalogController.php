@@ -68,6 +68,8 @@ class CatalogController extends AdminController
 		{
 			$model->attributes=$_POST['Catalog'];
 
+			$model->tour_3d=CUploadedFile::getInstance($model,'tour_3d');
+
 			if($model->validate()){
 				//Create Gallery
 				$gallery = new Gallery();
@@ -93,7 +95,10 @@ class CatalogController extends AdminController
 				$gallery->save();
 
 				$model->gallery_id = $gallery->id;
+
 				$model->save(false);
+
+				$model->create3dTour();
 
 				if(!empty($_POST['addItems'])){
 					$this->addAreasById($_POST['addItems'], $model->id);

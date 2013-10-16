@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'catalog-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -36,6 +37,8 @@
 	<?php echo $form->textFieldRow($model,'price_night',array('class'=>'input-small')); ?>
 
 	<?php echo $form->textFieldRow($model,'price_hour',array('class'=>'input-small')); ?>
+
+	<?php echo $form->fileFieldRow($model,'tour_3d',array('class'=>'input-small')); ?>
 
 	<?php echo CHtml::label('Районы квартиры', 'areas'); ?>
 	<?php $this->widget('admin_ext.select2.ESelect2', array(

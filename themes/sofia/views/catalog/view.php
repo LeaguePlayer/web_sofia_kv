@@ -36,6 +36,9 @@
 <?php if($model->gallery->galleryPhotos){?>
 <div id="images">
 	<a class="link-addFavorites <?=(FavoritesController::is_room_exists($model->id) ? 'active' : '')?>" href="#" data-id="<?=$model->id?>"><span></span></a>
+	<?if(isset($model->tour_3d)){?>
+	<a class="tour-3d" href="/uploads/tours/<?=$model->id?>/<?=$model->tour_3d?>">3D Тур</a>
+	<?}?>
 	<a class="nextImage" href="#"></a>
 	<a class="prevImage" href="#"></a>
 	<a class="zoomImage" href="#"></a>
@@ -103,4 +106,8 @@
 Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js' ,CClientScript::POS_HEAD );
 Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );
 Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/fancybox/jquery.fancybox.css');
+
+Yii::app()->clientScript->registerScript('catalog', '
+	$(".tour-3d").fancybox({type: "swf", wrapCSS: "sofia-modal"});
+', CClientScript::POS_READY);
 ?>
