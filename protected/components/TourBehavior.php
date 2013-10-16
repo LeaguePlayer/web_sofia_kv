@@ -1,12 +1,12 @@
 <?php
 
 class TourBehavior extends CActiveRecordBehavior{
-	
+
 	public function afterSave($event)
 	{
 		$tour_file = $this->owner->tour_3d;
 
-		if($tour_file){
+		if($tour_file && is_object($tour_file)){
 			$root = YiiBase::getPathOfAlias('webroot');
 			$uploads_dir = $root.DIRECTORY_SEPARATOR."uploads";
 			$tour_dir = $uploads_dir.DIRECTORY_SEPARATOR."tours";
@@ -27,7 +27,6 @@ class TourBehavior extends CActiveRecordBehavior{
 			}
 
 			$tour_file->saveAs($tour_dir.DIRECTORY_SEPARATOR.$this->owner->id.DIRECTORY_SEPARATOR.$this->owner->tour_3d->name);
-
 		}
 	}
 

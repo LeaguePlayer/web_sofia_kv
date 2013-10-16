@@ -140,8 +140,8 @@ class CatalogController extends AdminController
 				$this->removeAreasById($_POST['removeItems'], $model->id);
 			}
 
-			$model->tour_3d=CUploadedFile::getInstance($model,'tour_3d');
-			//$model->create3dTour();
+			$tour_file = CUploadedFile::getInstance($model,'tour_3d');
+			if($tour_file) $model->tour_3d = $tour_file;
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
