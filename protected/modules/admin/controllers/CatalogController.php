@@ -68,7 +68,7 @@ class CatalogController extends AdminController
 		{
 			$model->attributes=$_POST['Catalog'];
 
-			$model->tour_3d=CUploadedFile::getInstance($model,'tour_3d');
+			//$model->tour_3d=CUploadedFile::getInstance($model,'tour_3d');
 
 			if($model->validate()){
 				//Create Gallery
@@ -140,8 +140,8 @@ class CatalogController extends AdminController
 				$this->removeAreasById($_POST['removeItems'], $model->id);
 			}
 
-			$tour_file = CUploadedFile::getInstance($model,'tour_3d');
-			if($tour_file) $model->tour_3d = $tour_file;
+			//$tour_file = CUploadedFile::getInstance($model,'tour_3d');
+			//if($tour_file) $model->tour_3d = $tour_file;
 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
