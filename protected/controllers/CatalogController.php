@@ -236,4 +236,18 @@ class CatalogController extends Controller
 		// Mail it
 		mail($to, $subject, $message, $headers);
 	}
+
+	public function actionGetTour($swf){
+		$ar = explode('/', $swf);
+		if(count($ar) > 1)  $ar = array_reverse($ar);
+		$file = YiiBase::getPathOfAlias('webroot').DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."tours".DIRECTORY_SEPARATOR.$ar[0];
+
+		header('Content-type: application/x-shockwave-flash');
+
+		//print_r($file);
+		echo file_get_contents($file);
+
+		//Yii::app()->request->sendFile($file, base64_encode($file), 'x-shockwave-flash');
+		Yii::app()->end();
+	}
 }
