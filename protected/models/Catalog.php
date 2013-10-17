@@ -56,7 +56,7 @@ class Catalog extends CActiveRecord
 		return array(
 			array('address, number, coords', 'required'),
 			array('number, price_24, price_night, price_hour, active, gallery_id, human_count, sort', 'numerical', 'integerOnly'=>true),
-			array('address, features, rooms_count', 'length', 'max'=>255),
+			array('address, features, rooms_count, tour_3d', 'length', 'max'=>255),
 			//array('tour_3d', 'file', 'allowEmpty'=>true, 'types' => 'swf'),
 			array('coords', 'length', 'max'=>100),
 			array('desc', 'safe'),

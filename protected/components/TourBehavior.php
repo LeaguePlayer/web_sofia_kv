@@ -33,7 +33,7 @@ class TourBehavior extends CActiveRecordBehavior{
 
 	public function beforeDelete($event)
 	{
-		$dir = YiiBase::getPathOfAlias('webroot').DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR.'tours';
-		@unlink($dir.DIRECTORY_SEPARATOR.$this->owner->tour_3d);
+		//$dir = YiiBase::getPathOfAlias('webroot').DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR.'tours';
+		//@unlink($dir.DIRECTORY_SEPARATOR.$this->owner->tour_3d);
 	}
 }
