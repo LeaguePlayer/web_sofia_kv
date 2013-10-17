@@ -37,7 +37,7 @@
 <div id="images">
 	<a class="link-addFavorites <?=(FavoritesController::is_room_exists($model->id) ? 'active' : '')?>" href="#" data-id="<?=$model->id?>"><span></span></a>
 	<?if(isset($model->tour_3d)){?>
-	<a class="tour-3d" href="/uploads/tours/<?=$model->id?>/<?=$model->tour_3d?>">3D Тур</a>
+	<a class="tour-3d" href="/uploads/tours/<?=$model->tour_3d?>">3D Тур</a>
 	<?}?>
 	<a class="nextImage" href="#"></a>
 	<a class="prevImage" href="#"></a>
