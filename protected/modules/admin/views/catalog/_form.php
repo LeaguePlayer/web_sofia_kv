@@ -38,7 +38,7 @@
 
 	<?php echo $form->textFieldRow($model,'price_hour',array('class'=>'input-small')); ?>
 
-	<?php echo $form->fileFieldRow($model,'tour_3d',array('class'=>'input-small')); ?>
+	<?php echo $form->textFieldRow($model,'tour_3d',array()); ?>
 
 	<?php echo CHtml::label('Районы квартиры', 'areas'); ?>
 	<?php $this->widget('admin_ext.select2.ESelect2', array(
