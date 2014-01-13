@@ -18,7 +18,11 @@
 				</div>
 				<div class="contacts">
 					<a class="mail" href="mailto:info@sofiastyle.ru"><?=Settings::getEmail()?></a>
-					<span class="phone">8 912 922 555</span>
+					<span class="phone">
+						<span class="simple">500-333</span>
+						<span class="simple">8-800-500-3133</span>
+						<span class="info">для регионов бесплатно</span>
+					</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
 				</div>
 			</div>
@@ -36,7 +40,9 @@
 				<a class="link-instagram" href="#"></a>
 			</div>
 			<div class="phone">
-				<span>8 912 922 555</span>
+				<span class="simple">500-333</span>
+				<span class="simple">8-800-500-3133</span>
+				<span class="info">для регионов бесплатно</span>
 				<a class="grey" href="mailto:info@sofiastyle.ru"><?=Settings::getEmail()?></a>
 			</div>
 			<div class="clear"></div>

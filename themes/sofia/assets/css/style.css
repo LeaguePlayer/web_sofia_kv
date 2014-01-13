@@ -738,10 +738,21 @@ a.link-addFavorites.active:hover span:after{
     color: #000;
 }
 #main .contacts .mail:hover{ text-decoration: none;}
+
 #main .contacts .phone{
     font-size: 40px;
     display: block;
     margin-top: 20px;
+    width: 265px;
+}
+#main .contacts .phone .simple{
+    display: block;
+    line-height: 1
+}
+#main .contacts .phone .info{
+    display: block;
+    line-height: 1;
+    font-size: 14px;
 }
 #main .contacts .blue-button{
     margin-top: 20px;
@@ -1490,13 +1501,22 @@ footer .copy .grey{
 
 footer .phone{
     float: left;
-    width: 235px;
+    width: 270px;
     padding-left: 45px;
     margin-left: 45px;
     background: no-repeat left 5px url('../images/phone.gif');
 }
 footer .phone span{
     font: normal normal 40px/40px 'conqueror_sans';
+}
+footer .phone span.simple{
+    line-height: 1;
+    display: block;
+}
+footer .phone span.info{
+    line-height: 1;
+    display: block;
+    font-size: 14px;
 }
 footer .phone .grey{
     font-size: 16px;
