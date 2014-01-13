@@ -24,14 +24,16 @@ class Catalog extends CActiveRecord
 		1 => 'wifi',
 		2 => 'tele',
 		3 => 'wash',
-		4 => 'iron'
+		4 => 'iron',
+		5 => 'internet'
 	);
 
 	public static $allowFeatures = array(
 		1 => 'В квартире есть Wi-Fi',
 		2 => 'В квартире есть Кабельное TV',
 		3 => 'В квартире есть Стиральная машинка',
-		4 => 'В квартире есть Утюг'
+		4 => 'В квартире есть Утюг',
+		5 => 'В квартире есть Интернет'
 	);
 
 	/**
@@ -195,7 +197,8 @@ class Catalog extends CActiveRecord
 			1 => 'Wi-Fi',
 			2 => 'TV',
 			3 => 'Стиральная машина',
-			4 => 'Утюг'
+			4 => 'Утюг',
+			5 => 'Интернет'
 		);
 	}
 

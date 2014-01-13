@@ -262,7 +262,7 @@ a.spec {
 
 .filters .checkbox-dop input[type="checkbox"] + label {
     display: inline-block;
-    width: 39px;
+    width: 38px;
     height: 27px;
     margin: 13px 0px;
     font: normal 16px/21px 'a_avanteltnr';
@@ -287,16 +287,24 @@ a.spec {
     background-position: -39px -27px;
 }
 .filters .checkbox-dop input[type="checkbox"]#wash + label {
-    background-position: -78px 0px
+    background-position: -76px 0px
 }
 .filters .checkbox-dop input[type="checkbox"]#wash:checked + label {
-    background-position: -78px -27px;
+    background-position: -76px -27px;
 }
 .filters .checkbox-dop input[type="checkbox"]#iron + label {
     background-position: -117px 0px
 }
 .filters .checkbox-dop input[type="checkbox"]#iron:checked + label {
     background-position: -117px -27px;
+}
+.filters .checkbox-dop input[type="checkbox"]#internet + label {
+    background-position: -156px 0px;
+    width: 30px;
+}
+.filters .checkbox-dop input[type="checkbox"]#internet:checked + label {
+    background-position: -156px -27px;
+    width: 30px;
 }
 
 .filters .sleeper,
@@ -983,6 +991,9 @@ a.link-addFavorites.active:hover span:after{
 .dop div.iron {
     background-position: -117px 0px;
 }
+.dop div.internet {
+    background-position: -156px 0px;
+}
 .dop div.wifi-blue {
     background-position: 0px -28px;
 }
@@ -994,6 +1005,9 @@ a.link-addFavorites.active:hover span:after{
 }
 .dop div.iron-blue {
     background-position: -117px -28px;
+}
+.dop div.internet-blue {
+    background-position: -156px -28px;
 }
 
 #rooms-on-main{
