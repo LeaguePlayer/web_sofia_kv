@@ -20,6 +20,6 @@
 	<span class="float">Однокомнатная<br><span>4200.-</span></span>
 	<span class="float">2х комнатная<br><span>2200.-</span></span>
 	<span class="float">3х комнатная<br><span>2300.-</span></span> -->
-	<div class="all"><?=yii::t('sofia', '{n} room|{n} rooms', count($this->city_block_rooms))?> на ваш выбор</div>
+	<div class="all"><?=yii::t('sofia', '{n} room|{n} rooms', count(Catalog::model()->findAll('active=1 AND price_24 > 0')))?> на ваш выбор</div>
 </section>
 <?php $this->endContent(); ?>
