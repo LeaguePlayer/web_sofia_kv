@@ -26,10 +26,10 @@ $form_action = $this->getId() == 'service' ? '/catalog/#catalog' : '#catalog';
 		<div id="sleeper-slider" class="sleeper_count">
 			<!-- <div class="sleeper_count-num">2</div> -->
 		</div>
+		<?php echo $form->hiddenField($model, 'human_count', array('class' => 'human'));?>
 		<label class="text-ot">от <b>1</b></label>
 		<label class="text-do">от <b>10</b></label>
 		<div class="small_text">Если Вас более 10 человек, просим связаться с нашим администратором по телефону для Тюмени 500-333, для других регионов 8-800-500-31-33</div>
-		<?php echo $form->hiddenField($model, 'human_count', array('class' => 'human'));?>
 	</div>
 	<div class="price">
 		<label class="text-title">Цена</label>

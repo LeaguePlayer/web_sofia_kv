@@ -177,7 +177,7 @@ if($(".filters").size()>0){
 		create: function(event, ui){
 			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
 		},
-		slide: function( event, ui ) {	
+		slide: function( event, ui ) {
 			$(this).next().val(ui.value);
 			$(this).find('.ui-slider-handle div').html(ui.value);	
 		}

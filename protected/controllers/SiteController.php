@@ -77,6 +77,7 @@ class SiteController extends Controller
 		    ->select('rooms_count, price_24')
 		    ->from('catalog')
 		    ->where('active=1 AND price_24 > 0')
+		    ->limit(15)
 		    ->queryAll();
 
 		//$this->city_block_rooms = Catalog::model()->findAll($city_criteria);

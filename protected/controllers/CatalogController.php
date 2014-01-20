@@ -15,7 +15,13 @@ class CatalogController extends Controller
 		$model->human_count = 2;
 		$model->price_24 = 800;
 
-		$dataProvider=new CActiveDataProvider('Catalog', array('criteria' => $this->getCriteriaForFilter($model)));
+		$dataProvider=new CActiveDataProvider('Catalog', array(
+			'criteria' => $this->getCriteriaForFilter($model),
+			'pagination' => array(
+				'pageSize' => false
+			)
+
+		));
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
 		$this->render('index', array(
@@ -38,7 +44,7 @@ class CatalogController extends Controller
 		if(isset($_POST['Catalog'])){
 			$model->attributes = $_POST['Catalog'];
 
-			if(isset($_POST['area']) && $_POST['area'] != 0){
+			if(isset($_POST['area']) && $_POST['area'] != '0'){
 				$criteria->with = array('cat_areas');
 				$criteria->together = true;
 				$criteria->addCondition('area_id=:area_id');
