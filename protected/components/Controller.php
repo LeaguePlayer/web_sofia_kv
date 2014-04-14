@@ -81,6 +81,10 @@ class Controller extends CController
 
 	public function getAssetsUrl()
     {
+    	
+	    if(defined('YII_DEBUG') && YII_DEBUG){
+	        $this->forceCopyAssets = true;
+	    }
         if (Yii::app()->getRequest()->getParam('update_assets') || !isset($this->assetsUrl))
         {
             $assetsPath = Yii::getPathOfAlias('webroot.themes.'.Yii::app()->theme->name.'.assets');
@@ -119,4 +123,5 @@ class Controller extends CController
     		
     	}
     }
+
 }

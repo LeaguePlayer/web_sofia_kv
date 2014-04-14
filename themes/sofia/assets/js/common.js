@@ -128,14 +128,18 @@ jQuery(document).ready(function(){
 	$("#order_sleeper-count").slider({ value: $("input.human").val() });
 	$("#booking-form .sleeper_count-num").html($("#order_sleeper-count").slider("value"));
 
-	//add height for catalog items
-	var rh = 0;
-	$('.room').each(function(){
-		var h = $(this).height();
-		if(rh < h) rh = h;
+	$(window).load(function() {
+		//add height for catalog items
+		var rh = 0;
+		$('.room').each(function(){
+			var h = $(this).height();
+			if(rh < h) rh = h;
+		});
+		$('.room').height(rh);
 	});
-	$('.room').height(rh);
 });
+
+
 
 if($(".filters").size()>0){
 
