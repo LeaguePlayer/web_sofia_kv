@@ -158,7 +158,7 @@ $.fn.customslider = function(options) {
         opt = $.extend({
             inSpeed: 600,
             outSpeed: 600,
-            slideshow: false,
+            slideshow: true,
             showHandlers: true,
             showButtons: false,
             duration: 5000

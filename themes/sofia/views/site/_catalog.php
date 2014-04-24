@@ -1,5 +1,5 @@
 <? $item = $block->getAttachedModel();?>
-<img src="<?= CHtml::encode($block->getPreview('medium')) ?>" alt="" />
+<img width="1000" src="<?= CHtml::encode($block->getPreview('medium')) ?>" alt="" />
 <div class="info-room">
 	<div class="title">
 		<h2><?=CHtml::encode($item->address)?></h2>

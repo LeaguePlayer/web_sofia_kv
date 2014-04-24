@@ -65,9 +65,9 @@ class Action extends CActiveRecord
 	{
 		//only with photos
 	    return array(
-	    	'select' => $this->getTableAlias(false,false).'.*',
-	    	'distinct' => true,
-	    	'join' => 'INNER JOIN gallery ON gallery_id = gallery.id INNER JOIN gallery_photo ON gallery.id = gallery_photo.gallery_id'
+	    	//'select' => $this->getTableAlias(false,false).'.*',
+	    	//'distinct' => true,
+	    	//'join' => 'INNER JOIN gallery ON gallery_id = gallery.id INNER JOIN gallery_photo ON gallery.id = gallery_photo.gallery_id'
 	    );
 	}
 
