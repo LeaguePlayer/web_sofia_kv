@@ -105,7 +105,10 @@ class Action extends CActiveRecord
 	                ),
 	                'v2' => array(
 	                    'adaptiveResize' => array(235, 290),
-	                )
+	                ),
+					'medium' => array(
+						'resize' => array(1000, 0)
+					)
 	            ),
 	            'name' => true,
 	            'description' => true,
@@ -204,8 +207,6 @@ class Action extends CActiveRecord
 				$action_on_main->delete();
 			}
 		}
-			
-
 		return parent::beforeSave();
 	}
 
@@ -226,4 +227,15 @@ class Action extends CActiveRecord
 	   		$this->resetScope();
 	   	}    
   	}
+
+	public function getPreview($version = '')
+	{
+		$image = $this->gallery->main;
+		if ( !empty($image)) {
+			if($version == '')
+				return $image->getPreview();
+			else
+				return $image->getUrl($version);
+		}
+	}
 }

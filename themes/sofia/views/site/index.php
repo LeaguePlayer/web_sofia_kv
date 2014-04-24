@@ -23,6 +23,7 @@
 		</li>
 	</ul>
 </section>
+<hr>
 <section id="rooms-on-main">
 	<header>
 		<h1>Наши квартиры</h1>

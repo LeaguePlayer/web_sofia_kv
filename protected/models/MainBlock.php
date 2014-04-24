@@ -136,11 +136,24 @@ class MainBlock extends CActiveRecord
 		return $upload_dir;
 	}
 
-	public function getPreview($name = ''){
-		return DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.$name.$this->preview;
+	public function getPreview($version = '') {
+		if ( !empty($this->preview) ) {
+			return DIRECTORY_SEPARATOR.'upload'.DIRECTORY_SEPARATOR.$version.$this->preview;
+		} else {
+			$model = $this->getAttachedModel();
+			if ( $model )
+				return $model->getPreview($version);
+			else
+				return '';
+		}
 	}
 
-	public function removeImages(){
+	public function getAttachedModel()
+	{
+		return CActiveRecord::model($this->model)->findByPk($this->model_id);
+	}
+
+	public function removeImages() {
 		@unlink(self::getUploadPath().DIRECTORY_SEPARATOR.$this->preview);
 		@unlink(self::getUploadPath().DIRECTORY_SEPARATOR.'big'.$this->preview);
 		@unlink(self::getUploadPath().DIRECTORY_SEPARATOR.'small'.$this->preview);

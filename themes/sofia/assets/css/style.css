@@ -120,7 +120,7 @@ body{
     background: #f3f3f3;
 }
 body.background {
-    background: #f3f3f3 no-repeat center 175px url('../images/trangle.jpg');
+    background: #f3f3f3;
 }
 
 .no-margin-left {
@@ -869,7 +869,7 @@ a.link-addFavorites.active:hover span:after{
 }
 
 #features ul{
-    margin-top: 75px;
+    margin-top: 25px;
     display: inline-block;
     list-style: none;
 }
@@ -886,14 +886,13 @@ a.link-addFavorites.active:hover span:after{
     display: block;
 }
 #features ul li span{
-    color: #fff;
     font-size: 20px;
     font-weight: bold;
 }
-#features ul li .i1{background: no-repeat 0 0 url('../images/main-icons.png');}
-#features ul li .i2{background: no-repeat -96px 0 url('../images/main-icons.png');}
-#features ul li .i3{background: no-repeat -48px 0 url('../images/main-icons.png');}
-#features ul li .i4{background: no-repeat -144px 0 url('../images/main-icons.png');}
+#features ul li .i1{background: no-repeat 0 0 url('../images/main-icons-black.png');}
+#features ul li .i2{background: no-repeat -96px 0 url('../images/main-icons-black.png');}
+#features ul li .i3{background: no-repeat -48px 0 url('../images/main-icons-black.png');}
+#features ul li .i4{background: no-repeat -144px 0 url('../images/main-icons-black.png');}
 
 .room {
     position: relative;
@@ -906,7 +905,7 @@ a.link-addFavorites.active:hover span:after{
 
 .room .room-images {
     width: 210px;
-    height: auto;
+    height: 225px;
     overflow: hidden;
 }
 
@@ -1025,8 +1024,14 @@ a.link-addFavorites.active:hover span:after{
     margin-top: 80px;
 }
 
+#rooms-on-main img {
+    width: 280px;
+}
+
 #rooms-on-main .rooms{
     margin-top: 30px;
+    font-size: 0;
+    text-align: center;
 }
 
 #rooms-on-main .icon{
@@ -1051,9 +1056,9 @@ a.link-addFavorites.active:hover span:after{
 
 #rooms-on-main .room-block{
     width: 280px;
-    float: left;
-    margin-left: 45px;
+    margin: 0 22px;
     text-align: center;
+    display: inline-block;
 }
 
 #rooms-on-main .room-block .room-images{
@@ -1109,7 +1114,6 @@ a.link-room:hover {
 #images {
     position: relative;
     width: 920px;
-    height: 540px;
     padding: 25px;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -1121,17 +1125,15 @@ a.link-room:hover {
     margin-bottom: 13px;
     overflow: hidden;
 }
+#images .small_images {
+    font-size: 0;
+}
 #images .small_images a {
     display: inline-block;
-    zoom: 1;
-    *display: inline;
     width: 176px;
     height: 110px;
-    margin-left: 6px;
     box-shadow: 0px 0px 0px 0px rgba(25, 181, 241, 1);
-}
-#images .small_images a:first-child {
-    margin-left: 0px;
+    margin: 0 8px 8px 0;
 }
 #images .small_images a.active {
     box-shadow: 0px 0px 0px 4px rgba(25, 181, 241, 1);
@@ -1711,6 +1713,100 @@ footer .social a:first-child, .page-content .social a:first-child {
 .sofia-modal .booking-block h1{
     font-size: 33px;
     text-align: center;
+}
+
+
+
+
+/*Слайдер*/
+.main-slider {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+}
+.main-slider li {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main-slider li img {
+    max-width: 1000px;
+}
+.main-slider .info-room {
+    display: none;
+    background: #f3f3f3;
+    border: 10px solid #E8E8E8;
+    border-radius: 10px;
+    padding: 15px;
+    position: absolute;
+    top: 20px;
+    width: 300px;
+    opacity: 0.7;
+}
+.main-slider .info-room .title h2 {
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.main-slider .info-room .title div {
+    color: #000;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.main-slider .prev,
+.main-slider .next {
+    display: block;
+    height: 58px;
+    position: absolute;
+    top: 50%;
+    margin-top: -29px;
+    width: 59px;
+    cursor: pointer;
+    z-index: 500;
+    cursor: pointer;
+}
+.main-slider .next {
+    background: url("../images/nextImg.png") no-repeat;
+    right: 10px;
+}
+.main-slider .prev {
+    background: url("../images/prevImg.png") no-repeat;
+    left: 10px;
+}
+.main-slider .prev:hover,
+.main-slider .next:hover {
+    background-position: 0px -58px;
+}
+.main-slider .handlers {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    z-index: 500;
+    background: #f3f3f3;
+    border: 10px solid #E8E8E8;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+.main-slider .handlers:hover {
+    opacity: 1;
+}
+.main-slider .handlers .handler-area {
+    padding: 6px;
+    cursor: pointer;
+}
+.main-slider .handlers .handler-area .handler {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(../images/handlers.png) 0 0 no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+.main-slider .handlers .float_handler {
+    background: url(../images/handlers.png) -30px 0 no-repeat;
+    width: 10px;
+    height: 10px;
 }
 
 

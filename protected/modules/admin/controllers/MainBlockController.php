@@ -162,9 +162,9 @@ class MainBlockController extends AdminController
 						
 						//$temp = Yii::app()->phpThumb->create($image->getTempName());
 						Yii::app()->phpThumb->create($image->getTempName())
-							->adaptiveResize(1000, 800)->save($upload_dir.DIRECTORY_SEPARATOR.$filename);
+							->adaptiveResize(712, 430)->save($upload_dir.DIRECTORY_SEPARATOR.$filename);
 						Yii::app()->phpThumb->create($image->getTempName())
-							->adaptiveResize(712, 430)->save($upload_dir.DIRECTORY_SEPARATOR.'big'.$filename);
+							->resize(1000)->save($upload_dir.DIRECTORY_SEPARATOR.'medium'.$filename);
 						Yii::app()->phpThumb->create($image->getTempName())
 							->adaptiveResize(240, 133)->save($upload_dir.DIRECTORY_SEPARATOR.'small'.$filename);
 						Yii::app()->phpThumb->create($image->getTempName())

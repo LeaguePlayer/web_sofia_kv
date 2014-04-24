@@ -48,7 +48,7 @@
 			<div class="clear"></div>
 		</footer>
 		<div id="fancy-form" style="display:none;"><?php $this->renderPartial('/catalog/_fancy_form');?></div>
-		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/common.js"></script>
+		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/common.js?v=2"></script>
 		<?php
 		Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );
 		//Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );

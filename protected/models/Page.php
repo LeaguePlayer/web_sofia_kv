@@ -112,4 +112,9 @@ class Page extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getPreview($version = '')
+	{
+		return '';
+	}
 }

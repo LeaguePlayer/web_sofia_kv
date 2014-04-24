@@ -213,6 +213,18 @@ class Catalog extends CActiveRecord
 		}
 	}
 
+	public function getPreview($version = '')
+	{
+		$image = $this->gallery->main;
+
+		if ( !empty($image)) {
+			if($version == '')
+				return $image->getPreview();
+			else
+				return $image->getUrl($version);
+		}
+	}
+
 	//mdaaaa
 	/*public function getNoActionItems(){
 		//$sql = 'SELECT id, address FROM catalog WHERE id NOT IN(SELECT catalog_id FROM catalog_actions);';
