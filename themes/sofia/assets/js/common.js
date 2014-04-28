@@ -126,9 +126,9 @@ jQuery(document).ready(function(){
 		create: function(event, ui){
 			$(this).find('.ui-slider-handle').append($('<div class="sleeper_count-num"></div>'));
 		},
-		slide: function( event, ui ) {	
+		slide: function( event, ui ) {
 			$(this).next().val(ui.value);
-			$(this).find('.ui-slider-handle div').html(ui.value);	
+			$(this).find('.ui-slider-handle div').html(ui.value);
 		}
 	});
 	$("#order_sleeper-count").slider({ value: $("input.human").val() });
@@ -286,32 +286,41 @@ $.fn.customslider = function(options) {
 /* Слайдер */
 
 
+var filtersBlock = $('.left .filters');
+if(filtersBlock.size()>0){
 
-if($(".filters").size()>0){
-
+    var linkShare = $('.left #link-share');
 	// фильтры бегают вместе с прокруткой
-	offsetTop = $('.left .filters').offset().top;
+	var offsetTop = 323;
+    var stop_line = $(document).height() - filtersBlock.height() - $('body > footer').height() - 170;
+
 	$(document).scroll(function(event) {
 		// отменяем это, если на странице с картой находимся
 		if($(".filters-map").length){
 			return false;
 		}
-		console.log();
 		if($(window).height() > 750){
-			scroll = $(document).scrollTop();
-			var stop_line =  $(document).height() - $(".filters").height() - $('body > footer').height() - 170;
-			if(scroll<offsetTop){
-				$('.left .filters').stop(true).animate({top: 0}, 500);
-				$('.left #link-share').stop(true).animate({top: 690}, 500);
-				return false;
-			}
-			if(scroll < stop_line && (scroll>=offsetTop || offsetTop > 358) ){
-				$('.left .filters').stop(true).animate({top: scroll-350}, 500);
-				$('.left #link-share').stop(true).animate({top: scroll+340}, 500);
-			}else{
-				//$('.left .filters').stop(true).animate({top: stop_line}, 500);
-				//$('.left #link-share').stop(true).animate({top: stop_line}, 500);
-			}
+			var scroll = $(document).scrollTop();
+            if ( scroll >= offsetTop ) {
+                if ( scroll < stop_line ) {
+                    var offset = scroll - offsetTop;
+                    filtersBlock.css({top: offset});
+                    linkShare.css({top: offset + 690});
+                }
+            } else {
+                filtersBlock.css({top: 0});
+                linkShare.css({top: 690});
+            }
+
+//            if(scroll<offsetTop) {
+//				//filtersBlock.stop(true).animate({top: 0}, 500);
+//				//linkShare.stop(true).animate({top: 690}, 500);
+//				return false;
+//			}
+//			if(scroll < stop_line && (scroll>=offsetTop || offsetTop > 358) ){
+//                filtersBlock.stop(true).animate({top: scroll-350}, 500);
+//                linkShare.stop(true).animate({top: scroll+340}, 500);
+//			}
 		}
 		
         return false;
