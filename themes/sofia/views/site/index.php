@@ -57,27 +57,27 @@
 	</div>
 </section>
 <section id="pairs">
-	<header>
-		<h1>Наши партнеры</h1>
-	</header>
-	<div id="slider-block">
-		<a class="left" href="#left"></a>
-		<a class="right show" href="#left"></a>
-		<div class="slider-box">
-			<div class="slider">
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/apple.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
-				<div class="item" style="background-image: url('<?=$this->getAssetsUrl()?>/images/tmp/fb.png');"></div>
-			</div>
-		</div>
-	</div>
+<!--	<header>-->
+<!--		<h1>Наши партнеры</h1>-->
+<!--	</header>-->
+<!--	<div id="slider-block">-->
+<!--		<a class="left" href="#left"></a>-->
+<!--		<a class="right show" href="#left"></a>-->
+<!--		<div class="slider-box">-->
+<!--			<div class="slider">-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/apple.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/fb.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/apple.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/fb.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/apple.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/fb.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/fb.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/apple.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/fb.png');"></div>-->
+<!--				<div class="item" style="background-image: url('--><?//=$this->getAssetsUrl()?><!--/images/tmp/fb.png');"></div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
 </section>
 <section id="booking">
 	<?php $this->renderPartial('_booking_form_main');?>

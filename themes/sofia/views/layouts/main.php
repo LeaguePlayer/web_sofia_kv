@@ -34,10 +34,10 @@
 				<span class="grey">Все права защищены</span>
 			</div>
 			<div class="social">
-				<a class="link-vk" href="#"></a>
-				<a class="link-twitter" href="#"></a>
-				<a class="link-facebook" href="#"></a>
-				<a class="link-instagram" href="#"></a>
+<!--				<a class="link-vk" href="#"></a>-->
+<!--				<a class="link-twitter" href="#"></a>-->
+<!--				<a class="link-facebook" href="#"></a>-->
+<!--				<a class="link-instagram" href="#"></a>-->
 			</div>
 			<div class="phone">
 				<span class="simple">500-333</span>
