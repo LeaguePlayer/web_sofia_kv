@@ -1057,14 +1057,15 @@ a.link-addFavorites.active:hover span:after{
 #rooms-on-main .two .icon{width: 104px;}
 #rooms-on-main .three .icon{width: 156px;}*/
 
-#rooms-on-main .room-block{
+#rooms-on-main .room-block {
     width: 280px;
     margin: 0 22px;
     text-align: center;
     display: inline-block;
+    vertical-align: top;
 }
 
-#rooms-on-main .room-block .room-images{
+#rooms-on-main .room-block .room-images {
     text-align: left;
 }
 
