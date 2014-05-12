@@ -8,6 +8,9 @@ class PageController extends Controller
 		//seo
 		$this->addMetaTags($model, 'title');
 
+		$this->breadcrumbs=array(
+  			$model->title,
+		);
 		$this->render('view', array('model' => $model));
 	}
 

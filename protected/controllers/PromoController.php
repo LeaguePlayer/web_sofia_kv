@@ -53,6 +53,9 @@ class PromoController extends Controller
 		//seo
 		$this->addMetaTags($promo, 'name');
 
+		$this->breadcrumbs=array(
+  			'Специальные предложения'
+		);
 		$this->render('view', array(
 			'action' => $promo,
 			'model' => $model,

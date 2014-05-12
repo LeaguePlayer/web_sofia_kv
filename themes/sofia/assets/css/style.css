@@ -1831,3 +1831,19 @@ footer .social a:first-child, .page-content .social a:first-child {
         width: 100%;
     }
 }
+
+.breadcrumbs {
+    list-style-type: none;
+    position: relative;
+    top: -20px;
+}
+
+.breadcrumbs li {
+    margin: 0 20px 0 0;
+    padding: 0px;
+    display: inline-block;
+}
+.breadcrumbs li a {
+    color: #11c9f5;
+    text-decoration: underline;
+}

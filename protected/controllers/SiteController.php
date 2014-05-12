@@ -84,7 +84,6 @@ class SiteController extends Controller
 
 		//count rooms
 		//$this->count = Catalog::model()->count('active=1');
-
 		$this->render('index', array(
 			'mainRooms' => $mainRooms,
 			'main_blocks' => $main_blocks
@@ -128,6 +127,9 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
+		$this->breadcrumbs=array(
+  			'Контакты'
+		);
 		$this->render('contact',array('model'=>$model));
 	}
 

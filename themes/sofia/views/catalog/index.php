@@ -1,3 +1,4 @@
+
 <section class="left">
 	<?php $this->renderPartial('/catalog/_filter', array('model' => $model, 'areas' => $areas));?>
 	<a id="link-share" class="gray-button" href="/favorites/"><i class="plus-blue"></i> Квартиры в закладках</a>

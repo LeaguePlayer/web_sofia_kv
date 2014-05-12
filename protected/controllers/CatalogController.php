@@ -24,6 +24,9 @@ class CatalogController extends Controller
 		));
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
+		$this->breadcrumbs=array(
+  			'Каталог квартир'
+		);
 		$this->render('index', array(
 			'data' => $dataProvider,
 			'model' => $model,
@@ -114,8 +117,13 @@ class CatalogController extends Controller
 		//seo
 		$this->addMetaTags($room, 'address');
 
+		$model = $this->loadModel($id);
+		$this->breadcrumbs=array(
+  			'Каталог квартир' => 'index',
+  			CHtml::encode($model->rooms_count)."-комнатная квартира, ".CHtml::encode($model->address),
+		);
 		$this->render('view', array(
-			'model' => $this->loadModel($id),
+			'model' => $model,
 			'data' => $dataProvider,
 			'action' => $action
 		));
@@ -132,6 +140,9 @@ class CatalogController extends Controller
 
 		$action = Action::model()->find('active=1');
 
+		$this->breadcrumbs=array(
+  			'Просмотр на карте'
+		);
 		$this->render('map', array(
 			'model' => $model,
 			'areas' => $areas,

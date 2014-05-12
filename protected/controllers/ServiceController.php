@@ -8,6 +8,9 @@ class ServiceController extends Controller{
 
 		$links = Service::model()->findAll(array('order' => 'category'));
 
+		$this->breadcrumbs=array(
+  			'Дополнительные услуги'
+		);
 		$this->render('index', array(
 			'areas' => $areas,
 			'model' => $model,
