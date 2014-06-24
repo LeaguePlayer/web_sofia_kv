@@ -887,15 +887,43 @@ a.link-addFavorites.active:hover span:after{
     margin: 0 auto;
     margin-bottom: 20px;
     display: block;
+    background: no-repeat 0 0 url('../images/main-icons-hovered.png');
+}
+#features ul li .icon.i1 {
+    background-position: 0 0;
+}
+#features ul li .icon.i2 {
+    background-position: -96px 0;
+}
+#features ul li .icon.i3 {
+    background-position: -48px 0;
+}
+#features ul li .icon.i4 {
+    background-position: -144px 0;
+}
+#features ul li:hover .icon.i1 {
+    background-position: 0 -48px;
+}
+#features ul li:hover .icon.i2 {
+    background-position: -96px -48px;
+}
+#features ul li:hover .icon.i3 {
+    background-position: -48px -48px;
+}
+#features ul li:hover .icon.i4 {
+    background-position: -144px -48px;
 }
 #features ul li span{
     font-size: 20px;
     font-weight: bold;
 }
-#features ul li .i1{background: no-repeat 0 0 url('../images/main-icons-black.png');}
-#features ul li .i2{background: no-repeat -96px 0 url('../images/main-icons-black.png');}
-#features ul li .i3{background: no-repeat -48px 0 url('../images/main-icons-black.png');}
-#features ul li .i4{background: no-repeat -144px 0 url('../images/main-icons-black.png');}
+#features ul li a {
+    color: #000;
+    display: block;
+}
+#features ul li:hover a {
+    color: #0daff0;
+}
 
 .room {
     position: relative;
@@ -1046,12 +1074,18 @@ a.link-addFavorites.active:hover span:after{
     width: 52px;
     display: inline-block;
     margin: 0 auto;
-    background: repeat-x center right url('../images/home.png');
+    background: url('../images/home-hovered.png') 0 0 repeat-x;
 }
-
 #rooms-on-main .icon span.shift{
     margin-left: -12px;
 }
+#rooms-on-main .filter:hover .icon span {
+    background-position: 0 -57px;
+}
+#rooms-on-main .filter:hover .title {
+    color: #0daff0;
+}
+
 
 /*#rooms-on-main .icon{width: 52px;}
 #rooms-on-main .two .icon{width: 104px;}

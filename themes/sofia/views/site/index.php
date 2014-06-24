@@ -6,20 +6,28 @@
 	</header>
 	<ul id="items">
 		<li>
-			<span class="i1 icon"></span>
-			<span class="title">Демократичная цена</span>
+            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
+                <span class="i1 icon"></span>
+                <span class="title">Демократичная цена</span>
+            </a>
 		</li>
 		<li>
-			<span class="i2 icon"></span>
-			<span class="title">Дополнительный сервис</span>
+            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
+                <span class="i2 icon"></span>
+                <span class="title">Дополнительный сервис</span>
+            </a>
 		</li>
 		<li>
-			<span class="i3 icon"></span>
-			<span class="title">Удобное  расположение</span>
+            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
+                <span class="i3 icon"></span>
+                <span class="title">Удобное  расположение</span>
+            </a>
 		</li>
 		<li>
-			<span class="i4 icon"></span>
-			<span class="title">Документы для отчетности</span>
+            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
+                <span class="i4 icon"></span>
+                <span class="title">Документы для отчетности</span>
+            </a>
 		</li>
 	</ul>
 </section>
