@@ -15,3 +15,7 @@ protected/config/console.php
 /index.php
 protected/yiic.php
 /upload
+*.tar
+*.gz
+*.bz2
+/*.html
