@@ -1,3 +1,8 @@
+<?php
+
+$email = Settings::getEmail();
+
+?>
 <!DOCTYPE html>
 <html lang="ru">
 	<head>
@@ -17,9 +22,9 @@
 					<a href="/"><img src="<?=$this->getAssetsUrl()?>/images/logo.png"></a>
 				</div>
 				<div class="contacts">
-					<a class="mail" href="mailto:info@sofiastyle.ru"><?=Settings::getEmail()?></a>
+					<a class="mail" href="<?= $email ?>"><?= $email ?></a>
 					<span class="phone">
-						<span class="simple">500-333</span>
+						<span class="simple"><small>8 3452 </small>500-333</span>
 						<span class="simple">8-800-500-3133</span>
 						<span class="info">для регионов бесплатно</span>
 					</span>
@@ -40,11 +45,13 @@
 <!--				<a class="link-instagram" href="#"></a>-->
 			</div>
 			<div class="phone">
-				<span class="simple">500-333</span>
+				<span class="simple"><small>8 3452 </small>500-333</span>
 				<span class="simple">8-800-500-3133</span>
-				<span class="info">для регионов бесплатно</span>
-				<a class="grey" href="mailto:info@sofiastyle.ru"><?=Settings::getEmail()?></a>
 			</div>
+            <div class="contacts">
+                <p>Пишите нам: <a class="grey" href="<?= $email ?>"><?= $email ?></a></p>
+                <span class="info">для регионов бесплатно</span>
+            </div>
 			<div class="clear"></div>
 		</footer>
 		<div id="fancy-form" style="display:none;"><?php $this->renderPartial('/catalog/_fancy_form');?></div>
