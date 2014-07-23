@@ -68,6 +68,7 @@
 </div>
 <div class="social-share">
 	<div class="text-title">поделиться с друзьями:</div>
+	<?= $this->renderPartial('//site/_social'); ?>
 </div>
 
 <?if(count($data->getData()) > 0){?>

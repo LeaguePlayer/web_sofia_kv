@@ -1253,6 +1253,16 @@ a.link-room:hover {
     margin: 40px auto;
 }
 
+.social-list {
+    padding: 20px 0 0 0;
+}
+
+.social-list .item {
+    display: inline-block; 
+    margin: 0 10px 0 0;
+    vertical-align: middle; 
+}
+
 .room-price {
     width: 210px;
     height: 45px;
