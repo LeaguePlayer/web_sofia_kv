@@ -13,17 +13,8 @@ $email = Settings::getEmail();
 		<? /*<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jQuery_1.9.1.js"></script>*/?>
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/chosen.jquery.min.js"></script>
-		<script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
 	</head>
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=1452373225031498&version=v2.0";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
 		<header id="main">
 			<div class="center">
 				<div class="logo">
@@ -31,7 +22,7 @@ $email = Settings::getEmail();
 					<a href="/"><img src="<?=$this->getAssetsUrl()?>/images/logo.png"></a>
 				</div>
 				<div class="contacts">
-					<a class="mail" href="<?= $email ?>"><?= $email ?></a>
+					<a class="mail" href="mailto:<?= $email ?>"><?= $email ?></a>
 					<span class="phone">
 						<span class="simple"><small>8 3452 </small>500-333</span>
 						<span class="simple">8-800-500-3133</span>
@@ -58,7 +49,7 @@ $email = Settings::getEmail();
 				<span class="simple">8-800-500-3133</span>
 			</div>
             <div class="contacts">
-                <p>Пишите нам: <a class="grey" href="<?= $email ?>"><?= $email ?></a></p>
+                <p>Пишите нам: <a class="grey" href="mailto:<?= $email ?>"><?= $email ?></a></p>
                 <span class="info">для регионов бесплатно</span>
             </div>
 			<div class="clear"></div>
