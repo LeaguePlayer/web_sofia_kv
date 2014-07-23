@@ -749,7 +749,13 @@ a.link-addFavorites.active:hover span:after{
     display: block;
     line-height: 1
 }
-#main .contacts .phone .info{
+#main .contacts .phone .simple small {
+    font-size: 70%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+#main .contacts .phone  .info{
     display: block;
     line-height: 1;
     font-size: 14px;
@@ -759,7 +765,7 @@ a.link-addFavorites.active:hover span:after{
 }
 #main-menu{
     text-align: center;
-    margin: 50px 0 45px;
+    margin: 50px 0 30px;
 }
 
 #main-menu ul{
@@ -772,7 +778,7 @@ a.link-addFavorites.active:hover span:after{
 }
 #main-menu li a{
     color: #000;
-    padding: 10px 15px;
+    padding: 10px 13px;
     font-size: 22px;
 }
 #main-menu .active a, #main-menu a:hover{
@@ -1510,7 +1516,7 @@ a.link-room:hover {
 }
 #city .all{
     font-size: 59px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -1527,14 +1533,17 @@ a.link-room:hover {
 }
 
 footer{
-    height: 100px;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 2px solid rgba(176, 176, 176, 0.5);
 }
 
 footer .copy{
-    width: 200px;
+    width: 130px;
     text-transform: uppercase;
     font-family: 'a_avanteltnr';
-    float: left;
+    display: inline-block;
+    vertical-align: top;
 }
 .room-page.center + footer .copy {
     margin-left: 37px;
@@ -1546,15 +1555,15 @@ footer .copy span{
 footer .copy .grey{
     font-size: 13px;
     color: #aaa;
-    padding-top: 10px;
+    padding-top: 2px;
 }
 
 footer .phone{
-    float: left;
-    width: 270px;
+    display: inline-block;
+    vertical-align: top;
     padding-left: 45px;
-    margin-left: 45px;
     background: no-repeat left 5px url('../images/phone.gif');
+    margin: 0 40px 0 30px;
 }
 footer .phone span{
     font: normal normal 40px/40px 'conqueror_sans';
@@ -1562,20 +1571,32 @@ footer .phone span{
 footer .phone span.simple{
     line-height: 1;
     display: block;
+    font-size: 26px;
 }
-footer .phone span.info{
+footer .phone .simple small {
+    font-size: 70%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+footer .contacts {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+footer .contacts span.info{
     line-height: 1;
     display: block;
     font-size: 14px;
 }
-footer .phone .grey{
+footer .contacts .grey{
     font-size: 16px;
     color: #aaaaaa;
     text-decoration: underline;
     text-transform: uppercase;
     margin-top: -5px;
 }
-footer .phone .grey:hover{
+footer .contacts .grey:hover{
     color: #999999;
 }
 

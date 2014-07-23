@@ -49,7 +49,7 @@
 							for($i=0; $i<$key; $i++) echo '<span class="shift"></span>';
 						}?>
 					</div>
-					<div class="title"><?=($key+1)?><?=($key != 1 ? "х" : "")?> комнатные</div>
+					<div class="title"><?=($key+1)?> комнатные</div>
 				</a>
 				<?foreach ($rooms as $room) {
 					$this->renderPartial('_view_catalog', array('room' => $room));	
