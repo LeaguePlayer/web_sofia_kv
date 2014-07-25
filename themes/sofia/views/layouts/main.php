@@ -29,6 +29,7 @@ $email = Settings::getEmail();
 						<span class="info">для регионов бесплатно</span>
 					</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
+					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Быстро забронировать квартиру</a>
 				</div>
 			</div>
 		</header>
@@ -55,7 +56,7 @@ $email = Settings::getEmail();
 			<div class="clear"></div>
 		</footer>
 		<div id="fancy-form" style="display:none;"><?php $this->renderPartial('/catalog/_fancy_form');?></div>
-		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/common.js?v=2"></script>
+		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/common.js?v=3"></script>
 		<?php
 		Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );
 		//Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.animate-shadow-min.js' ,CClientScript::POS_HEAD );

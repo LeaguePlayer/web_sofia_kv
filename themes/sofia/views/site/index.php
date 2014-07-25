@@ -88,7 +88,7 @@
 <!--	</div>-->
 </section>
 <section id="booking">
-	<?php $this->renderPartial('_booking_form_main');?>
+	<?php //$this->renderPartial('_booking_form_main');?>
 </section>
 <?php
 Yii::app()->clientScript->registerScript('#main_page', '

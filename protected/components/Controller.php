@@ -58,7 +58,7 @@ class Controller extends CController
 		<link rel="stylesheet" href="<?=$this->themeUrl?>/css/style.css" />*/
 		$cs->registerCssFile($this->getAssetsUrl().'/css/ui-lightness/jquery-ui-1.10.3.custom.min.css');
 		$cs->registerCssFile($this->getAssetsUrl().'/css/reset.css');
-		$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=8');
+		$cs->registerCssFile($this->getAssetsUrl().'/css/style.css?v=9');
 		$cs->registerCssFile($this->getAssetsUrl().'/css/buttons.css');
 		$cs->registerCssFile($this->getAssetsUrl().'/css/chosen.css');
 	}

@@ -145,6 +145,21 @@ jQuery(document).ready(function(){
 	});
 
     $('.main-slider').customslider();
+
+
+
+    // Плавающая кнопка
+    var contactBlock = $('#main .contacts');
+    var topLine = contactBlock.offset().top + contactBlock.outerHeight();
+    var floatButton = $('.float-button');
+    $(document).on('scroll', function() {
+        var top = $(this).scrollTop();
+        if ( top >= topLine ) {
+            floatButton.stop(true, false).animate({right: '-158px'}, 100);
+        } else {
+            floatButton.stop(true, false).animate({right: '-220px'}, 100);
+        }
+    });
 });
 
 
@@ -245,7 +260,7 @@ $.fn.customslider = function(options) {
         }
 
         currentSlide = index;
-    }
+    };
 
     var startTimer = function() {
         clearInterval(timer);
@@ -257,7 +272,7 @@ $.fn.customslider = function(options) {
                 changeSlide(ind);
             }
         }, opt.duration);
-    }
+    };
 
 
     if ( opt.showHandlers ) {
@@ -282,7 +297,7 @@ $.fn.customslider = function(options) {
     }
     if ( opt.slideshow )
         startTimer();
-}
+};
 /* Слайдер */
 
 

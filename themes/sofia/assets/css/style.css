@@ -1912,3 +1912,16 @@ footer .social a:first-child, .page-content .social a:first-child {
     color: #11c9f5;
     text-decoration: underline;
 }
+
+#main .contacts .float-button {
+    -webkit-transform: rotate(-90deg); /* Chrome y Safari */
+    -moz-transform: rotate(-90deg); /* Firefox */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* Internet Explorer */
+    -o-transform: rotate(-90deg); /* Opera */
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    margin-top: -14px;
+    right: -220px;
+    z-index: 200;
+}
