@@ -13,8 +13,17 @@ $email = Settings::getEmail();
 		<? /*<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jQuery_1.9.1.js"></script>*/?>
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/chosen.jquery.min.js"></script>
+		<script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
 	</head>
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=1452373225031498&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 		<header id="main">
 			<div class="center">
 				<div class="logo">

@@ -449,7 +449,7 @@ a.link-addFavorites.active {
     top: 5px;
     right: -6px;
     width: 15px;
-    height: 37px;
+    height: 36px;
     padding-top: 8px;
     padding-left: 30px;
     background: #000000 center center url(../images/plus-white.png) no-repeat;
@@ -468,9 +468,9 @@ a.link-addFavorites:hover {
 
 a.tour-3d{
     position: absolute;
-    top: 30px;
-    left: 20px;
-    padding: 15px 10px;
+    top: 390px;
+    right: 180px;
+    padding: 12px 10px;
     background: #000;
     font-size: 16px;
     font-weight: bold;
@@ -1183,17 +1183,16 @@ a.link-room:hover {
     box-shadow: 0px 0px 0px 4px rgba(25, 181, 241, 1);
 }
 #images .link-addFavorites {
-    top: 30px;
-    right: 20px;
+    top: 390px;
+    right: 263px;
 }
 #images a.zoomImage {
     display: block;
     position: absolute;
-    top: 210px;
-    left: 50%;
+    top: 392px;
+    right: 72px;
     width: 40px;
     height: 40px;
-    margin-left: -20px;
     background: 0px 0px url(../images/zoomImg.png) no-repeat;
 }
 #images a.zoomImage:hover {
@@ -1202,24 +1201,24 @@ a.link-room:hover {
 #images a.prevImage {
     display: block;
     position: absolute;
-    top: 200px;
-    left: 55px;
-    width: 59px;
-    height: 58px;
-    background: 0px 0px url(../images/prevImg.png) no-repeat;
+    top: 390px;
+    right: 120px;
+    width: 45px;
+    height: 44px;
+    background: 0px 0px url(../images/prevImg1.png) no-repeat;
 }
 #images a.nextImage {
     display: block;
     position: absolute;
-    top: 200px;
-    right: 55px;
-    width: 59px;
-    height: 58px;
-    background: 0px 0px url(../images/nextImg.png) no-repeat;
+    top: 390px;
+    right: 20px;
+    width: 45px;
+    height: 44px;
+    background: 0px 0px url(../images/nextImg1.png) no-repeat;
 }
 #images a.prevImage:hover,
 #images a.nextImage:hover {
-    background-position: 0px -58px;
+    background-position: 0px -44px;
 }
 #images .big_images a {
     display: none;
