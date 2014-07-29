@@ -749,6 +749,11 @@ a.link-addFavorites.active:hover span:after{
     display: block;
     line-height: 1
 }
+#main .contacts .phone .simple .prefix {
+    display: inline-block;
+    margin-right: 0;
+    width: 105px;
+}
 #main .contacts .phone .simple small {
     font-size: 70%;
     display: inline-block;
@@ -1917,7 +1922,7 @@ footer .social a:first-child, .page-content .social a:first-child {
     -moz-transform: rotate(-90deg); /* Firefox */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* Internet Explorer */
     -o-transform: rotate(-90deg); /* Opera */
-    display: inline-block;
+    display: none;
     position: fixed;
     top: 50%;
     margin-top: -14px;

@@ -151,7 +151,7 @@ jQuery(document).ready(function(){
     // Плавающая кнопка
     var contactBlock = $('#main .contacts');
     var topLine = contactBlock.offset().top + contactBlock.outerHeight();
-    var floatButton = $('.float-button');
+    var floatButton = $('.float-button').show();
     $(document).on('scroll', function() {
         var top = $(this).scrollTop();
         if ( top >= topLine ) {

@@ -33,8 +33,8 @@ $email = Settings::getEmail();
 				<div class="contacts">
 					<a class="mail" href="mailto:<?= $email ?>"><?= $email ?></a>
 					<span class="phone">
-						<span class="simple"><small>8 3452 </small>500-333</span>
-						<span class="simple">8-800-500-3133</span>
+						<span class="simple"><small class="prefix">8 (3452) </small>500-333</span>
+						<span class="simple"><span class="prefix">8-800-</span>500-3133</span>
 						<span class="info">для регионов бесплатно</span>
 					</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
@@ -55,7 +55,7 @@ $email = Settings::getEmail();
 <!--				<a class="link-instagram" href="#"></a>-->
 			</div>
 			<div class="phone">
-				<span class="simple"><small>8 3452 </small>500-333</span>
+				<span class="simple"><small>8 (3452) </small>500-333</span>
 				<span class="simple">8-800-500-3133</span>
 			</div>
             <div class="contacts">
