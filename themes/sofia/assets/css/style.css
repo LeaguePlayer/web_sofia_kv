@@ -1149,7 +1149,6 @@ a.link-addFavorites.active:hover span:after{
 
 a.link-room {
     display: block;
-    width: 205px;
     height: auto;
     margin: 15px 0px;
     font: normal bold 20px/20px "conqueror_sans";
@@ -1568,20 +1567,27 @@ footer .phone{
     padding-left: 45px;
     background: no-repeat left 5px url('../images/phone.gif');
     margin: 0 40px 0 30px;
-}
-footer .phone span{
-    font: normal normal 40px/40px 'conqueror_sans';
+    text-align: left;
 }
 footer .phone span.simple{
     line-height: 1;
     display: block;
     font-size: 26px;
 }
+footer .phone .prefix {
+    display: inline-block;
+    margin-right: 0;
+    width: 70px;
+}
 footer .phone .simple small {
     font-size: 70%;
     display: inline-block;
     vertical-align: middle;
-    margin-right: 10px;
+}
+footer .phone .info {
+    line-height: 1;
+    display: block;
+    font-size: 14px
 }
 footer .contacts {
     display: inline-block;
@@ -1918,7 +1924,7 @@ footer .social a:first-child, .page-content .social a:first-child {
 }
 
 #main .contacts .float-button {
-    -webkit-transform: rotate(-90deg); /* Chrome y Safari */
+    -webkit-transform: rotate(90deg); /* Chrome y Safari */
     -moz-transform: rotate(-90deg); /* Firefox */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* Internet Explorer */
     -o-transform: rotate(-90deg); /* Opera */

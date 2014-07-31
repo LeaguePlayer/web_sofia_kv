@@ -45,7 +45,7 @@ $email = Settings::getEmail();
 		<?php echo $content;?>
 		<footer class="center">
 			<div class="copy">
-				<span>СофияSTYLE</span>
+				<span>София STYLE</span>
 				<span class="grey">Все права защищены</span>
 			</div>
 			<div class="social">
@@ -55,12 +55,12 @@ $email = Settings::getEmail();
 <!--				<a class="link-instagram" href="#"></a>-->
 			</div>
 			<div class="phone">
-				<span class="simple"><small>8 (3452) </small>500-333</span>
-				<span class="simple">8-800-500-3133</span>
+                <span class="simple"><small class="prefix">8 (3452) </small>500-333</span>
+                <span class="simple"><span class="prefix">8-800-</span>500-3133</span>
+                <span class="info">для регионов бесплатно</span>
 			</div>
             <div class="contacts">
                 <p>Пишите нам: <a class="grey" href="mailto:<?= $email ?>"><?= $email ?></a></p>
-                <span class="info">для регионов бесплатно</span>
             </div>
 			<div class="clear"></div>
 		</footer>
