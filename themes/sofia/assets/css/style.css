@@ -1932,6 +1932,6 @@ footer .social a:first-child, .page-content .social a:first-child {
     position: fixed;
     top: 50%;
     margin-top: -14px;
-    right: -220px;
+    right: -250px;
     z-index: 200;
 }

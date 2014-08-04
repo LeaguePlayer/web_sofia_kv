@@ -155,9 +155,9 @@ jQuery(document).ready(function(){
     $(document).on('scroll', function() {
         var top = $(this).scrollTop();
         if ( top >= topLine ) {
-            floatButton.stop(true, false).animate({right: '-158px'}, 100);
+            floatButton.stop(true, false).animate({right: '-190px'}, 100);
         } else {
-            floatButton.stop(true, false).animate({right: '-220px'}, 100);
+            floatButton.stop(true, false).animate({right: '-250px'}, 100);
         }
     });
 });
