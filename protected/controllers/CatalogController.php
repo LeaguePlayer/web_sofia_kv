@@ -43,19 +43,21 @@ class CatalogController extends Controller
 		//sort field
 		$criteria->order = 't.sort';
 
-		//Fucking filter
-		if(isset($_POST['Catalog'])){
-			$model->attributes = $_POST['Catalog'];
+        $filterParams = Yii::app()->request->isPostRequest ? $_POST : $_GET;
 
-			if(isset($_POST['area']) && $_POST['area'] != '0'){
+		//Fucking filter
+		if(isset($filterParams['Catalog'])){
+			$model->attributes = $filterParams['Catalog'];
+
+			if(isset($filterParams['area']) && $filterParams['area'] != '0'){
 				$criteria->with = array('cat_areas');
 				$criteria->together = true;
 				$criteria->addCondition('area_id=:area_id');
-				$criteria->params[':area_id'] = $_POST['area'];
+				$criteria->params[':area_id'] = $filterParams['area'];
 			}
 
-			if(!empty($_POST['Catalog']['rooms_count'])){
-				$items = $_POST['Catalog']['rooms_count'];
+			if(!empty($filterParams['Catalog']['rooms_count'])){
+				$items = $filterParams['Catalog']['rooms_count'];
 
 				$flag = false;
 				foreach ($items as $key => $value) {
@@ -70,18 +72,18 @@ class CatalogController extends Controller
 				}
 			}
 
-			if(isset($_POST['Catalog']['human_count']) && $_POST['Catalog']['human_count'] != 0){
+			if(isset($filterParams['Catalog']['human_count']) && $filterParams['Catalog']['human_count'] != 0){
 				$criteria->addCondition('human_count >= :human_count');
-				$criteria->params[':human_count'] = $_POST['Catalog']['human_count'];
+				$criteria->params[':human_count'] = $filterParams['Catalog']['human_count'];
 			}
 
-			if(isset($_POST['Catalog']['price_24']) && $_POST['Catalog']['price_24'] != 0){
+			if(isset($filterParams['Catalog']['price_24']) && $filterParams['Catalog']['price_24'] != 0){
 				$criteria->addCondition('price_24 >= :price_24');
-				$criteria->params[':price_24'] = $_POST['Catalog']['price_24'];
+				$criteria->params[':price_24'] = $filterParams['Catalog']['price_24'];
 			}
 			
-			if(!empty($_POST['Catalog']['features'])){
-				$items = $_POST['Catalog']['features'];
+			if(!empty($filterParams['Catalog']['features'])){
+				$items = $filterParams['Catalog']['features'];
 				foreach ($items as $key => $value) {
 					if($value != 0){
 						$criteria->addSearchCondition('features', $value);

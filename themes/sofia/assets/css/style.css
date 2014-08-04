@@ -1535,6 +1535,25 @@ a.link-room:hover {
     font-weight: bold;
 }
 
+#city .badge {
+    display: block;
+    position: absolute;
+    width: 152px;
+    height: 160px;
+    top: 0;
+    left: 0;
+    background: url(../images/badge-one-room.png) no-repeat;
+}
+#city .badge.one-room {
+    background: url(../images/badge-one-room.png) no-repeat;
+}
+#city .badge.two-room {
+    background: url(../images/badge-two-room.png) no-repeat;
+}
+#city .badge.three-room {
+    background: url(../images/badge-three-room.png) no-repeat;
+}
+
 footer{
     padding: 30px 0;
     text-align: center;

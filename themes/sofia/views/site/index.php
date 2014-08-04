@@ -64,6 +64,7 @@
 		<a class="yellow-button" href="/catalog"><span></span>Смотреть все квартиры</a>
 	</div>
 </section>
+
 <section id="pairs">
 <!--	<header>-->
 <!--		<h1>Наши партнеры</h1>-->
