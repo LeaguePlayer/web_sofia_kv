@@ -38,7 +38,7 @@ $email = Settings::getEmail();
 						<span class="info">для регионов бесплатно</span>
 					</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
-					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Быстро забронировать квартиру</a>
+					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
 				</div>
 			</div>
 		</header>
