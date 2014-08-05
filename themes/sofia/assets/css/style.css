@@ -1153,6 +1153,7 @@ a.link-room {
     margin: 15px 0px;
     font: normal bold 20px/20px "conqueror_sans";
     color: #0daff0;
+    text-align: left;
 }
 a.link-room:hover {
     color: #1596d9;
@@ -1512,7 +1513,7 @@ a.link-room:hover {
     width: 100%;
     max-width: 1378px;
     overflow: hidden;
-    padding-top: 600px;
+    padding-top: 520px;
     margin: 60px auto 0 auto;
     background: repeat-x top left url('../images/city.png');
     position: relative;

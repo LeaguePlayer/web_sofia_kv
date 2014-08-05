@@ -17,11 +17,9 @@ class CatalogController extends Controller
 
 		$dataProvider=new CActiveDataProvider('Catalog', array(
 			'criteria' => $this->getCriteriaForFilter($model),
-			'pagination' => array(
-				'pageSize' => false
-			)
-
+			'pagination' => false
 		));
+
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
 		$this->breadcrumbs=array(
@@ -41,7 +39,7 @@ class CatalogController extends Controller
 		//only active
 		$criteria->addCondition('t.active=1');
 		//sort field
-		$criteria->order = 't.sort';
+		$criteria->order = 't.rooms_count, t.sort';
 
         $filterParams = Yii::app()->request->isPostRequest ? $_POST : $_GET;
 
