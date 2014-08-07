@@ -29,6 +29,12 @@
                 <span class="title">Документы для отчетности</span>
             </a>
 		</li>
+        <li>
+            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
+                <span class="i5 icon"></span>
+                <span class="title">Любая форма оплаты</span>
+            </a>
+        </li>
 	</ul>
 </section>
 <hr>

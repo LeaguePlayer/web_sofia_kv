@@ -889,7 +889,7 @@ a.link-addFavorites.active:hover span:after{
 }
 #features ul li{
     display: inline-block;
-    width: 160px;
+    width: 146px;
     margin-right: 40px;
 }
 #features ul li .icon{
@@ -898,7 +898,7 @@ a.link-addFavorites.active:hover span:after{
     margin: 0 auto;
     margin-bottom: 20px;
     display: block;
-    background: no-repeat 0 0 url('../images/main-icons-hovered.png');
+    background: no-repeat 0 0 url('../images/main-icons-hovered.png?v=2');
 }
 #features ul li .icon.i1 {
     background-position: 0 0;
@@ -912,6 +912,9 @@ a.link-addFavorites.active:hover span:after{
 #features ul li .icon.i4 {
     background-position: -144px 0;
 }
+#features ul li .icon.i5 {
+    background-position: -192px 0;
+}
 #features ul li:hover .icon.i1 {
     background-position: 0 -48px;
 }
@@ -923,6 +926,9 @@ a.link-addFavorites.active:hover span:after{
 }
 #features ul li:hover .icon.i4 {
     background-position: -144px -48px;
+}
+#features ul li:hover .icon.i5 {
+    background-position: -192px -48px;
 }
 #features ul li span{
     font-size: 20px;
