@@ -1,7 +1,7 @@
 <div class="image">
 	<?=CHtml::link(CHtml::image($room->getPreviewImage('v1'), ""),array("catalog/view","id"=>$room->id))?>
 	<a href="#zoom" class="zoom" data-id="room<?=$room->id?>"></a><?//CHtml::link(CHtml::image($data->getPreviewImage('v2'), ""),array("view","id"=>$data->id))?>
-	<?=CHtml::link(CHtml::encode($room->rooms_count).' комнатная квартира, '.CHtml::encode($room->address), array("catalog/view","id"=>$room->id), array('class' => 'link-room'))?>
+	<?=CHtml::link(CHtml::encode($room->rooms_count).' комнатная квартира, ул.&nbsp;'.CHtml::encode($room->address), array("catalog/view","id"=>$room->id), array('class' => 'link-room'))?>
 	<div class="room-price">
 		<div class="col3-left">
 			<b><?=CHtml::encode($room->price_24)?></b> руб. в сутки

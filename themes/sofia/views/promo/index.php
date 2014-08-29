@@ -1,5 +1,9 @@
 <section class="left">
-	<?php $this->renderPartial('/catalog/_filter', array('model' => $model, 'areas' => $areas));?>			
+	<?php $this->renderPartial('/catalog/_filter', array('model' => $model, 'areas' => $areas));?>	
+	
+	<script type="text/javascript">
+		defaultFilterMin = 1000;
+	</script>		
 </section>
 <section class="right">
 	<div class="top-block">

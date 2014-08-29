@@ -16,7 +16,7 @@ $this->widget('zii.widgets.CMenu',array(
 )); ?>
 </nav>
 
-<section>
+<section class="crumbs">
 <?	$this->widget('zii.widgets.CBreadcrumbs', array(
   'separator'=>'',
   'links'=>$this->breadcrumbs,
@@ -28,6 +28,9 @@ $this->widget('zii.widgets.CMenu',array(
   'htmlOptions'=>array('class'=>'breadcrumbs')
 	)); 
 ?>
+
+	<a href="/" class="back"><i>← </i>Вернуться на главную</a>
+
 </section>
 
 <?php $this->endClip(); ?>

@@ -1,7 +1,7 @@
 <div class="top-block no-margin-left">
 	<h2>
 		<a id="link-share" class="gray-button map" href="/favorites/"><i class="plus-gray"></i> Квартиры в закладках</a>
-		<?=CHtml::encode($model->rooms_count)?>-комнатная квартира, <?=CHtml::encode($model->address)?>
+		<?=CHtml::encode($model->rooms_count)?>-комнатная квартира, ул.&nbsp;<?=CHtml::encode($model->address)?>
 	</h2>
 </div>
 <div class="dops">

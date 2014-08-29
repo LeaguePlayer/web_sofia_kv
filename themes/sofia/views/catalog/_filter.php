@@ -35,7 +35,11 @@ $form_action = $this->getId() == 'service' ? '/catalog/#catalog' : '#catalog';
 		<label class="text-title">Цена</label>
 		<div id="price_count"></div>
 		<?php echo $form->hiddenField($model, 'price_24', array('class' => 'price'));?>
+	<?php if(1==1): ?>
+		<label class="text-ot">от <b>1000</b></label>
+	<?php else: ?>
 		<label class="text-ot">от <b>300</b></label>
+	<?php endif; ?>
 		<label class="text-do">от <b>5000</b></label>
 	</div>
 	<div class="checkbox-dop">

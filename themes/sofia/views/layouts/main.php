@@ -34,8 +34,9 @@ $email = Settings::getEmail();
 					<a class="mail" href="mailto:<?= $email ?>"><?= $email ?></a>
 					<span class="phone">
 						<span class="simple"><small class="prefix">8 (3452) </small>500-333</span>
+						<span class="info">основной (служба заказа)</span>
 						<span class="simple"><span class="prefix">8-800-</span>500-3133</span>
-						<span class="info">для регионов бесплатно</span>
+						<span class="info">дополнительный (для регионов бесплатно)</span>
 					</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
 					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
@@ -43,6 +44,7 @@ $email = Settings::getEmail();
 			</div>
 		</header>
 		<?php echo $content;?>
+		<div class="bottom-back center"><a href="/" class="back"><i>← </i>Вернуться на главную</a></div>
 		<footer class="center">
 			<div class="copy">
 				<span>София STYLE</span>

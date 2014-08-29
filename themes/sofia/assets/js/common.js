@@ -149,15 +149,15 @@ jQuery(document).ready(function(){
 
 
     // Плавающая кнопка
-    var contactBlock = $('#main .contacts');
-    var topLine = contactBlock.offset().top + contactBlock.outerHeight();
+    var contactBlock = $('#main .contacts:first');
+    var topLine = 222;
     var floatButton = $('.float-button').show();
     $(document).on('scroll', function() {
         var top = $(this).scrollTop();
         if ( top >= topLine ) {
             floatButton.stop(true, false).animate({right: '-190px'}, 100);
         } else {
-            floatButton.stop(true, false).animate({right: '-250px'}, 100);
+            floatButton.stop(true, false).animate({right: '-280px'}, 100);
         }
     });
 });
@@ -361,9 +361,11 @@ if(filtersBlock.size()>0){
 	$(".filters .sleeper_count-num").html($(".filters .sleeper_count").slider("value"));
 
 	// ползунок "Цена" в филтре
+	if (typeof defaultFilterMin == 'undefined')
+		defaultFilterMin = 300;
 	$("#price_count").slider({
 		range: "min",
-		min: 300,
+		min: defaultFilterMin,
 		max: 5000,
 		step: 50,
 		value: 800,

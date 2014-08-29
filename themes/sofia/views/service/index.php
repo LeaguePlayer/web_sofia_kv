@@ -40,7 +40,7 @@
 	<?php if($links){?>
 	<section id="relax-type">
 		<h1>Не знаете где и как отдохнуть в тюмени?</h1>
-		<h4>Спланируйте свой отдых тут:</h4>
+		<h4>Планируйте свой отдых:</h4>
 		<div>
 			<?php foreach ($links as $link):?>
 				<div class="col3">

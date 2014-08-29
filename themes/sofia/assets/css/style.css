@@ -1066,6 +1066,7 @@ a.link-addFavorites.active:hover span:after{
 }
 .dop div.internet-blue {
     background-position: -156px -28px;
+    display: none;
 }
 
 #rooms-on-main{
@@ -1163,7 +1164,7 @@ a.link-room {
 }
 a.link-room:hover {
     color: #1596d9;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #images {
@@ -1195,13 +1196,13 @@ a.link-room:hover {
 }
 #images .link-addFavorites {
     top: 390px;
-    right: 263px;
+    right: 174px;
 }
 #images a.zoomImage {
     display: block;
     position: absolute;
     top: 392px;
-    right: 72px;
+    right: 38px;
     width: 40px;
     height: 40px;
     background: 0px 0px url(../images/zoomImg.png) no-repeat;
@@ -1213,7 +1214,7 @@ a.link-room:hover {
     display: block;
     position: absolute;
     top: 390px;
-    right: 120px;
+    left: 432px;
     width: 45px;
     height: 44px;
     background: 0px 0px url(../images/prevImg1.png) no-repeat;
@@ -1222,7 +1223,7 @@ a.link-room:hover {
     display: block;
     position: absolute;
     top: 390px;
-    right: 20px;
+    right: 432px;
     width: 45px;
     height: 44px;
     background: 0px 0px url(../images/nextImg1.png) no-repeat;
@@ -1580,11 +1581,13 @@ footer .copy{
 footer .copy span{
     display: block;
     font-size: 22px;
+    letter-spacing: 0.014em;
 }
 footer .copy .grey{
     font-size: 13px;
     color: #aaa;
     padding-top: 2px;
+    letter-spacing: normal;
 }
 
 footer .phone{
@@ -1712,6 +1715,7 @@ footer .social a:first-child, .page-content .social a:first-child {
 }
 .safari a.link-room {
     font: normal bold 18px/20px Arial;
+    text-decoration: none;
 }
 .safari .room-price b {
     font: normal bold 14px/20px Arial;
@@ -1958,6 +1962,22 @@ footer .social a:first-child, .page-content .social a:first-child {
     position: fixed;
     top: 50%;
     margin-top: -14px;
-    right: -250px;
+    right: -280px;
     z-index: 200;
+}
+
+.crumbs .back {
+    position: relative;
+    top: -10px;
+}
+.back {
+    color: #11c9f5;
+    text-decoration: underline;
+}
+.back i {
+    text-decoration: none;
+}
+.bottom-back {
+    position: relative;
+    top: -15px;
 }

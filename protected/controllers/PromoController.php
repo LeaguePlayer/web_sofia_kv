@@ -5,6 +5,7 @@ class PromoController extends Controller
 	public function actionIndex(){
 
 		$model = new Catalog;
+		$model->price_24 = 1000;
 		$criteria = new CDbCriteria();
 
 		$criteria->addCondition('active=1');
@@ -24,6 +25,7 @@ class PromoController extends Controller
 		$promo = $this->loadModel($id);
 
 		$model = new Catalog;
+		$model->price_24 = 1000;
 		$criteria = CatalogController::getCriteriaForFilter($model);
 		//$criteria->join = 'LEFT JOIN catalog_actions ON action_id=:id';
 		$criteria->with = 'cat_actions';

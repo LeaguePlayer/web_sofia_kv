@@ -11,7 +11,7 @@
 	<div class="room-images">
 		<?=CHtml::link(CHtml::image($data->getPreviewImage('v2'), ""),array('catalog/view','id'=>$data->id))?>
 	</div>
-	<?=CHtml::link(CHtml::encode($data->rooms_count).' комнатная квартира, '.CHtml::encode($data->address), array('catalog/view','id'=>$data->id), array('class' => 'link-room')); ?>
+	<?=CHtml::link(CHtml::encode($data->rooms_count).' комнатная квартира, ул.&nbsp;'.CHtml::encode($data->address), array('catalog/view','id'=>$data->id), array('class' => 'link-room')); ?>
 	<div class="sleepers">
 		<label><? echo CHtml::encode($data->human_count);?> спальн<? echo ($data->human_count == 1 ? 'ое' : 'ых');?> места</label>
 		<? for($i = 0; $i < $data->human_count; $i++): ?>
