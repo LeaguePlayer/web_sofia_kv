@@ -783,8 +783,8 @@ a.link-addFavorites.active:hover span:after{
 }
 #main-menu li a{
     color: #000;
-    padding: 10px 13px;
-    font-size: 22px;
+    padding: 10px 7px;
+    font-size: 19px;
 }
 #main-menu .active a, #main-menu a:hover{
     background-color: #fff;

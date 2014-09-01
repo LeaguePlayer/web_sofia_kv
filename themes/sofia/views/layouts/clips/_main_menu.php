@@ -3,7 +3,7 @@
 <?php 
 
 $action_link = array();
-if($this->action) $action_link = array('label'=>'Спецальные предложения', 'url'=>array('/promo/view', 'id' => $this->action->id));
+if($this->action) $action_link = array('label'=>'Специальные предложения', 'url'=>array('/promo/view', 'id' => $this->action->id));
 
 $this->widget('zii.widgets.CMenu',array(
 	'items'=>array(
@@ -11,7 +11,8 @@ $this->widget('zii.widgets.CMenu',array(
 		array('label'=>'Просмотр на карте', 'url'=>array('/catalog/map')),
 		$action_link,
 		array('label'=>'Дополнительные услуги', 'url'=>array('/service/'), 'active'=> (strpos($this->getId(), 'service') !== false)),
-		array('label'=>'Контакты', 'url'=>array('/page/contacts'), 'active'=> (strpos($this->getId(), 'page') !== false))
+		array('label'=>'Условия проживания', 'url'=>array('/page/terms'), 'active'=> false),
+		array('label'=>'Контакты', 'url'=>array('/page/contacts'), 'active'=> false),
 	),
 )); ?>
 </nav>
@@ -29,8 +30,10 @@ $this->widget('zii.widgets.CMenu',array(
 	)); 
 ?>
 
-	<a href="/" class="back"><i>← </i>Вернуться на главную</a>
-
+	
+		<? if(($this->id != 'site') || ($this->getAction()->id != 'index')):?>
+	<a href="/" class="back" onclick="window.history.go(-1);return false;"><i>← </i>Вернуться назад</a>
+	<? endif ;?>
 </section>
 
 <?php $this->endClip(); ?>
