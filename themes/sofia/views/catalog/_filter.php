@@ -28,7 +28,7 @@ $form_action = $this->getId() == 'service' ? '/catalog/#catalog' : '#catalog';
 		</div>
 		<?php echo $form->hiddenField($model, 'human_count', array('class' => 'human'));?>
 		<label class="text-ot">от <b>1</b></label>
-		<label class="text-do">от <b>10</b></label>
+		<label class="text-do">до <b>10</b></label>
 		<div class="small_text">Если Вас более 10 человек, просим связаться с нашим администратором по телефону для Тюмени 500-333, для других регионов 8-800-500-31-33</div>
 	</div>
 	<div class="price">
@@ -40,7 +40,7 @@ $form_action = $this->getId() == 'service' ? '/catalog/#catalog' : '#catalog';
 	<?php else: ?>
 		<label class="text-ot">от <b>300</b></label>
 	<?php endif; ?>
-		<label class="text-do">от <b>5000</b></label>
+		<label class="text-do">до <b>5000</b></label>
 	</div>
 	<div class="checkbox-dop">
 		<label class="text-title">Дополнительно</label><br>
