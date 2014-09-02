@@ -15,7 +15,7 @@ function init() {
         type: 'yandex#publicMap',
         behaviors: ["drag"]
     });
-
+observeEvents(Map);
     assetsUrl = $('#map').data('assets');
 
     /*Map.controls.add(
@@ -23,6 +23,31 @@ function init() {
     );*/
     
     Map.controls.add('zoomControl', { top: 75, right: 15 });    
+
+/*    Map.geoObjects.events.add('balloonopen', function (e) {
+        Map.setZoom(16, {}, true);
+        console.log(e);
+        return true;
+    });*/
+
+    
+/*function observeEvents (map) {
+    var mapEventsGroup,
+        mapBalloonEventsGroup = map.balloon.events
+            // При открытии балуна начинаем слушать изменение центра карты.
+            .add('open', function (e1) {
+                // Вызываем функцию в двух случаях:
+                mapEventsGroup = map.events.group()
+                    .add('actiontickcomplete', function (e2) {
+                        map.setZoom(18);
+                    });
+
+            })
+            // При закрытии балуна удаляем слушатели.
+            .add('close', function () {
+                mapEventsGroup.removeAll();
+            });
+}*/
 
     $(function() {
         // количество квартир на карте        
@@ -82,6 +107,10 @@ function init() {
                 }
             }
         );
+
+        function onOpen() {
+            console.log('lol');
+        }
         
         var clusterBaloonLayout = ymaps.templateLayoutFactory.createClass(
             "<div class='baloon_content_wrap'>"+
@@ -366,6 +395,9 @@ function addItemsOnMap(data){
             balloonContentBodyLayout: "hotels#baloonlayout",
             balloonMinWidth: 400,
             balloonMaxWidth: 410,
+            baloonEvents: function() {
+                console.log('fuck');
+            },
         });
             
         hotelsOnMap.push(GeoObject);

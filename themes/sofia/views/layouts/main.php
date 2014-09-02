@@ -39,7 +39,9 @@ $email = Settings::getEmail();
 						<span class="info">дополнительный (для регионов бесплатно)</span>
 					</span>
 					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
+				<? if($this->getAction()->id != 'map'):?>
 					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
+				<? endif;?>
 				</div>
 			</div>
 		</header>

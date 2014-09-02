@@ -141,7 +141,7 @@ class CatalogController extends Controller
 		$action = Action::model()->find('active=1');
 
 		$this->breadcrumbs=array(
-  			'Просмотр на карте'
+  			'Квартиры на карте'
 		);
 		$this->render('map', array(
 			'model' => $model,
