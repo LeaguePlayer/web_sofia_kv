@@ -15,7 +15,7 @@ function init() {
         type: 'yandex#publicMap',
         behaviors: ["drag"]
     });
-observeEvents(Map);
+//observeEvents(Map);
     assetsUrl = $('#map').data('assets');
 
     /*Map.controls.add(
