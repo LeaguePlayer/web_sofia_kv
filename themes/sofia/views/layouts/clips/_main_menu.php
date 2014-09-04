@@ -12,6 +12,8 @@ $this->widget('zii.widgets.CMenu',array(
 		$action_link,
 		array('label'=>'Дополнительные услуги', 'url'=>array('/service/'), 'active'=> (strpos($this->getId(), 'service') !== false)),
 		array('label'=>'Условия проживания', 'url'=>array('/page/terms'), 'active'=> false),
+		array('label'=>'Арендуем квартиры', 'url'=>array('/page/rental'), 'active'=> false),
+		array('label'=>'Отзывы', 'url'=>array('/page/reviews'), 'active'=> false),
 		array('label'=>'Контакты', 'url'=>array('/page/contacts'), 'active'=> false),
 	),
 )); ?>
@@ -32,7 +34,7 @@ $this->widget('zii.widgets.CMenu',array(
 
 	
 		<? if(($this->id != 'site') || ($this->getAction()->id != 'index')):?>
-	<a href="/" class="back" onclick="window.history.go(-1);return false;"><i>← </i>Вернуться назад</a>
+	<a href="/" class="back" onclick="window.history.go(-1);return false;"><i>&#8666; </i>Назад</a>
 	<? endif ;?>
 </section>
 

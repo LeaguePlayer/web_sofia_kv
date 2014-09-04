@@ -780,11 +780,13 @@ a.link-addFavorites.active:hover span:after{
 
 #main-menu li{
     display: inline-block;
+    height: 60px;
+
 }
 #main-menu li a{
     color: #000;
     padding: 10px 7px;
-    font-size: 19px;
+    font-size: 25px;
 }
 #main-menu .active a, #main-menu a:hover{
     background-color: #fff;
@@ -1163,7 +1165,7 @@ a.link-room {
     text-align: left;
 }
 a.link-room:hover {
-    color: #1596d9;
+    color: #16658e;
     text-decoration: none;
 }
 
@@ -1973,9 +1975,18 @@ footer .social a:first-child, .page-content .social a:first-child {
 .back {
     color: #11c9f5;
     text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 .back i {
     text-decoration: none;
+    font-style: normal;
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 1.4em;
+    font-size: 0.9em;
+    vertical-align: middle;
+    margin-bottom: 2px;
 }
 .bottom-back {
     position: relative;

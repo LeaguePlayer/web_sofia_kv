@@ -47,7 +47,7 @@ $email = Settings::getEmail();
 		</header>
 		<?php echo $content;?>
 		<? if(($this->id != 'site') || ($this->getAction()->id != 'index')):?>
-			<div class="bottom-back center"><a href="/" class="back" onclick="window.history.go(-1);return false;"><i>← </i>Вернуться назад</a></div>
+			<div class="bottom-back center"><a href="/" class="back" onclick="window.history.go(-1);return false;"><i>&#8666; </i>Назад</a></div>
 		<? endif; ?>
 		<footer class="center">
 			<div class="copy">
