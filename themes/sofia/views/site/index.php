@@ -1,42 +1,25 @@
 
 <? $this->renderPartial('_main_blocks', array('main_blocks' => $main_blocks)); ?>
+<? if(!empty($benefits)):?>
 <section id="features">
 	<header>
 		<h1>Наши преимущества</h1>
 	</header>
 	<ul id="items">
+		<? foreach($benefits as $benefit):?>
 		<li>
-            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
-                <span class="i1 icon"></span>
-                <span class="title">Демократичная цена</span>
+            <a class="fancybox" data-fancybox-type="inline"  href="#benefit<?= $benefit->id;?>">
+                <span class="i<?= $benefit->icon;?> icon"></span>
+                <span class="title"><?= $benefit->title;?></span>
             </a>
+            <div id="benefit<?= $benefit->id;?>" style="display: none;">
+				<?= $benefit->text; ?>
+            </div>
 		</li>
-		<li>
-            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
-                <span class="i2 icon"></span>
-                <span class="title">Дополнительный сервис</span>
-            </a>
-		</li>
-		<li>
-            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
-                <span class="i3 icon"></span>
-                <span class="title">Удобное  расположение</span>
-            </a>
-		</li>
-		<li>
-            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
-                <span class="i4 icon"></span>
-                <span class="title">Документы для отчетности</span>
-            </a>
-		</li>
-        <li>
-            <a href="<?= $this->createUrl('/page/view', array('alias' => 'contacts')) ?>">
-                <span class="i5 icon"></span>
-                <span class="title">Любая форма оплаты</span>
-            </a>
-        </li>
+		<? endforeach; ?>
 	</ul>
 </section>
+<? endif; ?>
 <hr>
 <section id="rooms-on-main">
 	<header>

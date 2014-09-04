@@ -86,7 +86,8 @@ class SiteController extends Controller
 		//$this->count = Catalog::model()->count('active=1');
 		$this->render('index', array(
 			'mainRooms' => $mainRooms,
-			'main_blocks' => $main_blocks
+			'main_blocks' => $main_blocks,
+			'benefits' => Benefit::model()->findAll(),
 		));
 	}
 
