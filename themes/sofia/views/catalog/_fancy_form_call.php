@@ -60,7 +60,7 @@ if(!isset($ajax)){
 							$("#phone").mask("+7 (999) 999-99-99");
 						}else{
 							$.fancybox.open($(".fancybox-inner").find(".success"), {wrapCSS: "sofia-modal", modal: true});
-							$(".sofia-modal .call-button").click(function(){
+							$(".sofia-modal .blue-button").click(function(){
 								window.location = "'.Yii::app()->request->url.'";
 							});
 						}
