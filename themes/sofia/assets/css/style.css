@@ -736,6 +736,7 @@ a.link-addFavorites.active:hover span:after{
     font: normal 14px Arial;
     text-decoration: underline;
     color: #000;
+    margin-left: 230px;
 }
 #main .contacts .mail:hover{ text-decoration: none;}
 
@@ -744,6 +745,7 @@ a.link-addFavorites.active:hover span:after{
     display: block;
     margin-top: 20px;
     width: 265px;
+    margin-left: 230px;
 }
 #main .contacts .phone .simple{
     display: block;
