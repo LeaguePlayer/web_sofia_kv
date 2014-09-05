@@ -706,7 +706,7 @@ a.link-addFavorites.active:hover span:after{
 #main{
     width: 1200px;
     margin: 0 auto;
-    background: no-repeat left center url('../images/logo_layout.png');
+    background: no-repeat left top url('../images/logo_layout.png');
     min-height: 272px;
 }
 
