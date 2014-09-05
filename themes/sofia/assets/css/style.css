@@ -1389,6 +1389,9 @@ a.link-room:hover {
 #booking{
     margin: 80px auto 0 auto;
 }
+.booking-block-call{
+    width: 330px !important;
+}
 .booking-block{
     background: no-repeat center url('../images/border_form.png');
     padding: 80px 100px 0 100px;

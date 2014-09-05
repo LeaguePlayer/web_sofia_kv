@@ -37,6 +37,12 @@
 	margin-right: 10px;
 }
 
+.call-button span{
+	background: url(../images/phone.png) no-repeat;
+	position: relative;
+	top: 1px;
+}
+
 .blue-button:hover{
 	background: #0daff0;
 	background: -moz-linear-gradient(top,  #0daff0 0%, #0daff0 39%, #11c9f5 56%, #11c9f5 100%);

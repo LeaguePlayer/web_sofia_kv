@@ -42,6 +42,7 @@ $email = Settings::getEmail();
 				<? if($this->getAction()->id != 'map'):?>
 					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
 				<? endif;?>
+					<a href="#fancy-form-call"  class="blue-button form float-button-left call-button"><span>&nbsp;</span>Заказать звонок</a>
 				</div>
 			</div>
 		</header>
@@ -71,6 +72,7 @@ $email = Settings::getEmail();
 			<div class="clear"></div>
 		</footer>
 		<div id="fancy-form" style="display:none;"><?php $this->renderPartial('/catalog/_fancy_form');?></div>
+		<div id="fancy-form-call" style="display:none;"><?php $this->renderPartial('/catalog/_fancy_form_call');?></div>
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/common.js?v=5"></script>
 		<?php
 		Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/jquery.fancybox.pack.js', CClientScript::POS_HEAD );

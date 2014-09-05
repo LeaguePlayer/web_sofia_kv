@@ -239,6 +239,32 @@ class CatalogController extends Controller
 		Yii::app()->end();
 	}
 
+	public function actionFancyFormCall(){
+		$model = new CallForm;
+
+		if(isset($_POST['CallForm'])){
+
+			$model->attributes = $_POST['CallForm'];
+
+			if($model->validate()){
+				echo "ok";
+				$subject = 'Поступил заказ звонка sofia72.ru';
+				Catalog::sendSMSLight(Settings::getPhone(), $subject, 'sofia72.ru');
+				//$this->renderPartial('_mail_template', array('model' => $model));
+				$msg = $this->renderPartial('_mail_call_template', array('model' => $model), true);
+				$this->sendMail(Settings::getEmail(), $subject, $msg, $model);
+				Yii::app()->end();
+			}
+			else{
+				//ii::app()->clientScript->corePackages = array();
+			}
+			
+		}
+
+		$this->renderPartial('_fancy_form_call', array('model' => $model, 'ajax' => true));
+		//$this->renderPartial('/site/_booking_form_main', array('ajax' => true, 'model' => $model));
+		Yii::app()->end();
+	}
 
 	private function sendMail($to, $subject, $message, $form){
 		// To send HTML mail, the Content-type header must be set
@@ -247,8 +273,13 @@ class CatalogController extends Controller
 
 		// Additional headers
 		//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
-		if($form->fio) $headers .= 'From: '.$form->fio.' <'.$form->email.'>' . "\r\n";
-		else $headers .= 'From: Гость <'.$form->email.'>' . "\r\n";
+		if (isset($form->email)) {
+			if($form->fio) $headers .= 'From: '.$form->fio.' <'.$form->email.'>' . "\r\n";
+			else $headers .= 'From: Гость <'.$form->email.'>' . "\r\n";
+		}
+		else {
+			$headers .= 'From: Гость <call-request@sofia72.ru>' . "\r\n";
+		}
 
 		// Mail it
 		mail($to, $subject, $message, $headers);
