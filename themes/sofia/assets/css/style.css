@@ -707,7 +707,7 @@ a.link-addFavorites.active:hover span:after{
     width: 1200px;
     margin: 0 auto;
     background: no-repeat left center url('../images/logo_layout.png');
-    min-height: 200px;
+    min-height: 272px;
 }
 
 #main .logo{
@@ -769,6 +769,11 @@ a.link-addFavorites.active:hover span:after{
 }
 #main .contacts .blue-button{
     margin-top: 20px;
+}
+#main .contacts .static-button{
+    display: block;
+    width: 200px;
+    margin-left: 230px;
 }
 #main-menu{
     text-align: center;

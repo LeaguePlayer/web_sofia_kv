@@ -38,11 +38,11 @@ $email = Settings::getEmail();
 						<span class="simple"><span class="prefix">8-800-</span>500-3133</span>
 						<span class="info">дополнительный (для регионов бесплатно)</span>
 					</span>
-					<a href="#fancy-form"  class="blue-button form"><span>&nbsp;</span>Отправить заявку</a>
+					<a href="#fancy-form"  class="blue-button form static-button"><span>&nbsp;</span>Отправить заявку</a>
 				<? if($this->getAction()->id != 'map'):?>
 					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
 				<? endif;?>
-					<a href="#fancy-form-call"  class="blue-button form float-button-left call-button"><span>&nbsp;</span>Заказать звонок</a>
+					<a href="#fancy-form-call"  class="blue-button form static-button call-button"><span>&nbsp;</span>Перезвоните мне</a>
 				</div>
 			</div>
 		</header>
