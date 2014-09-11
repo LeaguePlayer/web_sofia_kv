@@ -15,7 +15,13 @@ function init() {
         type: 'yandex#publicMap',
         behaviors: ["drag"]
     });
-//observeEvents(Map);
+
+    /*Map.balloon.events.add('open', function(e) {
+        Map.setZoom(18);
+    });*/
+
+
+
     assetsUrl = $('#map').data('assets');
 
     /*Map.controls.add(
@@ -31,23 +37,6 @@ function init() {
     });*/
 
     
-/*function observeEvents (map) {
-    var mapEventsGroup,
-        mapBalloonEventsGroup = map.balloon.events
-            // При открытии балуна начинаем слушать изменение центра карты.
-            .add('open', function (e1) {
-                // Вызываем функцию в двух случаях:
-                mapEventsGroup = map.events.group()
-                    .add('actiontickcomplete', function (e2) {
-                        map.setZoom(18);
-                    });
-
-            })
-            // При закрытии балуна удаляем слушатели.
-            .add('close', function () {
-                mapEventsGroup.removeAll();
-            });
-}*/
 
     $(function() {
         // количество квартир на карте        

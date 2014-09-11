@@ -772,8 +772,9 @@ a.link-addFavorites.active:hover span:after{
 }
 #main .contacts .static-button{
     display: block;
-    width: 200px;
+    width: 222px;
     margin-left: 230px;
+    text-align: center;
 }
 #main-menu{
     text-align: center;
