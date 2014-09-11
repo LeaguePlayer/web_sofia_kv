@@ -13,7 +13,7 @@ class CatalogController extends Controller
 
 		//Default initialization
 		$model->human_count = 1;
-		$model->price_24 = 300;
+		$model->price_24 = 1000;
 
 		$dataProvider=new CActiveDataProvider('Catalog', array(
 			'criteria' => $this->getCriteriaForFilter($model),

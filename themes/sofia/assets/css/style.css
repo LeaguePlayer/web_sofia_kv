@@ -708,6 +708,7 @@ a.link-addFavorites.active:hover span:after{
     margin: 0 auto;
     background: no-repeat left top url('../images/logo_layout.png');
     min-height: 272px;
+    font-weight: bold;
 }
 
 #main .logo{

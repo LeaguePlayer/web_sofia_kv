@@ -1,17 +1,4 @@
-<div class="top-block no-margin-left">
-	<a id="link-share" class="gray-button map" href="/favorites/"><i class="plus-gray"></i> Квартиры в закладках</a>
-	<div class="rooms-count no-margin-left">
-		<label class="text-title">смотреть только:</label>
-		<a class="room1" href="#">1 комнатные</a>
-		<a class="room2" href="#">2х комнатные</a>
-		<a class="room3" href="#">3х комнатные</a>
-	</div>
-</div>
-<div class="filters-map">
-	<section class="left">
-		<?php $this->renderPartial('_filter', array('model' => $model, 'areas' => $areas));?>
-	</section>
-</div>
+
 <div id="map" data-id="<?=Yii::app()->getRequest()->getParam('id')?>" data-assets="<?=$this->getAssetsUrl()?>"></div>
 <div class="afterMap">
 	<?if($action){?>

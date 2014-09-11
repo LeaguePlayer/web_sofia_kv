@@ -34,15 +34,15 @@ $email = Settings::getEmail();
 					<a class="mail" href="mailto:<?= $email ?>"><?= $email ?></a>
 					<span class="phone">
 						<span class="simple"><small class="prefix">8 (3452) </small>500-333</span>
-						<span class="info">основной (служба заказа)</span>
+						<span class="info" style="margin-left: 44px;">основной (служба заказа)</span>
 						<span class="simple"><span class="prefix">8-800-</span>500-3133</span>
-						<span class="info">дополнительный (для регионов бесплатно)</span>
+						<span class="info" style="margin-left: 6px;">дополнительный (для регионов бесплатно)</span>
 					</span>
 					<a href="#fancy-form"  class="blue-button form static-button"><span>&nbsp;</span>Отправить заявку</a>
-				<? if($this->getAction()->id != 'map'):?>
+
 					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
-				<? endif;?>
-					<a href="#fancy-form-call"  class="blue-button form static-button call-button"><span>&nbsp;</span>Перезвоните мне</a>
+
+					<a href="#fancy-form-call"  class="blue-button form static-button call-button"><span>&nbsp;</span>Перезвонить мне</a>
 				</div>
 			</div>
 		</header>
@@ -63,8 +63,9 @@ $email = Settings::getEmail();
 			</div>
 			<div class="phone">
                 <span class="simple"><small class="prefix">8 (3452) </small>500-333</span>
+                <span class="info">основной (служба заказа)</span>
                 <span class="simple"><span class="prefix">8-800-</span>500-3133</span>
-                <span class="info">для регионов бесплатно</span>
+                <span class="info">дополнительный (для регионов бесплатно)</span>
 			</div>
             <div class="contacts">
                 <p>Пишите нам: <a class="grey" href="mailto:<?= $email ?>"><?= $email ?></a></p>

@@ -309,6 +309,9 @@ if(filtersBlock.size()>0){
 	var offsetTop = 323;
     var stop_line = $(document).height() - filtersBlock.height() - $('body > footer').height() - 170;
 
+    if (linkShare.length)
+    	stop_line -= linkShare.height()*2;
+
 	$(document).scroll(function(event) {
 		// отменяем это, если на странице с картой находимся
 		if($(".filters-map").length){
@@ -317,7 +320,7 @@ if(filtersBlock.size()>0){
 		if($(window).height() > 750){
 			var scroll = $(document).scrollTop();
             if ( scroll >= offsetTop ) {
-                if ( scroll < stop_line ) {
+                if ( (scroll+260) < stop_line ) {
                     var offset = scroll - offsetTop;
                     filtersBlock.css({top: offset});
                     linkShare.css({top: offset + 690});
@@ -362,7 +365,7 @@ if(filtersBlock.size()>0){
 
 	// ползунок "Цена" в филтре
 	if (typeof defaultFilterMin == 'undefined')
-		defaultFilterMin = 300;
+		defaultFilterMin = 1000;
 	$("#price_count").slider({
 		range: "min",
 		min: defaultFilterMin,
