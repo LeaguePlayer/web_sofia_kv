@@ -1,3 +1,5 @@
+
+<? if((strpos(Yii::app()->request->requestUri, 'service') !== FALSE) && (strpos(Yii::app()->request->requestUri, 'promo') !== FALSE)):?>
 <?php
 $arrayAreas = array(0 => 'Выбрать район');
 $arrayAreas += Chtml::listData($areas, 'id', 'name');
@@ -48,3 +50,4 @@ $form_action = $this->getId() == 'service' ? '/catalog/#catalog' : '#catalog';
 	<?php echo CHtml::submitButton($submit_text, array('class' => 'blue-button'));?>
 	<?php $this->endWidget(); ?>		
 </div>
+<? endif; ?>
