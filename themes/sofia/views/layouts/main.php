@@ -40,7 +40,7 @@ $email = Settings::getEmail();
 					</span>
 					<a href="#fancy-form"  class="blue-button form static-button"><span>&nbsp;</span>Отправить заявку</a>
 
-<? if((strpos(Yii::app()->request->requestUri, 'service') !== FALSE) && (strpos(Yii::app()->request->requestUri, 'promo') !== FALSE)):?>
+<? if((strpos(Yii::app()->request->requestUri, 'service') === FALSE) || (strpos(Yii::app()->request->requestUri, 'promo') === FALSE)):?>
 					<a href="#fancy-form"  class="blue-button form float-button"><span>&nbsp;</span>Забронировать квартиру прямо сейчас</a>
 <? endif; ?>
 					<a href="#fancy-form-call"  class="blue-button form static-button call-button"><span>&nbsp;</span>Перезвонить мне</a>
