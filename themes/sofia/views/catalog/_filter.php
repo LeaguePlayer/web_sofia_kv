@@ -1,5 +1,5 @@
 
-<? if((strpos(Yii::app()->request->requestUri, 'service') === FALSE) || (strpos(Yii::app()->request->requestUri, 'promo') === FALSE)):?>
+<? if(!((strpos(Yii::app()->request->requestUri, 'service') !== FALSE) || (strpos(Yii::app()->request->requestUri, 'promo') !== FALSE))):?>
 <?php
 $arrayAreas = array(0 => 'Выбрать район');
 $arrayAreas += Chtml::listData($areas, 'id', 'name');
