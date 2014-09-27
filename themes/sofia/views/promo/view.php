@@ -11,6 +11,12 @@
 		<?if($fixed_price){?><div class="oldPrice">вместо <span><?=CHtml::encode($fixed_price)?></span></div><?}?>
 		
 	</div>
+	<div class="clear"></div>
+
+	<section id="text-content">
+		<? if ($action->long_desc) echo $action->long_desc; else echo $action->short_desc; ?>
+	</section>
+
 	<?php
 	/*foreach ($action->action_rooms as $item) {
 		$this->renderPartial('/catalog/_view', array('data' => $item));
@@ -24,12 +30,6 @@
 	    'emptyText'=>'<div class="nothing">Ничего не найдено.</div>'
 	));
 	?>
-	<div class="clear"></div>
-
-	<section id="text-content">
-		<? if ($action->long_desc) echo $action->long_desc; else echo $action->short_desc; ?>
-	</section>
-
 	<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
 </section>
 <div class="clear"></div>
