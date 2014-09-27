@@ -21,14 +21,14 @@
 	/*foreach ($action->action_rooms as $item) {
 		$this->renderPartial('/catalog/_view', array('data' => $item));
 	}*/
-	$this->widget('zii.widgets.CListView', array(
+	/*$this->widget('zii.widgets.CListView', array(
 	    'dataProvider'=>$action_rooms,
 	    'itemView'=>'/catalog/_view',
 	    'template'=>'{items}',
 	    'cssFile'=>false,
 	    'id'=>'catalog-list',
 	    'emptyText'=>'<div class="nothing">Ничего не найдено.</div>'
-	));
+	));*/
 	?>
 	<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
 </section>
