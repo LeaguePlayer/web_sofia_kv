@@ -27,7 +27,7 @@
 	<div class="clear"></div>
 
 	<section id="text-content">
-		<?=$action->long_desc?>
+		<? $action->long_desc ? echo $action->long_desc : echo $action->short_desc ?>
 	</section>
 
 	<section id="order"><?php $this->renderPartial('/catalog/_booking_form');?></section>
