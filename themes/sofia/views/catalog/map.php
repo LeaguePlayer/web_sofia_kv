@@ -13,6 +13,7 @@
 	<div class="clear"></div>
 </div>
 <?php Yii::app()->clientScript->registerCssFile($this->getAssetsUrl().'/css/map.css' );?>
-<?php Yii::app()->clientScript->registerScriptFile('http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU' ,CClientScript::POS_HEAD );?>
+<?php /*Yii::app()->clientScript->registerScriptFile('http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU' ,CClientScript::POS_HEAD );*/?>
+<?php Yii::app()->clientScript->registerScriptFile('http://api-maps.yandex.ru/2.1/?lang=ru_RU' ,CClientScript::POS_HEAD );?>
 <?php Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/map.js' ,CClientScript::POS_END );?>
 <?php Yii::app()->clientScript->registerScriptFile($this->getAssetsUrl().'/js/catalog.js' ,CClientScript::POS_END );?>

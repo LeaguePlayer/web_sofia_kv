@@ -11,6 +11,7 @@ class CatalogController extends Controller
 	{
 		$model = new Catalog;
 
+
 		//Default initialization
 		$model->human_count = 1;
 		$model->price_24 = 1000;
@@ -20,11 +21,13 @@ class CatalogController extends Controller
 			'pagination' => false
 		));
 
+
 		$areas = Area::model()->findAll(array('order' => 'name'));
 
 		$this->breadcrumbs=array(
   			'Каталог квартир'
 		);
+
 		$this->render('index', array(
 			'data' => $dataProvider,
 			'model' => $model,
