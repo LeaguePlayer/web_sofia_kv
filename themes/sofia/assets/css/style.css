@@ -745,7 +745,7 @@ a.link-addFavorites.active:hover span:after{
     font-size: 40px;
     display: block;
     margin-top: 20px;
-    width: 265px;
+    width: 278px;
     margin-left: 230px;
 }
 #main .contacts .phone .simple{
@@ -755,7 +755,7 @@ a.link-addFavorites.active:hover span:after{
 #main .contacts .phone .simple .prefix {
     display: inline-block;
     margin-right: 0;
-    width: 105px;
+    width: 112px;
 }
 #main .contacts .phone .simple small {
     font-size: 70%;

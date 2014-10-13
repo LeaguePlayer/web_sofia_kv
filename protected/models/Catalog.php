@@ -116,7 +116,7 @@ class Catalog extends CActiveRecord
 		return array(
 			'cat_areas' => array(self::MANY_MANY, 'Area', 'catalog_areas(catalog_id, area_id)'),
 			'cat_actions' => array(self::MANY_MANY, 'Action', 'catalog_actions(catalog_id, action_id)',
-				'condition' => 'cat_actions.active = 1  AND new_price != 0'
+				'condition' => 'cat_actions.active = 1'
 			),
 		);
 	}
