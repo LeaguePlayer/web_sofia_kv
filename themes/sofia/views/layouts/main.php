@@ -14,6 +14,8 @@ $email = Settings::getEmail();
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script type="text/javascript" src="<?=$this->getAssetsUrl()?>/js/chosen.jquery.min.js"></script>
 		<script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
+		
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 	</head>
 	<body <?php $this->is_home() ? print 'class="background"' : print '';?>>
 	<div id="fb-root"></div>

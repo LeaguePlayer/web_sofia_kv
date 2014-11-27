@@ -20,22 +20,21 @@ $this->widget('zii.widgets.CMenu',array(
 </nav>
 
 <section class="crumbs">
-<?	$this->widget('zii.widgets.CBreadcrumbs', array(
-  'separator'=>'',
-  'links'=>$this->breadcrumbs,
-  'tagName'=>'ul',
-  'activeLinkTemplate'=>'<li><a href="{url}">{label}</a></li>',
-  'inactiveLinkTemplate'=>'<li class="last">{label}</li>', 
-  'homeLink'=>'<li><a href="'.Yii::app()->homeUrl.'">Главная</a></li>',
-
-  'htmlOptions'=>array('class'=>'breadcrumbs')
-	)); 
-?>
-
-	
-		<? if(($this->id != 'site') || ($this->getAction()->id != 'index')):?>
-	<a href="/" class="back" onclick="window.history.go(-1);return false;"><i>&#8666; </i>Назад</a>
+	<? if(($this->id != 'site') || ($this->getAction()->id != 'index')):?>
+		<a href="/" class="back" onclick="window.history.go(-1);return false;"><i>&#8666; </i>Назад</a>
 	<? endif ;?>
+
+	<?	$this->widget('zii.widgets.CBreadcrumbs', array(
+	  'separator'=>'',
+	  'links'=>$this->breadcrumbs,
+	  'tagName'=>'ul',
+	  'activeLinkTemplate'=>' <li><a href="{url}">{label}</a> /</li>',
+	  'inactiveLinkTemplate'=>' <li class="last">{label}</li>', 
+	  'homeLink'=>'<li><a href="'.Yii::app()->homeUrl.'">Главная</a> / </li>',
+
+	  'htmlOptions'=>array('class'=>'breadcrumbs')
+		)); 
+	?>	
 </section>
 
 <?php $this->endClip(); ?>

@@ -779,7 +779,7 @@ a.link-addFavorites.active:hover span:after{
 }
 #main-menu{
     text-align: center;
-    margin: 50px 0 30px;
+    margin: 50px 0 10px;
 }
 
 #main-menu ul{
@@ -1954,11 +1954,10 @@ footer .social a:first-child, .page-content .social a:first-child {
 .breadcrumbs {
     list-style-type: none;
     position: relative;
-    top: -20px;
+    top: -10px;
 }
 
 .breadcrumbs li {
-    margin: 0 20px 0 0;
     padding: 0px;
     display: inline-block;
 }
@@ -1982,7 +1981,7 @@ footer .social a:first-child, .page-content .social a:first-child {
 
 .crumbs .back {
     position: relative;
-    top: -10px;
+    top: -20px;
 }
 .back {
     color: #11c9f5;
@@ -2003,4 +2002,13 @@ footer .social a:first-child, .page-content .social a:first-child {
 .bottom-back {
     position: relative;
     top: -15px;
+}
+
+#benefit1,
+#benefit2,
+#benefit3,
+#benefit4,
+#benefit5{
+	font-size: 18px;
+	color: #000000;
 }

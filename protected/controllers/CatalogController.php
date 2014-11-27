@@ -123,8 +123,8 @@ class CatalogController extends Controller
 		$model = $this->loadModel($id);
 		$this->breadcrumbs=array(
   			'Каталог квартир' => 'index',
-  			CHtml::encode($model->rooms_count)."-комнатная квартира, ".CHtml::encode($model->address),
 		);
+		
 		$this->render('view', array(
 			'model' => $model,
 			'data' => $dataProvider,
